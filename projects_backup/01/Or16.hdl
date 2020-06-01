@@ -1,18 +1,17 @@
 // This file is part of www.nand2tetris.org
 // and the book "The Elements of Computing Systems"
 // by Nisan and Schocken, MIT Press.
-// File name: projects/01/Not.hdl
+// File name: projects/01/Or16.hdl
 
 /**
- * Not gate:
- * out = not in
+ * 16-bit bitwise Or:
+ * for i = 0..15 out[i] = (a[i] or b[i])
  */
 
-CHIP Not {
-    IN a, b;
-    OUT out; //True if a!=b
+CHIP Or16 {
+    IN a[16], b[16];
+    OUT out[16];
 
     PARTS:
     // Put your code here:
-    Nand(;
 }

@@ -1,18 +1,17 @@
 // This file is part of www.nand2tetris.org
 // and the book "The Elements of Computing Systems"
 // by Nisan and Schocken, MIT Press.
-// File name: projects/01/Not.hdl
+// File name: projects/01/Or8Way.hdl
 
 /**
- * Not gate:
- * out = not in
+ * 8-way Or: 
+ * out = (in[0] or in[1] or ... or in[7])
  */
 
-CHIP Not {
-    IN a, b;
-    OUT out; //True if a!=b
+CHIP Or8Way {
+    IN in[8];
+    OUT out;
 
     PARTS:
     // Put your code here:
-    Nand(;
 }

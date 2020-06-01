@@ -9,10 +9,9 @@
  */
 
 CHIP Not {
-    IN a, b;
-    OUT out; //True if a!=b
+    IN in;
+    OUT out;
 
     PARTS:
     // Put your code here:
-    Nand(;
 }
