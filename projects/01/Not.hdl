@@ -14,6 +14,6 @@ CHIP Not {
 
     PARTS:
     // Put your code here:
-    BUILTIN Nand; 
+    BUILTIN Not; 
 
 }
