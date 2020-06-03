@@ -16,8 +16,8 @@ CHIP Or {
     PARTS:
     // Put your code here:
     // Chips: Not(in), Nand(a,b), And(a,b)
-    // Try Not Nand
-    Nand(a=a, b=b, out=c);
-    Not(in=c, out=out);
+    // = ( A NAND A ) NAND ( B NAND B ) 
+    Nand(a=a, b=a, out=q);
+    Nand(a=q, b=b, out=out);
     
 }
