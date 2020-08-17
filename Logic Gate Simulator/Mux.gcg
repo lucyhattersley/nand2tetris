@@ -3,45 +3,45 @@
   <Circuit>
     <Gates>
       <Gate Type="Nand" Name="Nand" ID="1" NumInputs="2">
-        <Point X="480" Y="416" Angle="0" />
+        <Point X="502" Y="369" Angle="0" />
       </Gate>
       <Gate Type="Nand" Name="Nand" ID="2" NumInputs="2">
-        <Point X="501" Y="215" Angle="0" />
+        <Point X="500" Y="241" Angle="0" />
       </Gate>
       <Gate Type="Nand" Name="Nand" ID="3" NumInputs="2">
-        <Point X="616" Y="292" Angle="0" />
+        <Point X="567" Y="303" Angle="0" />
       </Gate>
-      <Gate Type="UserInput" Name="UserInput" ID="4">
-        <Point X="225" Y="300" Angle="0" />
+      <Gate Type="UserInput" Name="sel" ID="4">
+        <Point X="179" Y="304" Angle="0" />
       </Gate>
-      <Gate Type="UserInput" Name="UserInput" ID="5">
-        <Point X="224" Y="224" Angle="0" />
+      <Gate Type="UserInput" Name="A" ID="5">
+        <Point X="243" Y="242" Angle="0" />
       </Gate>
       <Gate Type="UserOutput" Name="UserOutput" ID="6">
-        <Point X="768" Y="384" Angle="0" />
+        <Point X="688" Y="304" Angle="0" />
       </Gate>
-      <Gate Type="UserInput" Name="UserInput" ID="7">
-        <Point X="224" Y="430" Angle="0" />
+      <Gate Type="UserInput" Name="B" ID="7">
+        <Point X="241" Y="367" Angle="0" />
       </Gate>
       <Gate Type="Nand" Name="Nand" ID="8" NumInputs="2">
-        <Point X="410" Y="312" Angle="0" />
+        <Point X="434" Y="304" Angle="0" />
       </Gate>
     </Gates>
     <Wires>
       <Wire>
-        <From ID="4" Port="0" />
+        <From ID="7" Port="0" />
         <To ID="1" Port="0" />
       </Wire>
       <Wire>
-        <From ID="7" Port="0" />
+        <From ID="4" Port="0" />
         <To ID="1" Port="1" />
       </Wire>
       <Wire>
-        <From ID="5" Port="0" />
+        <From ID="8" Port="0" />
         <To ID="2" Port="0" />
       </Wire>
       <Wire>
-        <From ID="8" Port="0" />
+        <From ID="5" Port="0" />
         <To ID="2" Port="1" />
       </Wire>
       <Wire>
