@@ -44,8 +44,8 @@ CHIP ALU {
     PARTS:
    // Put you code here:
    // Negative
-   Add16(a=x, b[15]=1, out=nxout);
-   Add16(a=y, b=[15]=1, out=nyout);
+   Not16(in=x, out=nxout);
+   Not16(in=y, out=nyout);
    
    // Zero
    Add16(a=x, b=nxout, out=zxout);
