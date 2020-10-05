@@ -43,5 +43,8 @@ CHIP ALU {
 
     PARTS:
    // Put you code here:
-   Add16(a=x, b=y, out=zxout);
+   Add16(a=x, b=false, out=xout);
+   Add16(a=y, b=false, out=yout);
+   Add16(a=xout, b=yout, out=out);
+
 }
