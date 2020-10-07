@@ -43,19 +43,61 @@ CHIP ALU {
 
     PARTS:
    // Put you code here:
+
    // nx and ny implementation. Bitflips using Not16 and adds 1 using 
    // Inc16 to provide negatve values for x and y
+   
+   // nx   
    Not16(in=x, out=notxout);
    Inc16(in=notxout, out=nxout);
    
+   // ny 
    Not16(in=y, out=notyout);
    Inc16(in=notyout, out=nyout);
    
-   // zx and zy implementatin. Adds value and negative value to zero
+   // zx and zy implementation. Adds x,y value and negative x,y value 
    Add16(a=x, b=nxout, out=zxout);
    Add16(a=y, b=nyout, out=zyout);
    
-   // F
-   // Yet to be implemented
-   Add16(a=zxout, b=zyout, out=out);
+   // zx nx   
+   // DMUX4Way
+   // in x
+   // out x
+   //     nx
+   //     zx
+   //     zx nx
+
+   // zy ny 
+   // DMUX4Way
+   // in y
+   // out y
+   //     ny
+   //     zy
+   //     zy ny
+
+   // f
+   // MUX for x
+   // 0 to x&y
+
+   // 1 to xandy
+
+   // x&y
+
+   // x+y
+
+   // no
+   // mux
+   // out x
+
+   // neg -> out x
+   
+
+
+
+
+
+
+
+
+   
 }
