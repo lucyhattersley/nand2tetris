@@ -51,7 +51,7 @@ CHIP ALU {
    //     nx
    //     zx
    //     zx nx
-   DMux4Way(in=x, sel[0]=zx,sel[1]=nx, out=zxnxout);
+   DMux4Way(in=x, sel[0]=zx,sel[1]=nx, out=x, nx, zx, zxnx);
 
    // zy ny 
    // DMUX4Way
