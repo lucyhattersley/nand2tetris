@@ -43,21 +43,6 @@ CHIP ALU {
 
     PARTS:
    // Put you code here:
-
-   // nx and ny implementation. Bitflips using Not16 and adds 1 using 
-   // Inc16 to provide negatve values for x and y
-   
-   // nx   
-   Not16(in=x, out=notxout);
-   Inc16(in=notxout, out=nxout);
-   
-   // ny 
-   Not16(in=y, out=notyout);
-   Inc16(in=notyout, out=nyout);
-   
-   // zx and zy implementation. Adds x,y value and negative x,y value 
-   Add16(a=x, b=nxout, out=zxout);
-   Add16(a=y, b=nyout, out=zyout);
    
    // zx nx   
    // DMUX4Way
@@ -66,6 +51,7 @@ CHIP ALU {
    //     nx
    //     zx
    //     zx nx
+   DMux4Way(in=x, sel[0]=zx,sel[1]=nx, out=zxnxout);
 
    // zy ny 
    // DMUX4Way
@@ -74,20 +60,27 @@ CHIP ALU {
    //     ny
    //     zy
    //     zy ny
+   DMux4Way(in=y, sel[0]=zy,sel[1]=ny, out=zlnyout);
 
    // f
    // MUX for x
-   // 0 to x&y
+   // 0 to x&y (bitwise)
+   // 1 to xandy (arith)
+   DMux(in=zxnxout, sel=f, out=xtobit, xtoarith);
+   DMux(in=zynyout, self=f, out=ytobit, ytoarith);
 
-   // 1 to xandy
 
    // x&y
-
+   And16(a=xtobit, y=ytobit, out=xybit);
+   
    // x+y
-
+   Add16(a=xtoarith, b=ytoarith, out=xyarith);
+  
+   // Problem here. Mux has two inputs on design  
    // no
    // mux
    // out x
+   
 
    // neg -> out x
    
