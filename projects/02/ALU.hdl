@@ -62,6 +62,6 @@ CHIP ALU {
    Not16(in=muxout, out=negx);
   
    // no
-   Mux16(a=muxout, b=negx, sel=no);   
+   Mux16(a=muxout, b=negx, out=out, sel=no);   
       
 }
