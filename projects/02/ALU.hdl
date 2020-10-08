@@ -44,27 +44,9 @@ CHIP ALU {
     PARTS:
    // Put your code here:
    
-   // zx nx   
-   // DMUX4Way
-   // in x
-   // out x
-   //     nx
-   //     zx
-   //     zx nx
    Not16(in=x,out=notx);
-   DMux4Way(in=x, sel[0]=zx,sel[1]=nx, out=x, notx, false, true);
+   Mux4Way16(a=x, b=notx, c=false, d=true, sel[0]=zx,sel[1]=nx, out=muxout);
 
-   // zy ny 
-   // DMUX4Way
-   // in y
-   // out y
-   //     ny
-   //     zy
-   //     zy ny
-   Not16(in=y,out=noty);
-   DMux4Way(in=y, sel[0]=zy,sel[1]=ny, out=y, noty, false, true);
-
-   Mux4Way16(in=x, notx, false, true, out=sel[0]=zx,sel[1]=nx);
 
    // f
    // MUX for x
