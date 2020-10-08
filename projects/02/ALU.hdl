@@ -42,7 +42,7 @@ CHIP ALU {
         ng; // 1 if (out < 0),  0 otherwise
 
     PARTS:
-   // Put you code here:
+   // Put your code here:
    
    // zx nx   
    // DMUX4Way
@@ -51,7 +51,8 @@ CHIP ALU {
    //     nx
    //     zx
    //     zx nx
-   DMux4Way(in=x, sel[0]=zx,sel[1]=nx, out=x, nx, zx, zxnx);
+   Not16(in=x,out=notx);
+   DMux4Way(in=x, sel[0]=zx,sel[1]=nx, out=x, notx, false, true);
 
    // zy ny 
    // DMUX4Way
@@ -60,21 +61,24 @@ CHIP ALU {
    //     ny
    //     zy
    //     zy ny
-   DMux4Way(in=y, sel[0]=zy,sel[1]=ny, out=zlnyout);
+   Not16(in=y,out=noty);
+   DMux4Way(in=y, sel[0]=zy,sel[1]=ny, out=y, noty, false, true);
+
+   Mux4Way16(in=x, notx, false, true, out=sel[0]=zx,sel[1]=nx);
 
    // f
    // MUX for x
    // 0 to x&y (bitwise)
    // 1 to xandy (arith)
-   DMux(in=zxnxout, sel=f, out=xtobit, xtoarith);
-   DMux(in=zynyout, self=f, out=ytobit, ytoarith);
+//    DMux(in=zxnxout, sel=f, out=xtobit, xtoarith);
+//    DMux(in=zynyout, self=f, out=ytobit, ytoarith);
 
 
    // x&y
-   And16(a=xtobit, y=ytobit, out=xybit);
+//    And16(a=xtobit, y=ytobit, out=xybit);
    
    // x+y
-   Add16(a=xtoarith, b=ytoarith, out=xyarith);
+//    Add16(a=xtoarith, b=ytoarith, out=xyarith);
   
    // Problem here. Mux has two inputs on design  
    // no
@@ -83,14 +87,5 @@ CHIP ALU {
    
 
    // neg -> out x
-   
-
-
-
-
-
-
-
-
-   
+      
 }
