@@ -43,31 +43,25 @@ CHIP ALU {
 
     PARTS:
    // Put your code here:
-   
    Not16(in=x,out=notx);
-   Mux4Way16(a=x, b=notx, c=false, d=true, sel[0]=zx,sel[1]=nx, out=muxout);
+   Mux4Way16(a=x, b=notx, c=false, d=true, sel[0]=zx,sel[1]=nx, out=muxoutx);
 
-
-   // f
-   // MUX for x
-   // 0 to x&y (bitwise)
-   // 1 to xandy (arith)
-//    DMux(in=zxnxout, sel=f, out=xtobit, xtoarith);
-//    DMux(in=zynyout, self=f, out=ytobit, ytoarith);
-
+   Not16(in=y,out=noty);
+   Mux4Way16(a=y, b=notx, c=false, d=true, sel[0]=zy,sel[1]=ny, out=muxouty);
 
    // x&y
-//    And16(a=xtobit, y=ytobit, out=xybit);
+   And16(a=muxoutx, b=muxouty, out=xybit);
    
    // x+y
-//    Add16(a=xtoarith, b=ytoarith, out=xyarith);
-  
-   // Problem here. Mux has two inputs on design  
-   // no
-   // mux
-   // out x
+   Add16(a=muxoutx, b=muxouty, out=xyarith);
+    
+   // f
+   Mux16(a=xybit, b=xyarith, out=muxout, sel=f);
    
-
-   // neg -> out x
+   // neg
+   Not16(in=muxout, out=negx);
+  
+   // no
+   Mux16(a=muxout, b=negx, sel=no);   
       
 }
