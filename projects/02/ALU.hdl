@@ -1,4 +1,4 @@
-// This file is part of www.nand2tetris.org
+ // This file is part of www.nand2tetris.org
 // and the book "The Elements of Computing Systems"
 // by Nisan and Schocken, MIT Press.
 // File name: projects/02/ALU.hdl
@@ -43,25 +43,25 @@ CHIP ALU {
 
     PARTS:
    // Put your code here:
-   Not16(in=x,out=notx);
-   Mux4Way16(a=x, b=notx, c=false, d=true, sel[0]=zx,sel[1]=nx, out=muxoutx);
+   Not16(in=x,out=notX);
+   Mux4Way16(a=x, b=notX, c=false, d=true, sel[1]=zx,sel[0]=nx, out=xOut);
 
-   Not16(in=y,out=noty);
-   Mux4Way16(a=y, b=notx, c=false, d=true, sel[0]=zy,sel[1]=ny, out=muxouty);
+   Not16(in=y,out=notY);
+   Mux4Way16(a=y, b=notY, c=false, d=true, sel[1]=zy,sel[0]=ny, out=yOut);
 
    // x&y
-   And16(a=muxoutx, b=muxouty, out=xybit);
+   And16(a=xOut, b=yOut, out=xAndYOut);
    
    // x+y
-   Add16(a=muxoutx, b=muxouty, out=xyarith);
+   Add16(a=xOut, b=yOut, out=xAddYOut);
     
    // f
-   Mux16(a=xybit, b=xyarith, out=muxout, sel=f);
+   Mux16(a=xAndYOut, b=xAddYOut, out=fOut, sel=f);
    
    // neg
-   Not16(in=muxout, out=negx);
+   Not16(in=fOut, out=notFOut);
   
    // no
-   Mux16(a=muxout, b=negx, out=out, sel=no);   
+   Mux16(a=fOut, b=notFOut, out=out, sel=no);   
       
 }
