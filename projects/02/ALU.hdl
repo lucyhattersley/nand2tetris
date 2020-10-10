@@ -61,7 +61,14 @@ CHIP ALU {
    // neg
    Not16(in=fOut, out=notFOut);
   
-   // no
+   // no for zr and ng
+   Mux16(a=fOut, b=notFOut, out=noOut, sel=no);   
+
+   // no for out
    Mux16(a=fOut, b=notFOut, out=out, sel=no);   
+
+   //zr
+
+   //ng
       
 }
