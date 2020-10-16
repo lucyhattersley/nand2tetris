@@ -62,14 +62,13 @@ CHIP ALU {
    Not16(in=fOut, out=notFOut);
   
    // no for zr and ng
-   Mux16(a=fOut, b=notFOut, out=noOut, sel=no);   
+   // Mux16(a=fOut, b=notFOut, out=noOut, sel=no);   
 
    // no for out
-   Mux16(a=fOut, b=notFOut, out=out, sel=no);   
+   Mux16(a=fOut, b=notFOut, out[1]=ng, out[15]=zo, out=out, sel=no);   
 
    //zr
    
    //ng
-   And(a[15]=fOut[15], a[0..14]=drop, b[15]=fOut[15], b[0..14]=drop, out=ng);
       
 }
