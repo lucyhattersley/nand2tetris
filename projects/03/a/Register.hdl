@@ -15,4 +15,6 @@ CHIP Register {
 
     PARTS:
     // Put your code here:
+    DFF(in=muxOut[16], out=DFFOut[16], out=out[16]);
+    Mux16(a=DFFOut[16], b=in[16], sel=load, out=muxOut[16]);
 }
