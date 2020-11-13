@@ -16,7 +16,8 @@ CHIP RAM8 {
 
     PARTS:
     // Put your code here:
-    DMux8Way(in=in[0], sel=address, a=DMuxOutA,
+    Register(in=in, out=RegOut);
+    DMux8Way(in=RegOut[0], sel=address, a=DMuxOutA,
                                     b=DMuxOutB,
                                     c=DMuxOutC,
                                     d=DMuxOutD,
@@ -24,5 +25,4 @@ CHIP RAM8 {
                                     f=DMuxOutF,
                                     g=DMuxOutG,
                                     h=DMuxOutH);
-    Register(in=DMuxOutA, load=load, out=out[0]);
 }
