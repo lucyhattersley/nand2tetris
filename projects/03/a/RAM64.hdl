@@ -16,4 +16,12 @@ CHIP RAM64 {
 
     PARTS:
     // Put your code here:
+    RAM8(in=in, load=load, address=, out=out);
+    RAM8(in=in, load=load, address=, out=out);
+    RAM8(in=in, load=load, address=, out=out);
+    RAM8(in=in, load=load, address=, out=out);
+    RAM8(in=in, load=load, address=, out=out);
+    RAM8(in=in, load=load, address=, out=out);
+    RAM8(in=in, load=load, address=, out=out);
+    RAM8(in=in, load=load, address=, out=out);
 }
