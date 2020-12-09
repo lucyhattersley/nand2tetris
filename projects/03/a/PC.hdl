@@ -17,8 +17,21 @@ CHIP PC {
 
     PARTS:
     // Put your code here:
-    Register(in=in, load=load, out=regOut);
-    Not(in=reset, out=notReset);
-    Or(a=inc, b=load, out=orOut);
-    ALU(x=regOut, y=false, zx=notReset, nx=inc, zy=true, ny=notReset, f=orOut, no=notReset, out=out);
+    // Register(in=in, load=load, out=regOut);
+    // Not(in=reset, out=notReset);
+    // Or(a=inc, b=load, out=orOut);
+    // ALU(x=regOut, y=false, zx=notReset, nx=inc, zy=true, ny=notReset, f=orOut, no=notReset, out=out);
+
+    
+    //  Register approach with 4Way 
+    DMux4Way(in=load, sel[0]=inc, sel[1]=reset, a=a, b=b, c=c, d=d);
+
+    Register(in=in, load=a, out=outA);
+    Register(in=in, load=a, out=outA);
+    Register(in=in, load=a, out=outA);
+    Register(in=in, load=a, out=outA);
+
+    Mux4Way16(a=outA, b=outB, c=outC, d=outD, sel[0]=inc, sel[1]=reset, out=out);
+
+
 }
