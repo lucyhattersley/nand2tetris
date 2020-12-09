@@ -18,5 +18,5 @@ CHIP PC {
     PARTS:
     // Put your code here:
     Register(in=in, load=load, out=r);
-    ALU(x=r, y=false, zx=reset, nx=false, zy=false, ny=false, f=inc, no=false, out=out);
+    ALU(x=r, y[0]=true, zx=reset, nx=false, zy=false, ny=false, f=inc, no=false, out=out);
 }
