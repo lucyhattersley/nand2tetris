@@ -17,6 +17,8 @@ CHIP PC {
 
     PARTS:
     // Put your code here:
-    Register(in=in, load=load, out=r);
-    ALU(x=r, y=false, zx=reset, nx=inc, zy=true, ny=true, f=true, no=true, out=out);
+    Register(in=in, load=load, out=regOut);
+    Not(in=reset, out=notReset);
+    Or(a=inc, b=load, out=orOut);
+    ALU(x=regOut, y=false, zx=notReset, nx=inc, zy=true, ny=notReset, f=orOut, no=notReset, out=out);
 }
