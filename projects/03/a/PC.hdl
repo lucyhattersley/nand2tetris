@@ -18,7 +18,7 @@ CHIP PC {
     PARTS:
     // Put your code here:
     // This is failing on tick/tock timings. Compare to PC.cmp truth table
-    Mux16(a=false, b=in, sel=reset, out=M1);
+    Mux16(a=in, b=false, sel=reset, out=M1);
     Or(a=load, b=reset, out=O1);
 
     Register(in=M1, load=O1, out=R1);
