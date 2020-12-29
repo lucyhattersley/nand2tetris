@@ -1,0 +1,7 @@
+CHIP XorDff {
+    IN in;
+    OUT xorOut, dffout;
+PARTS:
+    Xor(a=in, b=xorIn, out=dffIn, out=xorOut);
+    DFF(in=dffIn, out=xorIn, out=dffOut);
+}

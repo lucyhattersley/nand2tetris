@@ -1,0 +1,6 @@
+CHIP TestDff {
+    IN in;
+    OUT dffout;
+PARTS:
+    DFF(in=in, out=dffOut);
+}
