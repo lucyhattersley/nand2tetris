@@ -18,7 +18,7 @@ CHIP PC {
     PARTS:
     // Put your code here:
     Mux16(a=in, b=R1, sel=DFF1, out=M1);
-    Register(in=M1, load=DFF1, out=R1);
+    Register(in=M1, load=DFF1, out=R1, out=out);
     DFF(in=load, out=DFF1);
 
 
