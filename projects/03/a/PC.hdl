@@ -17,7 +17,6 @@ CHIP PC {
 
     PARTS:
     // Put your code here:
-    // New approach with three Mux, Inc, Register (no DFF)
     Inc16(in=in, out=I1);
     
     // Inc
@@ -31,41 +30,4 @@ CHIP PC {
     
     // Register
     Register(in=M3, load=true, out=out);
-
-
-
-    // Mux16(a=in, b=R1, sel=load, out=M1);
-
-    // Inc16(in=M1, out=I1);
-    // Mux16(a=I1, b=M1, sel=inc, out=M2);
-
-    // Register(in=M2, load=D1, out=R1, out=out);
-    
-    // DFF(in=load, out=D1);
-
-
-
-
-    // Mux16(a=M2, b=in, sel=DFF1, out=M1);
-    // Register(in=M1, load=DFF1, out=R1, out=out);
-    
-    // Inc16(in=R1, out=I1);
-    // Mux16(a=I1, b=R1, sel=inc, out=M2);
-    
-    // DFF(in=load, out=DFF1);
-
-
-
-
-    // Mux16(a=reload, b=in, sel=DFFout, out=M1);
-    // Mux16(a=M1, b=false, sel=reset, out=M2);
-    // Or(a=load, b=reset, out=O1);
-
-    // Register(in=M2, load=O1, out=R1);
-
-    // Inc16(in=R1, out=I1);
-
-    // Mux16(a=R1, b=I1, sel=inc, out=reload, out=out);
-
-    // DFF(in=inc, out=DFFout);
 }
