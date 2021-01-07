@@ -17,14 +17,31 @@ CHIP PC {
 
     PARTS:
     // Put your code here:
-    Mux16(a=in, b=R1, sel=load, out=M1);
-
-    Inc16(in=M1, out=I1);
-    Mux16(a=I1, b=M1, sel=inc, out=M2);
-
-    Register(in=M2, load=D1, out=R1, out=out);
+    // New approach with three Mux, Inc, Register (no DFF)
+    Inc16(in=in, out=I1);
     
-    DFF(in=load, out=D1);
+    // Inc
+    Mux16(a=I1, b=in, sel=inc, out=M1);
+    
+    // Reset
+    Mux16(a=false, b=M1, sel=reset, out=M2);
+    
+    // Load
+    Mux16(a=in, b=M2, sel=load, out=M3);
+    
+    // Register
+    Register(in=M3, load=load, out=out);
+
+
+
+    // Mux16(a=in, b=R1, sel=load, out=M1);
+
+    // Inc16(in=M1, out=I1);
+    // Mux16(a=I1, b=M1, sel=inc, out=M2);
+
+    // Register(in=M2, load=D1, out=R1, out=out);
+    
+    // DFF(in=load, out=D1);
 
 
 

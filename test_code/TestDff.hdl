@@ -1,6 +1,6 @@
 CHIP TestDff {
     IN in;
-    OUT dffout;
+    OUT dffOut;
 PARTS:
     DFF(in=in, out=dffOut);
 }
