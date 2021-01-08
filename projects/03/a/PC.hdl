@@ -17,6 +17,7 @@ CHIP PC {
 
     PARTS:
     // Put your code here:
+    // Inc
     Inc16(in=in, out=I1);
     
     // Inc
