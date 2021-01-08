@@ -17,16 +17,18 @@ CHIP PC {
 
     PARTS:
     // Put your code here:
-    // Reset
-    Mux16(a=R1, b=false, sel=reset, out=M1);
 
     // Inc
-    Inc16(in=M1, out=I1);
-    Mux16(a=M1, b=I1, sel=inc, out=M2);
+    Inc16(in=R1, out=I1);
+    Mux16(a=R1, b=I1, sel=inc, out=M1);
 
     // Load
-    Mux16(a=M2, b=in, sel=load, out=M3);
-     
+    Mux16(a=M1, b=in, sel=load, out=M2);
+
+    // Reset
+    Mux16(a=M2, b=false, sel=reset, out=M3);
+
+
     // Register
     Register(in=M3, load=true, out=R1, out=out);
 }
