@@ -7,6 +7,13 @@
     M=D   // Set R16 to value at D
 
 (LOOP)    // line 3 link for loop
+    // check R1 > 0. If R1 <=0 GOTO END  
+    @R1
+    D=M   // D -> M[A]
+
+    @END
+    D;JLE
+
     // Get first value
     @R0   // A -> R0
     D=M   // D->M[A]
@@ -18,6 +25,13 @@
     // Store combined value
     @sum  // A -> R16
     M=D   // M[A] -> R16
+
+    // Reduce R1 by 1
+    @R1   // A -> R1
+    D=A-1 // Stores val in D
+
+    @R1   // A -> R1
+    M=D   // Stores val in R1
 
     @LOOP // Points to loop
     0;JMP // Jumps to loop
