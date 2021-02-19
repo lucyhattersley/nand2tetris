@@ -22,7 +22,7 @@
 
     // Reduce R1 by 1
     @R1   // A -> R1
-    D=A-1 // Stores val in D
+    D=M-1 // Stores val in D
 
     @R1   // A -> R1
     M=D   // Stores val in R1
