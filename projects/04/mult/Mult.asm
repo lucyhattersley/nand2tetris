@@ -1,4 +1,7 @@
 // Multiplies R0 and R1
+    @R2   // Initialize R2 to 0
+    M=0
+
 (LOOP)    // Link for loop
     // Check R1 > 0. If R1 <=0 GOTO END  
     @R1   // A-R1
