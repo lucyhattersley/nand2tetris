@@ -18,7 +18,7 @@
     @pixel //  position on row. Starts at 16384
     M=D
 
-    @i // Index loop 1 to 512
+    @i // Index loop 1 to 32 (number of words in row)
     M=1
 
 (LOOP) // draws from pixel 1 to 512 in row
@@ -26,7 +26,7 @@
     @i // Index = 512 jump to end 
     D=M
 
-    @32  // Words in a row
+    @8192  // Words in a row
     D=D-A
 
     @END
