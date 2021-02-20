@@ -12,23 +12,37 @@
 // the screen should remain fully clear as long as no key is pressed.
 
 // Put your code here.
-    @row
-    M=512
+    @SCREEN // screen start
+    D=A
 
-    @i
-    M=1
-(LOOP)
-    @i
-    D=M
-
-    @SCREEN
+    @pixel //  position on row. Starts at 16384
     M=D
 
-    @i
+    @i // Start of loop from 1 to 512
+    M=1
+
+(LOOP) // draws from pixel 1 to 512 in row
+
+    @i // If i = 512 jump to end 
+    D=M
+
+    @512  // Pixels in a row
+    D=D-A
+
+    @END
+    D;JGT
+    
+    @pixel
+    A=M  // Get pixel position
+    M=1
+
+    @pixel // increase pixel position
     M=M+1
 
-    @row
-    M=M-1
-
     @LOOP
-    M;JGT
+    0;JMP
+
+
+(END)
+    @END // infinite loop
+    0;JMP
