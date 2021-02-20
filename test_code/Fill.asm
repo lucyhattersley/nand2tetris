@@ -26,7 +26,7 @@
     @i // Index = 512 jump to end 
     D=M
 
-    @512  // Pixels in a row
+    @32  // Words in a row
     D=D-A
 
     @END
@@ -34,7 +34,7 @@
     
     @pixel
     A=M  // Get pixel position
-    M=1
+    M=-1
 
     @pixel // increase pixel position
     M=M+1
