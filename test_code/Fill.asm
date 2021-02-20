@@ -18,12 +18,12 @@
     @pixel //  position on row. Starts at 16384
     M=D
 
-    @i // Start of loop from 1 to 512
+    @i // Index loop 1 to 512
     M=1
 
 (LOOP) // draws from pixel 1 to 512 in row
 
-    @i // If i = 512 jump to end 
+    @i // Index = 512 jump to end 
     D=M
 
     @512  // Pixels in a row
@@ -37,6 +37,9 @@
     M=1
 
     @pixel // increase pixel position
+    M=M+1
+
+    @i // increase index by 1
     M=M+1
 
     @LOOP
