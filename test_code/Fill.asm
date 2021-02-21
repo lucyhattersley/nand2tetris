@@ -12,28 +12,16 @@
 // the screen should remain fully clear as long as no key is pressed.
 
 // Put your code here.
+(BEGIN)
     @SCREEN // screen start
     D=A
     @pixel //  position on row. Starts at 16384
-    M=D
+    M=D-1
 
-    @i // Index loop 1 to 32 (number of words in row)
-    M=1
+    @i // Index loop counter
+    M=0
 
-(LOOP) // draws all words
-
-    @i // Index 
-    D=M
-
-    @8192  // Words in a screen
-    D=D-A
-
-    @END
-    D;JGT
-    
-    @pixel
-    A=M  // Get pixel position
-    M=-1
+(LOOP) // draws all words white or black
 
     @pixel // increase pixel position
     M=M+1
@@ -41,10 +29,37 @@
     @i // increase index by 1
     M=M+1
 
+    // Checking keyboard
+    @24576 // Set keyboard register to @keyboard 
+    D=M
+    @keyboard // 
+    M=D
+
+    // Reset to start if full
+    @i // Index 
+    D=M
+
+    @8192  // Words in a screen
+    D=D-A
+
+    @BEGIN
+    D;JGT
+
+    @keyboard // Get keyboard value
+    D=M
+    
+    @ELSE // if keyboard value 0
+    D;JEQ
+
+    @pixel
+    A=M  // Get pixel position
+    M=-1 // Fill screen
     @LOOP
     0;JMP
 
-
-(END)
-    @END // infinite loop
+(ELSE)
+    @pixel
+    A=M  // Get pixel position
+    M=0 // Clear screen
+    @LOOP
     0;JMP
