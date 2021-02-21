@@ -14,19 +14,18 @@
 // Put your code here.
     @SCREEN // screen start
     D=A
-
     @pixel //  position on row. Starts at 16384
     M=D
 
     @i // Index loop 1 to 32 (number of words in row)
     M=1
 
-(LOOP) // draws from pixel 1 to 512 in row
+(LOOP) // draws all words
 
-    @i // Index = 512 jump to end 
+    @i // Index 
     D=M
 
-    @8192  // Words in a row
+    @8192  // Words in a screen
     D=D-A
 
     @END
