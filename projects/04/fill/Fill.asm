@@ -12,3 +12,41 @@
 // the screen should remain fully clear as long as no key is pressed.
 
 // Put your code here.
+(BEGIN)
+    @SCREEN // screen start
+    D=A
+
+    @pixel //  position on row. Starts at 16384
+    M=D-1 // saved to -1 as counter first
+
+(LOOP) // draws all words white or black
+
+    @pixel // increase pixel position
+    M=M+1
+    @pixel  
+    D=M
+    @8192  // Words in a screen
+    D=A-D
+    @BEGIN // Jump to start if screen full
+    D;JGT
+
+    @24576
+    D=M
+    @FILL
+    D;JGT
+    @CLEAR
+    0;JMP
+
+(FILL)
+    @pixel
+    A=M
+    M=-1 // Fill screen
+    @LOOP
+    0;JMP
+
+(CLEAR)
+    @pixel
+    A=M
+    M=0 // Clear screen
+    @LOOP
+    0;JMP
