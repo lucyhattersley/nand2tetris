@@ -15,51 +15,38 @@
 (BEGIN)
     @SCREEN // screen start
     D=A
-    @pixel //  position on row. Starts at 16384
-    M=D-1
 
-    @i // Index loop counter
-    M=0
+    @pixel //  position on row. Starts at 16384
+    M=D-1 // saved to -1 as counter first
 
 (LOOP) // draws all words white or black
 
     @pixel // increase pixel position
     M=M+1
-
-    @i // increase index by 1
-    M=M+1
-
-    // Checking keyboard
-    @24576 // Set keyboard register to @keyboard 
+    @pixel  
     D=M
-    @keyboard // 
-    M=D
-
-    // Reset to start if full
-    @i // Index 
-    D=M
-
     @8192  // Words in a screen
-    D=D-A
-
-    @BEGIN
+    D=A-D
+    @BEGIN // Jump to start if screen full
     D;JGT
 
-    @keyboard // Get keyboard value
+    @24576
     D=M
-    
-    @ELSE // if keyboard value 0
-    D;JEQ
+    @FILL
+    D;JGT
+    @CLEAR
+    0;JMP
 
+(FILL)
     @pixel
-    A=M  // Get pixel position
+    A=M
     M=-1 // Fill screen
     @LOOP
     0;JMP
 
-(ELSE)
+(CLEAR)
     @pixel
-    A=M  // Get pixel position
+    A=M
     M=0 // Clear screen
     @LOOP
     0;JMP
