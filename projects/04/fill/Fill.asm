@@ -17,9 +17,12 @@
     D=A
 
     @pixel //  position on row. Starts at 16384
-    M=D // 
+    M=D-1 // 
 
 (LOOP) // draws all words white or black
+
+    @pixel // increase pixel position
+    M=M+1
 
     @pixel  
     D=M
@@ -28,18 +31,12 @@
     @BEGIN // Jump to start if screen full
     D;JGE
 
-    @pixel // increase pixel position
-    M=M+1
-
     @24576 // Keyboard register
     D=M
     @FILL
     D;JGT // Jump at end
     @CLEAR
     D;JEQ
-
-    @BEGIN // Failsafe
-    0;JMP
 
 (FILL)
     @pixel
