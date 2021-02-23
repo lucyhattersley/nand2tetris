@@ -13,7 +13,7 @@
 
 // Put your code here.
 (BEGIN)
-    @SCREEN // screen start
+    @SCREEN // screen start 16384
     D=A
 
     @pixel //  position on row. Starts at 16384
@@ -29,7 +29,7 @@
     @24575  // End of register
     D=D-A
     @BEGIN // Jump to start if screen full
-    D;JGE
+    D;JGT
 
     @24576 // Keyboard register
     D=M
