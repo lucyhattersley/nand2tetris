@@ -32,8 +32,8 @@ CHIP Memory {
     DMux(in=load, sel=in[15], a=DMuxA, b=DMuxB);
     
     // Chips
-    RAM16K(in=in, load=DMuxA, address=address, out=RAMOut); // 16K words starting at 0x0000
-    Screen(in=in, load=DMuxB, address=address, out=ScreenOut); // 8K words starting at 0x4000
+    RAM16K(in=in, load=DMuxA, address=address[15], out=RAMOut); // 16K words starting at 0x0000
+    Screen(in=in, load=DMuxB, address=address[15], out=ScreenOut); // 8K words starting at 0x4000
     Keyboard(out=KeyOut); // 1 word at 0x6000
 
     // Mux
