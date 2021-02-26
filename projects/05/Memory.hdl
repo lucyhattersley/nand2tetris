@@ -28,11 +28,14 @@ CHIP Memory {
 
     PARTS:
     // Put your code here:
-    // RAM16
-    RAM16K(in=, load=, address=, out=);
-    Screen(in=, load=, address=, out=);
-    Keyboard(out=);
+    // DMux
+    DMux(in=load, sel=in[15], a=DMuxA, b=DMuxB);
+    
+    // Chips
+    RAM16K(in=in, load=DMuxA, address=address, out=RAMOut); // 16K words starting at 0x0000
+    Screen(in=in, load=DMuxB, address=address, out=ScreenOut); // 8K words starting at 0x4000
+    Keyboard(out=KeyOut); // 1 word at 0x6000
 
-    // Screen
-    // Keyboard
+    // Mux
+    Mux4Way16(a=RamOut, b=ScreenOut, c=KeyOut, d=false, sel=Address[14..15], out=out);
 }
