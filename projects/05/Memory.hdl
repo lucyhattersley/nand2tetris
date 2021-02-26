@@ -29,13 +29,13 @@ CHIP Memory {
     PARTS:
     // Put your code here:
     // DMux
-    DMux(in=load, sel=in[15], a=DMuxA, b=DMuxB);
+    DMux(in=load, sel=in[14], a=DMuxA, b=DMuxB);
     
     // Chips
-    RAM16K(in=in, load=DMuxA, address=address[15], out=RAMOut); // 16K words starting at 0x0000
-    Screen(in=in, load=DMuxB, address=address[15], out=ScreenOut); // 8K words starting at 0x4000
+    RAM16K(in=in, load=DMuxA, address[15]=false, address[0..14]=address, out=RAMOut); // 16K words starting at 0x0000
+    Screen(in=in, load=DMuxB, address[15]=false, address[0..14], out=ScreenOut); // 8K words starting at 0x4000
     Keyboard(out=KeyOut); // 1 word at 0x6000
 
     // Mux
-    Mux4Way16(a=RamOut, b=ScreenOut, c=KeyOut, d=false, sel=Address[14..15], out=out);
+    Mux4Way16(a=RamOut, b=ScreenOut, c=false, d=KeyOut, sel[0]=Address[14], sel[1]=Address[15], out=out);
 }
