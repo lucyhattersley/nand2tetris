@@ -28,4 +28,11 @@ CHIP Memory {
 
     PARTS:
     // Put your code here:
+    // RAM16
+    RAM16K(in=, load=, address=, out=);
+    Screen(in=, load=, address=, out=);
+    Keyboard(out=);
+
+    // Screen
+    // Keyboard
 }
