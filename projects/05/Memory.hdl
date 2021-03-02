@@ -31,11 +31,11 @@ CHIP Memory {
     // DMux
     DMux(in=load, sel=address[14], a=DMuxA, b=DMuxB);
     
-    // Chips                       14 = 15
+    // Chips
     RAM16K(in=in, load=DMuxA, address=address[0..13], out=RAMOut); // 16K words starting at 0x0000
     Screen(in=in, load=DMuxB, address=address[0..12], out=ScreenOut); // 8K words starting at 0x4000
     Keyboard(out=KeyOut); // 1 word at 0x6000
 
     // Mux
-    Mux4Way16(a=RAMOut, b=ScreenOut, c=false, d=KeyOut, sel[0]=address[12], sel[1]=address[13], out=out);
+    Mux4Way16(a=RAMOut, b=ScreenOut, c=false, d=KeyOut, sel[0]=address[14], sel[1]=address[13], out=out);
 }
