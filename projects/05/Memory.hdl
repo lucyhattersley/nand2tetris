@@ -37,5 +37,5 @@ CHIP Memory {
     Keyboard(out=KeyOut); // 1 word at 0x6000
 
     // Mux
-    Mux4Way16(a=RAMOut, b=ScreenOut, c=false, d=KeyOut, sel[1]=address[14], sel[0]=address[13], out=out);
+    Mux4Way16(a=RAMOut, b=RAMOut, c=ScreenOut, d=KeyOut, sel[1]=address[14], sel[0]=address[13], out=out);
 }
