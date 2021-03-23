@@ -40,8 +40,9 @@ CHIP CPU {
 
     PARTS:
     // Put your code here:
-    Mux16(a=false, b=inM, sel=true, out=MuxAOut);
-    ARegister(in=MuxAOut, load=true, out=ARegOut);
+    Mux16(a=ALUOut, b=instruction, sel=true, out=MuxAOut);
+    ARegister(in=MuxAOut, load=true, out=ARegOut, out[0..14]=addressM);
     DRegister(in=false, load=false, out=DRegOut);
-    ALU(x=DRegOut, y=ARegOut, zx=false, nx=false, zy=false, ny=false, f=false, no=false, out=outM, zr=false, ng=false);
+    ALU(x=DRegOut, y=ARegOut, zx=false, nx=false, zy=false, ny=false, f=false, no=false, out=outM, out=ALUOut, zr=false, ng=false);
+    PC(in=false, load=false, inc=true, reset=reset, out[0..14]=pc);
 }
