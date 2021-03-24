@@ -42,7 +42,10 @@ CHIP CPU {
     // Put your code here:
     Mux16(a=instruction, b=ALUOut, sel=instruction[15], out=MuxAOut); // a, b swapped from blueprint to avoid using extra Not gate
     ARegister(in=MuxAOut, load=instruction[3], out=ARegOut, out[0..14]=addressM);
-    DRegister(in=ALUOut, load=instruction[4], out=DRegOut);
-    ALU(x=DRegOut, y=ARegOut, zx=instruction[11], nx=instruction[10], zy=instruction[9], ny=instruction[8], f=instruction[7], no=instruction[6], out=outM, out=ALUOut, zr=false, ng=false);
-    PC(in=ARegOut, load=false, inc=true, reset=reset, out[0..14]=pc);
+    DRegister(in=ALUOut, load=instruction[4], out=DRegOut);instruction
+
+    Mux16(a=inM, b=ARegOut, sel=instruction[12], out=MuxBOut);
+
+    ALU(x=DRegOut, y=MuxBOut, zx=instruction[11], nx=instruction[10], zy=instruction[9], ny=instruction[8], f=instruction[7], no=instruction[6], out=outM, out=ALUOut, zr=false, ng=false);
+    PC(in=ARegOut, load=false, inc=true, reset=reset, out[0..14]=pc); // false, true flags need replacing with instruction refs
 }
