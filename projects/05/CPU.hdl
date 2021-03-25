@@ -39,13 +39,16 @@ CHIP CPU {
         pc[15];          // address of next instruction
 
     PARTS:
-    // Put your code here:
-    Mux16(a=instruction, b=ALUOut, sel=instruction[15], out=MuxAOut); // a, b swapped from blueprint to avoid using extra Not gate
-    ARegister(in=MuxAOut, load=instruction[3], out=ARegOut, out[0..14]=addressM);
-    DRegister(in=ALUOut, load=instruction[4], out=DRegOut);
+    Not(in=instruction[15], out=Not15); // Reverse instruction code   
+
+    // Mux and A Register
+    Mux16(a=ALUOut, b=instruction, sel=Not15, out=MuxAOut); 
+    ARegister(in=MuxAOut, load=Not15, out=ARegOut, out[0..14]=addressM);
 
     Mux16(a=ARegOut, b=inM, sel=instruction[12], out=MuxBOut);
-
     ALU(x=DRegOut, y=MuxBOut, zx=instruction[11], nx=instruction[10], zy=instruction[9], ny=instruction[8], f=instruction[7], no=instruction[6], out=outM, out=ALUOut, zr=false, ng=false);
-    PC(in=ARegOut, load=false, inc=true, reset=reset, out[0..14]=pc); // false, true flags need replacing with instruction refs
+
+    DRegister(in=ALUOut, load=instruction[4], out=DRegOut);
+   
+    PC(in=ARegOut, load=false, inc=true, reset=reset, out[0..14]=pc); // false, true flags need replacing with instruction refs (probably instruction[0..2])
 }
