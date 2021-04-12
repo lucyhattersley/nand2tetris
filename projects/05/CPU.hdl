@@ -53,7 +53,8 @@ CHIP CPU {
         no=instruction[6], out=outM, out=ALUOut, zr=ALUZero, ng=ALUNegate);
 
     // D register
-    DRegister(in=ALUOut, load=instruction[4], out=DRegOut);
+    And(a=instruction[4], b=instruction[15], out=DRegLoad);  
+    DRegister(in=ALUOut, load=DRegLoad, out=DRegOut);
 
     // M Register
     And(a=instruction[15], b=instruction[3], out=writeM); // Write to M reg
