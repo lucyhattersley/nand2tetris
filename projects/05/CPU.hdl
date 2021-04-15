@@ -50,7 +50,7 @@ CHIP CPU {
     Mux16(a=ARegOut, b=inM, sel=instruction[12], out=MuxBOut);
     ALU(x=DRegOut, y=MuxBOut, zx=instruction[11], nx=instruction[10], 
         zy=instruction[9], ny=instruction[8], f=instruction[7], 
-        no=instruction[6], out=outM, out=ALUOut, zr=ALUZero, ng=ALUNegate);
+        no=instruction[6], out=MRegIn, out=ALUOut, zr=ALUZero, ng=ALUNegate);
 
     // D register
     And(a=instruction[4], b=instruction[15], out=DRegLoad);  
@@ -58,6 +58,7 @@ CHIP CPU {
 
     // M Register
     And(a=instruction[15], b=instruction[3], out=writeM); // Write to M reg
+    Register(in=MRegIn, load=writeM, out=outM); //needs to output not load
 
     // Jump logic: Implement ALUZero, ALUNegate here
     And(a=instruction[15], b=instruction[0], out=AndAOut);
