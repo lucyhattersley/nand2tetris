@@ -57,8 +57,8 @@ CHIP CPU {
     DRegister(in=ALUOut, load=DRegLoad, out=DRegOut);
 
     // M Register
-    And(a=instruction[15], b=instruction[3], out=writeM); // Write to M reg
-    Register(in=MRegIn, load=writeM, out=outM); //needs to output not load
+    And(a=instruction[15], b=instruction[3], out=writeM, out=MRegLoad); // Write to M reg
+    Register(in=MRegIn, load=MRegLoad, out=outM); //needs to output not load
 
     // Jump logic: Implement ALUZero, ALUNegate here
     And(a=instruction[15], b=instruction[0], out=AndAOut);
