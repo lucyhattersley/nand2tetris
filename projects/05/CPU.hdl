@@ -50,23 +50,31 @@ CHIP CPU {
     Mux16(a=ARegOut, b=inM, sel=instruction[12], out=MuxBOut);
     ALU(x=DRegOut, y=MuxBOut, zx=instruction[11], nx=instruction[10], 
         zy=instruction[9], ny=instruction[8], f=instruction[7], 
-        no=instruction[6], out=MRegIn, out=ALUOut, zr=ALUZero, ng=ALUNegate);
+        no=instruction[6], out=outM, out=ALUOut, zr=ZR, ng=NG);
 
     // D register
     And(a=instruction[4], b=instruction[15], out=DRegLoad);  
     DRegister(in=ALUOut, load=DRegLoad, out=DRegOut);
 
     // M Register
-    And(a=instruction[15], b=instruction[3], out=writeM, out=MRegLoad); // Write to M reg
-    Register(in=MRegIn, load=MRegLoad, out=outM); //needs to output not load
+    And(a=instruction[15], b=instruction[3], out=writeM); // Write to M reg
 
     // Jump logic: Implement ALUZero, ALUNegate here
-    And(a=instruction[15], b=instruction[0], out=AndAOut);
-    And(a=instruction[15], b=instruction[1], out=AndBOut);
-    And(a=instruction[15], b=instruction[2], out=AndCOut);
-    Or(a=AndAOut, b=AndBOut, out=OrAOut);
-    Or(a=OrAOut, b=AndCOut, out=PcLoad);
-    
-    PC(in=ARegOut, load=PcLoad, inc=true, reset=reset, out[0..14]=pc); // false, true flags need replacing with instruction refs (probably instruction[0..2])
+    // JLT
+    And(a=instruction[2], b=NG, out=JLT);
+
+    // JGT
+    Or(a=ZR, b=NG, out=JGTOr);
+    Not(in=JGTOr, out=NotJGT);
+    And(a=instruction[0], b=NotJGT, out=JGT);
+
+    // JEQ
+    And(a=instruction[1], b=ZR, out=JEQ);
+
+    // Merge jump logic
+    Or(a=JGT, b=JLT, out=JOR);
+    Or(a=JEQ, b=JOR, out=JMP);
+    And(a=instruction[15], b=JMP, out=PCLoad); // Check if instruction
+    PC(in=ARegOut, load=PCLoad, inc=true, reset=reset, out[0..14]=pc); // false, true flags need replacing with instruction refs (probably instruction[0..2])
 
 }
