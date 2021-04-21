@@ -1,7 +1,13 @@
-with open('./Add.asm') as f:
-    lines = f.readlines()
-    
+f = open('./Add.asm')
+o = open('./Add.hack', 'w')
 
-for line in lines:
-    if not line.strip().startswith('//'): # gets rid of comments
-       print(line)
+input = f.readlines()
+output = []
+
+for line in input:
+    if not line.strip().startswith(('//')): # gets rid of comments and blank lines
+        o.write("%s" % line)
+
+o.close()
+f.close()
+
