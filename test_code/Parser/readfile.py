@@ -1,15 +1,9 @@
-#!/usr/bin/python3
-
 import sys # To get file name
+import os # for filename extension
 
-try: 
-    filename = sys.argv[1]
-    f = open(filename, 'r')
-    o = open('output.hack', 'w')
-
-except:
-    print("No file specified")
-
+pre, ext = os.path.splitext(sys.argv[1])
+f = open(pre + ext, 'r')
+o = open(pre + '.hack', 'w')
 input = f.readlines()
 output = []
 
@@ -19,3 +13,6 @@ for line in input:
 
 o.close()
 f.close()
+    
+
+
