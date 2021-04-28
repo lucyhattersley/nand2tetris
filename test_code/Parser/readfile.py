@@ -5,7 +5,6 @@ pre, ext = os.path.splitext(sys.argv[1])
 f = open(pre + ext, 'r')
 o = open(pre + '.hack', 'w')
 input = f.readlines()
-output = []
 
 for line in input:
     if not line.strip().startswith(('//')): # gets rid of comments and blank lines
