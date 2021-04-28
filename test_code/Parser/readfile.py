@@ -1,3 +1,12 @@
+#!/usr/bin/python3
+
+import sys # To get file name
+
+try: 
+    print(sys.argv[1])
+except:
+    print("No file specified")
+
 f = open('./Add.asm')
 o = open('./Add.hack', 'w')
 
@@ -10,4 +19,3 @@ for line in input:
 
 o.close()
 f.close()
-
