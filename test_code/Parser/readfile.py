@@ -6,6 +6,7 @@ pre, ext = os.path.splitext(sys.argv[1])
 f = open(pre + ext, 'r')
 o = open(pre + '.hack', 'w')
 input = f.readlines()
+output = []
 
 for line in input:
     if re.match(r'^\s$', line): # skip blank line (has only \t\b\r and whitespace)
@@ -13,8 +14,10 @@ for line in input:
     if re.match('//', line): # skip if comment
         continue
     else:
-        o.write("%s" % line) 
+        output.append(line)
 
+for item in output:
+    o.write(f"{item}") 
 o.close()
 f.close()
     
