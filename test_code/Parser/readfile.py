@@ -7,14 +7,21 @@ f = open(pre + ext, 'r')
 o = open(pre + '.hack', 'w')
 input = f.readlines()
 output = []
+clean_code = []
 
+# first we remove blank lines and comments
 for line in input:
     if re.match(r'^\s$', line): # skip blank line (has only \t\b\r and whitespace)
         continue 
     if re.match('//', line): # skip if comment
         continue
     else:
-        output.append(line)
+        clean_code.append(line)
+
+# iter over clean code to find A and C instructions
+for line in clean_code:
+    if re.match("@", line): # line is A instruction
+       output.append(bin(int(line[1:])) + "\n")
 
 for item in output:
     o.write(f"{item}") 
