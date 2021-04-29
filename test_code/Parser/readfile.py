@@ -8,8 +8,11 @@ o = open(pre + '.hack', 'w')
 input = f.readlines()
 
 for line in input:
-    # if not line.strip().startswith(('//')): # gets rid of comments and blank lines
-    if not re.match(r'^\s$', line): # (has only \t\b\r and whitespace)
+    if re.match(r'^\s$', line): # skip blank line (has only \t\b\r and whitespace)
+        continue 
+    if re.match('//', line): # skip if comment
+        continue
+    else:
         o.write("%s" % line) 
 
 o.close()
