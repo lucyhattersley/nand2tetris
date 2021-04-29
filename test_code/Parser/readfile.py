@@ -21,7 +21,8 @@ for line in input:
 # iter over clean code to find A and C instructions
 for line in clean_code:
     if re.match("@", line): # line is A instruction
-       output.append(bin(int(line[1:])) + "\n")
+        binary = "{0:0^16b}".format(int(line[1:]))
+        output.append(binary + '\n')
 
 for item in output:
     o.write(f"{item}") 
