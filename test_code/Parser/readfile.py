@@ -78,7 +78,10 @@ for line in input:
 
 # loop over clean code to find A and C instructions
 for line in clean_code:
-    if re.match("@", line): # line is A instruction
+    if re.match("@R", line): # Register address
+        binary = "{0:016b}".format(int(line[2:])) # convert digit to 16-bit binary number
+        output.append(binary)
+    elif re.match("@", line): # line is A instruction
         binary = "{0:016b}".format(int(line[1:])) # convert digit to 16-bit binary number
         output.append(binary)
     elif re.search("=", line): # line is C instruction (contract states that all code is correct and lines are either A or C)
