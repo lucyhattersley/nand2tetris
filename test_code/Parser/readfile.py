@@ -18,11 +18,14 @@ for line in input:
     else:
         clean_code.append(line)
 
-# iter over clean code to find A and C instructions
+# loop over clean code to find A and C instructions
 for line in clean_code:
     if re.match("@", line): # line is A instruction
         binary = "{0:016b}".format(int(line[1:])) # convert digit to 16-bit binary number
         output.append(binary + '\n')
+    else: # line is C instruction (contract states that all code is correct and lines are either A or C)
+        #implement D=A to 1110110000010000
+        continue
 
 for item in output:
     o.write(f"{item}") 
