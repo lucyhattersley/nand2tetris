@@ -45,7 +45,7 @@ c_table = {
 }
 
 # dest table
-dest_table = {
+d_table = {
     "null" : "000",
     "M" : "001",
     "D" : "010",
@@ -54,6 +54,17 @@ dest_table = {
     "AM" : "101",
     "AD" : "110",
     "AMD" : "111"
+}
+
+j_table = {
+    "null" : "000",
+    "JGT" : "001",
+    "JEQ" : "010",
+    "JGE" : "011",
+    "JLT" : "100",
+    "JNE" : "101",
+    "JLE" : "110",
+    "111" : "JMP"
 }
 
 # first we remove blank lines and comments
@@ -73,7 +84,7 @@ for line in clean_code:
     else: # line is C instruction (contract states that all code is correct and lines are either A or C)
         #implement D=A to 1110110000010000
         dest, comp = line.split('=')
-        binary = "111" + c_table[comp] + dest_table[dest] + "000"
+        binary = "111" + c_table[comp] + d_table[dest] + "000"
         output.append(binary)
 
 for item in output:
