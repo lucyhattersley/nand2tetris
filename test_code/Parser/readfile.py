@@ -8,15 +8,18 @@ f = open(pre + ext, 'r')
 o = open(pre + '.hack', 'w')
 
 # instantiate lists
-input = f.readlines()
-output = []
-clean_code = []
+input = f.read()
 
 # new clean code approach
-clean_code = re.sub('(^\s$| |/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/|//.*\n?)', '', input)
+comment_free = re.sub('(/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/)|(//.*)|[^\S\r\n]', '', input) # removes comments
+lines = comment_free.splitlines() # splits into list
+clean_code = [x for x in no_lines if x] # removes empty items / blank lines from list
 
-for item in output:
-    o.write(f"{item}" + "\n") 
+# write list to file
+for line in clean_code:
+    o.write(f'{line}' + '\n') 
+
+# close files
 o.close()
 f.close()
 
