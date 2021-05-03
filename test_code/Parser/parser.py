@@ -52,5 +52,3 @@ while parser.hasMoreCommands():
     print('Command type is: ' + parser.commandType(command))
 
     print('')
-
-    parser.advance()
