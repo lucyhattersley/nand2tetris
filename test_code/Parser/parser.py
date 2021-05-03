@@ -44,7 +44,7 @@ parser = Parser(sys.argv[1])
 # print parser input
 print(parser.input)
 
-# test commandType
+# test commandType note missing commands in output
 while parser.hasMoreCommands():
     command = parser.advance()
     print('Current command is: ' + parser.command)
