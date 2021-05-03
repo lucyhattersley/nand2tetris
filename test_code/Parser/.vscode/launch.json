@@ -13,7 +13,7 @@
             "type": "python",
             "request": "launch",
             "program": "${file}",
-            "args": ["Add.asm"],
+            "args": ["Max.asm"],
             "console": "integratedTerminal"
         }
     ]
