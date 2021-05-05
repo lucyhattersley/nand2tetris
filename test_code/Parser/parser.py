@@ -37,6 +37,13 @@ class Parser:
             return('L_COMMAND')
         else:
              return('NO MATCH')
+
+    def symbol(self):
+        if self.commandType(self.command) == 'A_COMMAND' or self.commandType(self.command) == 'L_COMMAND':
+            # note needs to return symbol or decimal of command get rid of @() (regex?)
+            return re.sub('@|;|\(|\)', '', self.command)
+        else:
+            return '' # type is C_COMMAND
         
 # init object 
 parser = Parser(sys.argv[1])
@@ -50,5 +57,7 @@ while parser.hasMoreCommands():
     print('Current command is: ' + parser.command)
 
     print('Command type is: ' + parser.commandType(command))
+
+    print('Command type symbol is: ' + parser.symbol())
 
     print('')
