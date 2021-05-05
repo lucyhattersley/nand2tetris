@@ -41,7 +41,7 @@ class Parser:
     def symbol(self):
         if self.commandType(self.command) == 'A_COMMAND' or self.commandType(self.command) == 'L_COMMAND':
             # note needs to return symbol or decimal of command get rid of @() (regex?)
-            return re.sub('@|;|\(|\)', '', self.command)
+            return re.sub('@|\(|\)', '', self.command)
         else:
             return '' # type is C_COMMAND
         
