@@ -59,9 +59,12 @@ class Parser:
         }
  
         if self.commandType(self.command) == 'C_COMMAND':
-            return d_table[self.command.split('=')][1]
+            return d_table[self.command.split('=')[1]]
+        else:
+            return ''
+
 # set up parser
-parser = Parser(os.argv)
+parser = Parser(sys.argv[1])
 
 # print parser input
 print(parser.input)
