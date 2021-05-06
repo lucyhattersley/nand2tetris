@@ -58,8 +58,8 @@ class Parser:
             "AMD"  : "111"
         }
  
-        if self.commandType(self.command) == 'C_COMMAND':
-            return d_table[self.command.split('=')[1]]
+        if self.commandType(self.command) == 'C_COMMAND' and '=' in self.command:
+                return d_table[self.command.split('=')[0]]
         else:
             return ''
 
