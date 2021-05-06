@@ -95,7 +95,8 @@ class Parser:
                 "D|M": "1010101" 
         }
         if self.commandType(self.command) == 'C_COMMAND':
-                return c_table[self.command.split('=')[1]]
+                # dest=comp;jump (need to split to get middle)
+                return c_table[re.match('(?<=\=)(.*)(?=;)*')]
         else:
             return ''
             
