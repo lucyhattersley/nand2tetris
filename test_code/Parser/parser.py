@@ -20,7 +20,7 @@ class Parser:
 
         # close file
         f.close()
-    
+
     def hasMoreCommands(self):
         return(not not self.input)
 
@@ -44,9 +44,24 @@ class Parser:
             return re.sub('@|\(|\)', '', self.command)
         else:
             return '' # type is C_COMMAND
-        
-# init object 
-parser = Parser(sys.argv[1])
+
+    def dest(self):
+        # dest hash table
+        d_table = {
+            "null" : "000",
+            "M"    : "001",
+            "D"    : "010",
+            "MD"   : "011",
+            "A"    : "100",
+            "AM"   : "101",
+            "AD"   : "110",
+            "AMD"  : "111"
+        }
+ 
+        if self.commandType(self.command) == 'C_COMMAND':
+            return d_table[self.command.split('=')][1]
+# set up parser
+parser = Parser(os.argv)
 
 # print parser input
 print(parser.input)
@@ -59,5 +74,7 @@ while parser.hasMoreCommands():
     print('Command type is: ' + parser.commandType(command))
 
     print('Command type symbol is: ' + parser.symbol())
+
+    print('Command dest symbol is: ' + parser.dest())
 
     print('')
