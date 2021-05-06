@@ -62,7 +62,43 @@ class Parser:
                 return d_table[self.command.split('=')[0]]
         else:
             return ''
-
+    def comp(self):
+        # comp hash table
+        c_table = {
+                "0"  : "0101010",
+                "1"  : "0111111",
+                "-1" : "0111010", 
+                "D"  : "0001100", 
+                "A"  : "0110000", 
+                "M"  : "1110000", 
+                "!D" : "0001101", 
+                "!A" : "0110001", 
+                "!M" : "1110001", 
+                "-D" : "0001111", 
+                "-A" : "0110011", 
+                "-M" : "1110011", 
+                "D+1": "0011111", 
+                "A+1": "0110111", 
+                "M+1": "1110111", 
+                "D-1": "0001110", 
+                "A-1": "0110010", 
+                "M-1": "1110010", 
+                "D+A": "0000010", 
+                "D+M": "1000010", 
+                "D-A": "0010011", 
+                "D-M": "1010011", 
+                "A-D": "0000111", 
+                "M-D": "1000111", 
+                "D&A": "0000000", 
+                "D&M": "1000000", 
+                "D|A": "0010101",
+                "D|M": "1010101" 
+        }
+        if self.commandType(self.command) == 'C_COMMAND':
+                return c_table[self.command.split('=')[1]]
+        else:
+            return ''
+            
 # set up parser
 parser = Parser(sys.argv[1])
 
@@ -79,5 +115,7 @@ while parser.hasMoreCommands():
     print('Command type symbol is: ' + parser.symbol())
 
     print('Command dest symbol is: ' + parser.dest())
+
+    print('Command comp symbol is: ' + parser.comp())
 
     print('')
