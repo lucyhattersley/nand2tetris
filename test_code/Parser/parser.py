@@ -107,6 +107,22 @@ class Parser:
         else: # this is for test. Remove and move to unittest
             return ''
 
+    def jump(self):
+        j_table = {
+                "null" : "000",
+                "JGT"  : "001",
+                "JEQ"  : "010",
+                "JGE"  : "011",
+                "JLT"  : "100",
+                "JNE"  : "101",
+                "JLE"  : "110",
+                "JMP"  : "111"
+            }
+        if self.commandType(self.command) == 'C_COMMAND' and ';' in self.command:
+                words = re.split(';', self.command)
+                return j_table[str(words[1])]
+        else: # remove 
+            return ''
 # set up parser
 parser = Parser(sys.argv[1])
 
@@ -125,5 +141,7 @@ while parser.hasMoreCommands():
     print('Command dest symbol is: ' + parser.dest())
 
     print('Command comp symbol is: ' + parser.comp())
+
+    print('Command jump symbol is: ' + parser.jump())
 
     print('')
