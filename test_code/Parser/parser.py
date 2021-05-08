@@ -35,12 +35,12 @@ class Parser:
             return('C_COMMAND')
         elif re.match("\(", self.command): # line is L (LOOP) instruction
             return('L_COMMAND')
-        else:
+        else: # this is for testing. should be removed
              return('NO MATCH')
 
     def symbol(self):
         if self.commandType(self.command) == 'A_COMMAND' or self.commandType(self.command) == 'L_COMMAND':
-            # note needs to return symbol or decimal of command get rid of @() (regex?)
+            # needs to return symbol or decimal of command get rid of @() (regex?)
             return re.sub('@|\(|\)', '', self.command)
         else:
             return '' # type is C_COMMAND
@@ -60,7 +60,7 @@ class Parser:
  
         if self.commandType(self.command) == 'C_COMMAND' and '=' in self.command:
                 return d_table[self.command.split('=')[0]]
-        else:
+        else: # for error correction. Should be removed during testing
             return ''
     def comp(self):
         # comp hash table
@@ -95,11 +95,18 @@ class Parser:
                 "D|M": "1010101" 
         }
         if self.commandType(self.command) == 'C_COMMAND':
-                # dest=comp;jump (need to split to get middle)
-                return c_table[re.match('(?<=\=)(.*)(?=;)*')]
-        else:
+            if '=' in self.command and ';' in self.command:
+                words = re.split('=|;', self.command)
+                return c_table[str(words[1])]
+            elif '=' in self.command:
+                words = re.split('=', self.command)
+                return c_table[str(words[1])]
+            elif ';' in self.command:
+                words = re.split(';', self.command)
+                return c_table[str(words[0])]
+        else: # this is for test. Remove and move to unittest
             return ''
-            
+
 # set up parser
 parser = Parser(sys.argv[1])
 
