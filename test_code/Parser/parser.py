@@ -35,94 +35,42 @@ class Parser:
             return('C_COMMAND')
         elif re.match("\(", self.command): # line is L (LOOP) instruction
             return('L_COMMAND')
-        else: # this is for testing. should be removed
-             return('NO MATCH')
 
     def symbol(self):
         if self.commandType(self.command) == 'A_COMMAND' or self.commandType(self.command) == 'L_COMMAND':
             # needs to return symbol or decimal of command get rid of @() (regex?)
             return re.sub('@|\(|\)', '', self.command)
-        else:
-            return '' # type is C_COMMAND
+        else: 
+            return '' # failsafe. C_COMMAND has no symbol
 
     def dest(self):
-        # dest hash table
-        d_table = {
-            "null" : "000",
-            "M"    : "001",
-            "D"    : "010",
-            "MD"   : "011",
-            "A"    : "100",
-            "AM"   : "101",
-            "AD"   : "110",
-            "AMD"  : "111"
-        }
- 
         if self.commandType(self.command) == 'C_COMMAND' and '=' in self.command:
-                return d_table[self.command.split('=')[0]]
-        else: # for error correction. Should be removed during testing
+                return self.command.split('=')[0]
+        else: # failsafe
             return ''
+
     def comp(self):
         # comp hash table
-        c_table = {
-                "0"  : "0101010",
-                "1"  : "0111111",
-                "-1" : "0111010", 
-                "D"  : "0001100", 
-                "A"  : "0110000", 
-                "M"  : "1110000", 
-                "!D" : "0001101", 
-                "!A" : "0110001", 
-                "!M" : "1110001", 
-                "-D" : "0001111", 
-                "-A" : "0110011", 
-                "-M" : "1110011", 
-                "D+1": "0011111", 
-                "A+1": "0110111", 
-                "M+1": "1110111", 
-                "D-1": "0001110", 
-                "A-1": "0110010", 
-                "M-1": "1110010", 
-                "D+A": "0000010", 
-                "D+M": "1000010", 
-                "D-A": "0010011", 
-                "D-M": "1010011", 
-                "A-D": "0000111", 
-                "M-D": "1000111", 
-                "D&A": "0000000", 
-                "D&M": "1000000", 
-                "D|A": "0010101",
-                "D|M": "1010101" 
-        }
         if self.commandType(self.command) == 'C_COMMAND':
             if '=' in self.command and ';' in self.command:
                 words = re.split('=|;', self.command)
-                return c_table[str(words[1])]
+                return str(words[1])
             elif '=' in self.command:
                 words = re.split('=', self.command)
-                return c_table[str(words[1])]
+                return str(words[1])
             elif ';' in self.command:
                 words = re.split(';', self.command)
-                return c_table[str(words[0])]
-        else: # this is for test. Remove and move to unittest
+                return str(words[0])
+        else: # failsafe
             return ''
 
     def jump(self):
-        j_table = {
-                "null" : "000",
-                "JGT"  : "001",
-                "JEQ"  : "010",
-                "JGE"  : "011",
-                "JLT"  : "100",
-                "JNE"  : "101",
-                "JLE"  : "110",
-                "JMP"  : "111"
-            }
         if self.commandType(self.command) == 'C_COMMAND' and ';' in self.command:
                 words = re.split(';', self.command)
-                return j_table[str(words[1])]
-        else: # remove 
+                return str(words[1])
+        else: # failsafe 
             return ''
+
 # set up parser
 parser = Parser(sys.argv[1])
 
