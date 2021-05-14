@@ -24,6 +24,10 @@ class TestParser(unittest.TestCase):
         for test in tests:
             self.test_parser.command = test
             self.assertEqual(self.test_parser.commandType(self), 'L_COMMAND', 'Failed: ' + test)
+    
+    def test_symbol(self):
+        self.test_parser.command = '@123'
+        self.assertEqual(self.test_parser.symbol(self), '123')
         
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(self)
