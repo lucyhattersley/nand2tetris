@@ -9,7 +9,8 @@ class TestParser(unittest.TestCase):
         self.assertTrue(self.test_parser.hasMoreCommands())
 
     def test_commandType(self):
-        self.assertEqual(self.test_parser.commandType(command='@123'), 'A_COMMAND')
+        self.test_parser.command = '@123'
+        self.assertEqual(self.test_parser.commandType(self), 'A_COMMAND')
 
 if __name__ == "__main__":
     unittest.main()
