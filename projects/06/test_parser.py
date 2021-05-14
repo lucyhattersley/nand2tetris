@@ -8,17 +8,6 @@ class TestParser(unittest.TestCase):
     def test_hasMoreCommands(self):
         self.assertTrue(self.test_parser.hasMoreCommands())
 
-    
-    # A_COMMANDS
-    # @123 A_COMMAND
-    # @
-    # @TEST
-
-    # C_COMMANDS
-    # D=M
-    
-    # L_COMMANDS
-
     def test_commandType(self):
         tests = ['@', '@123', '@TEST']
         for test in tests:
@@ -27,9 +16,8 @@ class TestParser(unittest.TestCase):
 
         tests = ['A=0' 'A=1', 'A=-1', 'A=D,' 'A=A', 'A=!D', 'A=!A', 'A=-D', 'A=-A', 'A=D+1', 'A=D-1', 'A=A-1', 'A=D+A', 'A=D-A', 
                  'A=A-D', 'D&A', 'D|A', 'A=M', 'A=!M', 'A=-M', 'A=M+1', 'A=D+M', 'A=D-M', 'A=M-D', 'A=D&M', 'A=D|M']
-
         for test in tests:
             self.test_parser.command = test
-            self.assertEqual(self.test_parser.commandType(self), 'C_COMMAND')
+            self.assertEqual(self.test_parser.commandType(self), 'C_COMMAND', 'Failed: ' + test)
 if __name__ == "__main__":
     unittest.main()
