@@ -52,17 +52,10 @@ class TestParser(unittest.TestCase):
         self.test_parser.command = 'D;JEQ'
         self.assertEqual(self.test_parser.comp(), 'D')
 
-
+    def test_jump(self):
+        self.test_parser.command = 'D;JEQ'
+        self.assertEqual(self.test_parser.jump(), 'JEQ')
         
 if __name__ == "__main__":
     unittest.main()
 
-
-        
-if __name__ == "__main__":
-    unittest.main()
-
-
-        
-if __name__ == "__main__":
-    unittest.main()

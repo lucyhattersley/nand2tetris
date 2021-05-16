@@ -70,26 +70,3 @@ class Parser:
                 return str(words[1])
         else: # failsafe 
             return ''
-
-# MOVE TO TEST
-# parser = Parser(sys.argv[1])
-
-# # print parser input
-# print(parser.input)
-
-# # test commandType note missing commands in output
-# while parser.hasMoreCommands():
-#     command = parser.advance()
-#     print('Current command is: ' + parser.command)
-
-#     print('Command type is: ' + parser.commandType(command))
-
-#     print('Command type symbol is: ' + parser.symbol())
-
-#     print('Command dest symbol is: ' + parser.dest())
-
-#     print('Command comp symbol is: ' + parser.comp())
-
-#     print('Command jump symbol is: ' + parser.jump())
-
-#     print('')
