@@ -39,5 +39,30 @@ class TestParser(unittest.TestCase):
         self.test_parser.command = 'D=M'
         self.assertEqual(self.test_parser.dest(), 'D')
 
+    def test_comp(self):
+        self.test_parser.command = 'D=M'
+        self.assertEqual(self.test_parser.comp(), 'M')
+
+        self.test_parser.command = 'D=D-A'
+        self.assertEqual(self.test_parser.comp(), 'D-A')
+
+        self.test_parser.command = 'D=D-A'
+        self.assertEqual(self.test_parser.comp(), 'D-A')
+
+        self.test_parser.command = 'D;JEQ'
+        self.assertEqual(self.test_parser.comp(), 'D')
+
+
+        
+if __name__ == "__main__":
+    unittest.main()
+
+
+        
+if __name__ == "__main__":
+    unittest.main()
+
+
+        
 if __name__ == "__main__":
     unittest.main()
