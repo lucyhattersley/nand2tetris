@@ -50,7 +50,6 @@ class Parser:
             return ''
 
     def comp(self):
-        # comp hash table
         if self.commandType(self.command) == 'C_COMMAND':
             if '=' in self.command and ';' in self.command:
                 words = re.split('=|;', self.command)
