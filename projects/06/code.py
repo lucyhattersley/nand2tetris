@@ -54,6 +54,5 @@ class Code:
         "JMP"  : "111"
     }
 
-        def dest(mnemnomic):
-            return d_table[mnemnomic]
-            
+    def dest(mnemnomic):
+        return d_table[mnemnomic]
