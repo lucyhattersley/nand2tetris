@@ -1,9 +1,12 @@
 import unittest
-import code
+import parser
 
 class TestCode(unittest.TestCase):
+    def setUp(self):
+        self.test_code = parser.Code()
+    
     def test_dest(self):
-        unittest.assertEqual(code.dest("null"), '000')
+        self.assertEqual(self.test_code.dest("null"), '000')
 
 
 if __name__ == "__main__":
