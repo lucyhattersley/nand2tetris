@@ -31,5 +31,27 @@ class TestParser(unittest.TestCase):
         
         self.test_parser.command = '(LOOP)'
         self.assertEqual(self.test_parser.symbol(), 'LOOP')
+
+    def test_dest(self):
+        self.test_parser.command = 'A=0'
+        self.assertEqual(self.test_parser.dest(), 'A')
+        
+        self.test_parser.command = 'D=A'
+        self.assertEqual(self.test_parser.dest(), 'D')
+    
+    def test_comp(self):
+        self.test_parser.command = 'A=M'
+        self.assertEqual(self.test_parser.comp(), 'M')
+        
+        self.test_parser.command = 'A=A-1'
+        self.assertEqual(self.test_parser.comp(), 'A-1')
+
+    def test_jump(self):
+        self.test_parser.command = 'D;JGT'
+        self.assertEqual(self.test_parser.jump(), 'JGT')
+        
+        self.test_parser.command = 'D;JMP'
+        self.assertEqual(self.test_parser.jump(), 'JMP')
+
 if __name__ == "__main__":
     unittest.main()
