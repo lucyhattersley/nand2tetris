@@ -3,10 +3,11 @@ import parser
 
 class TestCode(unittest.TestCase):
     def setUp(self):
-        self.test_code = parser.Code()
+        self.test_parser = parser.Parser(argv="max/Max.asm")
     
     def test_dest(self):
-        self.assertEqual(self.test_code.dest("null"), '000')
+        test = self.test_parser.dest("null")
+        self.assertEqual(test, '000')
 
 
 if __name__ == "__main__":

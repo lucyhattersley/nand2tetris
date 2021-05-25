@@ -27,7 +27,9 @@ class TestParser(unittest.TestCase):
     
     def test_symbol(self):
         self.test_parser.command = '@123'
-        self.assertEqual(self.test_parser.symbol(self), '123')
+        self.assertEqual(self.test_parser.symbol(), '123')
         
+        self.test_parser.command = '(LOOP)'
+        self.assertEqual(self.test_parser.symbol(), 'LOOP')
 if __name__ == "__main__":
     unittest.main()
