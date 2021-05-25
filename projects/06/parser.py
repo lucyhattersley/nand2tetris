@@ -104,7 +104,7 @@ class Code:
         }
 
         # dest table
-        d_table = {
+        self.d_table = {
             "null" : "000",
             "M"    : "001",
             "D"    : "010",
@@ -126,5 +126,5 @@ class Code:
             "JMP"  : "111"
         }
 
-    def dest(mnemnomic):
+    def dest(self, mnemnomic):
         return self.d_table[mnemnomic]
