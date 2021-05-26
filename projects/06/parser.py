@@ -72,7 +72,7 @@ class Parser:
 
 class Code:
     def __init__(self):
-        c_table = {
+        self.c_table = {
                 "0"  : "0101010",
                 "1"  : "0111111",
                 "-1" : "0111010", 
@@ -115,7 +115,7 @@ class Code:
             "AMD"  : "111"
         }
 
-        j_table = {
+        self.j_table = {
             "null" : "000",
             "JGT"  : "001",
             "JEQ"  : "010",
@@ -126,5 +126,11 @@ class Code:
             "JMP"  : "111"
         }
 
-    def dest(self, mnemnomic):
-        return self.d_table[mnemnomic]
+    def dest(self, mnemonic):
+        return self.d_table[mnemonic]
+    
+    def comp(self, mnemonic):
+        return self.c_table[mnemonic] 
+    
+    def jump(self, mnemonic):
+        return self.j_table[mnemonic]
