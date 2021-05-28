@@ -3,10 +3,12 @@ import os # for filename extension
 import re # regex support
 
 class Parser:
-    def __init__(self, argv):
+    def __init__(self):
         self.command = ''
 
         # open file
+        # needs moving to command line
+        argv = 'add/Add.asm'
         pre, ext = os.path.splitext(argv)
         f = open(pre + ext, 'r')
 

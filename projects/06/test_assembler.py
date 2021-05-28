@@ -1,5 +1,4 @@
 import unittest
-import parser
 import assembler
 
 # @2
@@ -24,3 +23,5 @@ class TestAssembler(unittest.TestCase):
             test = self.test_code.parse("@2")
             self.assertEqual(test, '0000000000000010')
 
+if __name__ == "__main__":
+    unittest.main()
