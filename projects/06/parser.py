@@ -23,6 +23,14 @@ class Parser:
         # close file
         f.close()
 
+    #Setter and getter for test
+    def setCommand(self, command):
+        self.command = command
+
+    def getCommand(self):
+        return self.commandk
+
+    # Routine's outlined in "The elements of computing systems"
     def hasMoreCommands(self):
         return(not not self.input)
 
