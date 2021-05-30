@@ -39,11 +39,11 @@ class Parser:
             self.command = self.input.pop(0)
 
     def commandType(self, command):
-        if re.match("@", self.command): # line is A instruction
+        if re.match("@", command): # line is A instruction
             return('A_COMMAND')
-        elif re.search(r"=|;", self.command): # line is C instruction (contract states that all code is correct and lines are either A or C)
+        elif re.search(r"=|;", command): # line is C instruction (contract states that all code is correct and lines are either A or C)
             return('C_COMMAND')
-        elif re.match("\(", self.command): # line is L (LOOP) instruction
+        elif re.match("\(", command): # line is L (LOOP) instruction
             return('L_COMMAND')
 
     def symbol(self):
