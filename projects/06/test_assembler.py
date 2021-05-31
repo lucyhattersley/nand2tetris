@@ -23,5 +23,11 @@ class TestAssembler(unittest.TestCase):
             test = self.test_code.parse("@2")
             self.assertEqual(test, '0000000000000010')
 
+            test = self.test_code.parse("D=A")
+            self.assertEqual(test, '1110110000010000')
+
+            test = self.test_code.parse("D=D+A")
+            self.assertEqual(test, '1110110000010000')
+            
 if __name__ == "__main__":
     unittest.main()

@@ -23,7 +23,10 @@ class Assembler:
             dest = self.code.dest(mnem)
 
             mnem = self.parser.comp()
-            jump = self.code.jump(mnem)
+            try:
+                jump = self.code.jump(mnem)
+            except:
+                jump = '000'
 
             return ins + comp + dest + jump
 
