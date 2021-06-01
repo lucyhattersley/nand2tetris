@@ -39,6 +39,6 @@ class TestAssembler(unittest.TestCase):
             self.assertEqual(test, '1110001100001000')
 
         def test_parse_file(self):
-            
+            # load Add_test.hack file and test output against 
 if __name__ == "__main__":
     unittest.main()
