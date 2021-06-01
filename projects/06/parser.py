@@ -6,22 +6,6 @@ class Parser:
     def __init__(self):
         self.command = ''
 
-        # open file
-        # needs moving to command line
-        argv = 'add/Add.asm'
-        pre, ext = os.path.splitext(argv)
-        f = open(pre + ext, 'r')
-
-        # instantiate lists
-        self.input = f.read()
-
-        # clean code 
-        comment_free = re.sub('(/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/)|(//.*)|[^\S\r\n]', '', self.input) # removes comments
-        lines = comment_free.splitlines() # splits into list
-        self.input = [x for x in lines if x] # removes empty items / blank lines from list
-
-        # close file
-        f.close()
 
     #Setter and getter for test
     def setCommand(self, command):

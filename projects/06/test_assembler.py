@@ -37,6 +37,8 @@ class TestAssembler(unittest.TestCase):
             
             test = self.test_code.parse("M=D")
             self.assertEqual(test, '1110001100001000')
+
+        def test_parse_file(self):
             
 if __name__ == "__main__":
     unittest.main()

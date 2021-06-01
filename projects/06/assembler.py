@@ -1,8 +1,26 @@
 import parser
 import sys
+import os
+import re
 
 class Assembler:
     def __init__(self):
+        # open file
+        argv = sys.argv[1]
+        pre, ext = os.path.splitext(argv)
+        f = open(pre + ext, 'r')
+
+        # instantiate lists
+        self.input = f.read()
+
+        # clean code 
+        comment_free = re.sub('(/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/)|(//.*)|[^\S\r\n]', '', self.input) # removes comments
+        lines = comment_free.splitlines() # splits into list
+        self.input = [x for x in lines if x] # removes empty items / blank lines from list
+
+        # close file
+        f.close()
+
         self.parser = parser.Parser()
         self.code = parser.Code()
 
