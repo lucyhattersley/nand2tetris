@@ -17,7 +17,7 @@ import assembler
 
 class TestAssembler(unittest.TestCase):
         def setUp(self):
-            self.test_code = assembler.Assembler()
+            self.test_code = assembler.Assembler(argv='add/Add.asm')
 
         def test_parse(self):
             test = self.test_code.parse("@2")
@@ -38,7 +38,9 @@ class TestAssembler(unittest.TestCase):
             test = self.test_code.parse("M=D")
             self.assertEqual(test, '1110001100001000')
 
-        def test_parse_file(self):
-            # load Add_test.hack file and test output against 
+        # def test_parse_file(self):
+        #     # load Add_test.hack file and test output against 
+        #     return
+
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(argv=['add/Add.asm'])
