@@ -4,9 +4,8 @@ import os
 import re
 
 class Assembler:
-    def __init__(self):
+    def __init__(self, argv):
         # open file
-        argv = sys.argv[1]
         pre, ext = os.path.splitext(argv)
         f = open(pre + ext, 'r')
 
@@ -48,4 +47,4 @@ class Assembler:
 
             return ins + comp + dest + jump
 
-assembler = Assembler()
+assembler = Assembler(sys.argv[1])
