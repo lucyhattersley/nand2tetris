@@ -38,9 +38,10 @@ class TestAssembler(unittest.TestCase):
             test = self.test_code.parse("M=D")
             self.assertEqual(test, '1110001100001000')
 
-        # def test_parse_file(self):
-        #     # load Add_test.hack file and test output against 
-        #     return
+        def test_parse_file(self):
+            test_file = open('add/Add_test.hack')
+            test = self.test_code.parse_file('add/Add.asm')
+            self.assertEqual(test, test_file)
 
 if __name__ == "__main__":
     unittest.main(argv=['add/Add.asm'])
