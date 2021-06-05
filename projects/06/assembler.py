@@ -49,6 +49,13 @@ class Assembler:
             return ins + comp + dest + jump
 
     def parse_file(self):
-        return self.parser.hasMoreCommands()
+        self.f = open(self.pre + 'hack', 'w')
 
+        while parser.hasMoreCommands():
+            parser.advance()
+            hack_line = self.parse(parser.getCommand()) 
+            self.f.write(hack_line)
+        
+        self.f.close()
+        
 assembler = Assembler(sys.argv[1])

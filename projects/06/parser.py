@@ -11,7 +11,7 @@ class Parser:
         self.command = command
 
     def getCommand(self):
-        return self.commandk
+        return self.command
 
     # Routine's outlined in "The elements of computing systems"
     def hasMoreCommands(self):
