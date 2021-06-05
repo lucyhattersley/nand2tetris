@@ -26,9 +26,11 @@ class TestAssembler(unittest.TestCase):
             self.assertEqual(test, '1110001100001000')
 
         def test_parse_file(self):
-            test_file = open('add/Add_test.hack').read()
-            test = self.test_code.parse_file()
+            test_file = open('add/Add_test.hack').read() # malloc problmem. refactor 
+            self.test_code.parse_file()
+            test = open('add/Add.hack').read()
             self.assertEqual(test, test_file)
+
 
 if __name__ == "__main__":
     unittest.main(argv=['first-arg-is-ignored'], exit=False) # ignores arg to prevent attribute error
