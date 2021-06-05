@@ -25,13 +25,28 @@ class TestAssembler(unittest.TestCase):
             test = self.test_code.parse("M=D")
             self.assertEqual(test, '1110001100001000')
 
-        def test_parse_file(self):
+        def test_add(self):
             self.f = open('add/Add_test.hack') # first we open test file (created by course assembler) 
             test_file = self.f.read()
 
             self.test_code.parse_file() # This creates hack output file
 
             self.g = open('add/Add.hack') # Open hack output file
+            out_file = self.g.read()
+
+            self.assertEqual(out_file, test_file) # Check both files the same
+
+            self.f.close() # close the files to tidy up
+            self.g.close() 
+
+        def test_max(self):
+            self.test_code = assembler.Assembler(argv='max/Max.asm')
+            self.f = open('max/Max_test.hack') # first we open test file (created by course assembler) 
+            test_file = self.f.read()
+
+            self.test_code.parse_file() # This creates hack output file
+
+            self.g = open('max/Max.hack') # Open hack output file
             out_file = self.g.read()
 
             self.assertEqual(out_file, test_file) # Check both files the same
