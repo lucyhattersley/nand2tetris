@@ -62,7 +62,8 @@ class Assembler:
             hack_line = self.parse(self.symbol_parser.getCommand()) 
             if self.symbol_parser.commandType(self.symbol_parser.getCommand()) == 'L_COMMAND':
                 # TODO convert symbol_val to 16 binary
-                symbol_table[self.symbol_parser.getCommand] = symbol_val)
+                # return "{0:016b}".format(int(line[1:]))
+                symbol_table[self.symbol_parser.getCommand] = "{0:016b}".format(int(symbol_val))
                 symbol_val+=1 # write next symbol to next mem address
 
         # second pass to write hack file
