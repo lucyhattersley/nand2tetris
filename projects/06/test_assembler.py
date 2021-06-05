@@ -26,20 +26,18 @@ class TestAssembler(unittest.TestCase):
             self.assertEqual(test, '1110001100001000')
 
         def test_parse_file(self):
-            self.f = open('add/Add_test.hack') # malloc problmem. refactor 
+            self.f = open('add/Add_test.hack') # first we open test file (created by course assembler) 
             test_file = self.f.read()
-            # self.f = open(self.pre + self.ext, 'r') 
 
-            self.test_code.parse_file() # creates hack output file
+            self.test_code.parse_file() # This creates hack output file
 
-            self.g = open('add/Add.hack')
+            self.g = open('add/Add.hack') # Open hack output file
             out_file = self.g.read()
 
-            self.f.close() # close the file
-            self.g.close() # close the file
+            self.assertEqual(out_file, test_file) # Check both files the same
 
-            self.assertEqual(out_file, test_file)
-
+            self.f.close() # close the files to tidy up
+            self.g.close() 
 
 if __name__ == "__main__":
     unittest.main(argv=['first-arg-is-ignored'], exit=False) # ignores arg to prevent attribute error
