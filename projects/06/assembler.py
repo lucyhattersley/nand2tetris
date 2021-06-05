@@ -2,6 +2,7 @@ import parser
 import sys
 import os
 import re
+from copy import deepcopy
 
 class Assembler:
     def __init__(self, argv=sys.argv[1]):
@@ -51,10 +52,27 @@ class Assembler:
     def parse_file(self):
         self.f = open(self.pre + '.hack', 'w')
 
+        self.symbol_parser = deepcopy(self.parser) # copy the parser
+        self.symbol_table = {} # create dict for symbols
+
+        # first pass to create symbol table
+        symbol_val = 16 # symbol values start at RAM address 16 (0x0010)
+        while self.symbol_parser.hasMoreCommands():
+            self.symbol_parser.advance()
+            hack_line = self.parse(self.symbol_parser.getCommand()) 
+            if self.symbol_parser.commandType(self.symbol_parser.getCommand()) == 'L_COMMAND':
+                # TODO convert symbol_val to 16 binary
+                symbol_table[self.symbol_parser.getCommand] = symbol_val)
+                symbol_val+=1 # write next symbol to next mem address
+
+        # second pass to write hack file
         while self.parser.hasMoreCommands():
             self.parser.advance()
-            hack_line = self.parse(self.parser.getCommand()) 
-            self.f.write(hack_line + '\n')
+            if self.parser.commandType(self.parser.getCommand()) == 'L_COMMAND':
+                self.f.write(symbol_table[self.parser.getCommand()])
+            else:
+                hack_line = self.parse(self.parser.getCommand()) 
+                self.f.write(hack_line + '\n')
         
         self.f.close()
 

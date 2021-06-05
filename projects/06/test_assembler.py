@@ -26,6 +26,8 @@ class TestAssembler(unittest.TestCase):
             self.assertEqual(test, '1110001100001000')
 
         def test_add(self):
+            self.test_code = assembler.Assembler(argv='add/Add.asm') # create new assembler instance with file argument
+
             self.f = open('add/Add_test.hack') # first we open test file (created by course assembler) 
             test_file = self.f.read()
 
@@ -40,7 +42,7 @@ class TestAssembler(unittest.TestCase):
             self.g.close() 
 
         def test_max(self):
-            self.test_code = assembler.Assembler(argv='max/Max.asm')
+            self.test_code = assembler.Assembler(argv='max/Max.asm') 
             self.f = open('max/Max_test.hack') # first we open test file (created by course assembler) 
             test_file = self.f.read()
 
