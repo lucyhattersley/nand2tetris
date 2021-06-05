@@ -1,23 +1,10 @@
 import unittest
 import assembler
-
-# @2
-# D=A
-# @3
-# D=D+A
-# @0
-# M=D
-
-# 0000000000000010
-# 1110110000010000
-# 0000000000000011
-# 1110000010010000
-# 0000000000000000
-# 1110001100001000
+import sys
 
 class TestAssembler(unittest.TestCase):
         def setUp(self):
-            self.test_code = assembler.Assembler(argv='add/Add.asm')
+            self.test_code = assembler.Assembler()
 
         def test_parse(self):
             test = self.test_code.parse("@2")
@@ -39,9 +26,10 @@ class TestAssembler(unittest.TestCase):
             self.assertEqual(test, '1110001100001000')
 
         def test_parse_file(self):
-            test_file = open('add/Add_test.hack')
-            test = self.test_code.parse_file('add/Add.asm')
-            self.assertEqual(test, test_file)
+             test_file = open('add/Add_test.hack').read()
+             test = self.test_code.parse_file()
+             self.assertEqual(test, test_file)
 
 if __name__ == "__main__":
-    unittest.main(argv=['add/Add.asm'])
+    unittest.main(argv=['first-arg-is-ignored'], exit=False) # ignores arg to prevent attribute error
+                                                             # args are handled by assembler.py

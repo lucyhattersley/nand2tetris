@@ -4,23 +4,24 @@ import os
 import re
 
 class Assembler:
-    def __init__(self, argv):
-        # open file
-        pre, ext = os.path.splitext(argv)
-        f = open(pre + ext, 'r')
+    def __init__(self, argv=sys.argv[1]):
+        # split into filename and extenstion 
+        self.pre, self.ext = os.path.splitext(argv)
+        self.f = open(self.pre + self.ext, 'r') 
 
-        # instantiate lists
-        self.input = f.read()
+        # create input stream
+        self.input = self.f.read()
 
-        # clean code 
+        # clean code: remove blank lines and split into list 
         comment_free = re.sub('(/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/)|(//.*)|[^\S\r\n]', '', self.input) # removes comments
         lines = comment_free.splitlines() # splits into list
         self.input = [x for x in lines if x] # removes empty items / blank lines from list
 
         # close file
-        f.close()
+        self.f.close()
 
-        self.parser = parser.Parser()
+        # instantiate objects
+        self.parser = parser.Parser(self.input)
         self.code = parser.Code()
 
     def parse(self, line):
@@ -46,5 +47,8 @@ class Assembler:
                 jump = '000'
 
             return ins + comp + dest + jump
+
+    def parse_file(self):
+        return self.parser.hasMoreCommands()
 
 assembler = Assembler(sys.argv[1])

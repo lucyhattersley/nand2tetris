@@ -3,9 +3,8 @@ import os # for filename extension
 import re # regex support
 
 class Parser:
-    def __init__(self):
-        self.command = ''
-
+    def __init__(self, input):
+        self.input = input
 
     #Setter and getter for test
     def setCommand(self, command):
