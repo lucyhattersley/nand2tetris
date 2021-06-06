@@ -42,7 +42,7 @@ class Assembler:
             if line[:2] == '@R':
                return "{0:016b}".format(int(line[2:])) # convert digit to 16-bit binary number
             elif line[0] =='@' and line[1].isalpha(): # A_COMMAND is symbol reference
-                return self.symbol_table[line] # 
+                return self.symbol_table[line[1:]] # 
             else: # command is regular A variable
                 return "{0:016b}".format(int(line[1:])) # convert digit to 16-bit binary number
            
