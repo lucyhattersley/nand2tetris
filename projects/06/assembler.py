@@ -30,9 +30,15 @@ class Assembler:
         # returns a 16 digit Hack command
 
         # TODO Handle L_CCOMMAND here
-        
-        if self.parser.commandType(line) == 'A_COMMAND':
+        if self.parser.commandType(line) == 'L_COMMAND':
            return "{0:016b}".format(int(line[1:])) # convert digit to 16-bit binary number
+
+        if self.parser.commandType(line) == 'A_COMMAND':
+            # handle R commands
+           if line[:1] == '@R':
+               return "{0:016b}".format(int(line[2:])) # convert digit to 16-bit binary number
+           else: # command is regular A variable
+               return "{0:016b}".format(int(line[1:])) # convert digit to 16-bit binary number
            
         if self.parser.commandType(line) == 'C_COMMAND':
             ins = '111'
