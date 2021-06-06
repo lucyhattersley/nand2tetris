@@ -24,6 +24,7 @@ class Assembler:
         # instantiate objects
         self.parser = parser.Parser(self.input)
         self.code = parser.Code()
+        self.symbol_table = {} # create dict for symbols
 
     def parse(self, line):
         # input: expects ASM command
@@ -33,14 +34,16 @@ class Assembler:
         if self.parser.commandType(line) == 'L_COMMAND':
            return "{0:016b}".format(int(line[1:])) # convert digit to 16-bit binary number
 
-        if self.parser.commandType(line) == 'A_COMMAND':
+        elif self.parser.commandType(line) == 'A_COMMAND':
             # handle R commands
-           if line[:1] == '@R':
+            if line[:2] == '@R':
                return "{0:016b}".format(int(line[2:])) # convert digit to 16-bit binary number
-           else: # command is regular A variable
-               return "{0:016b}".format(int(line[1:])) # convert digit to 16-bit binary number
+            elif line[0] =='@': # A_COMMAND is symbol reference
+                return self.symbol_table[line] # TODO: this is out of scope
+            else: # command is regular A variable
+                return "{0:016b}".format(int(line[1:])) # convert digit to 16-bit binary number
            
-        if self.parser.commandType(line) == 'C_COMMAND':
+        elif self.parser.commandType(line) == 'C_COMMAND':
             ins = '111'
 
             self.parser.setCommand(line)
@@ -62,7 +65,6 @@ class Assembler:
         self.f = open(self.pre + '.hack', 'w')
 
         self.symbol_parser = deepcopy(self.parser) # copy the parser
-        self.symbol_table = {} # create dict for symbols
 
         # first pass to create symbol table
         symbol_val = 16 # symbol values start at RAM address 16 (0x0010)
@@ -79,6 +81,7 @@ class Assembler:
             self.parser.advance()
             if self.parser.commandType(self.parser.getCommand()) == 'L_COMMAND':
                 self.f.write(symbol_table[self.parser.getCommand()])
+            # Add support for L_Command reference here
             else:
                 hack_line = self.parse(self.parser.getCommand()) 
                 self.f.write(hack_line + '\n')
