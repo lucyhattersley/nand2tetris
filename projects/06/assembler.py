@@ -28,6 +28,9 @@ class Assembler:
     def parse(self, line):
         # input: expects ASM command
         # returns a 16 digit Hack command
+
+        # TODO Handle L_CCOMMAND here
+        
         if self.parser.commandType(line) == 'A_COMMAND':
            return "{0:016b}".format(int(line[1:])) # convert digit to 16-bit binary number
            
@@ -61,8 +64,7 @@ class Assembler:
             self.symbol_parser.advance()
             hack_line = self.parse(self.symbol_parser.getCommand()) 
             if self.symbol_parser.commandType(self.symbol_parser.getCommand()) == 'L_COMMAND':
-                # TODO convert symbol_val to 16 binary
-                # return "{0:016b}".format(int(line[1:]))
+                # convert sybol to binary
                 symbol_table[self.symbol_parser.getCommand] = "{0:016b}".format(int(symbol_val))
                 symbol_val+=1 # write next symbol to next mem address
 
