@@ -27,9 +27,12 @@ class Assembler:
         self.symbol_table = {} # create dict for symbols
 
     def parse(self, line):
-        # input: expects ASM command
-        # returns a 16 digit Hack command
-
+        """
+        Parses an ASM command and outputs a corrosponding HACK file
+        Input: ASM command (str)
+        Returns: 16 digit binary (Hack) command (str)
+        Note: code is not error checking. Assumes all ASM commands are correct 
+        """
         # TODO Handle L_CCOMMAND here
         if self.parser.commandType(line) == 'L_COMMAND':
            return "{0:016b}".format(int(line[1:])) # convert digit to 16-bit binary number
@@ -38,8 +41,8 @@ class Assembler:
             # handle R commands
             if line[:2] == '@R':
                return "{0:016b}".format(int(line[2:])) # convert digit to 16-bit binary number
-            elif line[0] =='@': # A_COMMAND is symbol reference
-                return self.symbol_table[line] # TODO: this is out of scope
+            elif line[0] =='@' and line[1].isalpha(): # A_COMMAND is symbol reference
+                return self.symbol_table[line] # 
             else: # command is regular A variable
                 return "{0:016b}".format(int(line[1:])) # convert digit to 16-bit binary number
            
@@ -73,14 +76,14 @@ class Assembler:
             hack_line = self.parse(self.symbol_parser.getCommand()) 
             if self.symbol_parser.commandType(self.symbol_parser.getCommand()) == 'L_COMMAND':
                 # convert sybol to binary
-                symbol_table[self.symbol_parser.getCommand] = "{0:016b}".format(int(symbol_val))
+                self.symbol_table[self.symbol_parser.getCommand] = "{0:016b}".format(int(symbol_val))
                 symbol_val+=1 # write next symbol to next mem address
 
         # second pass to write hack file
         while self.parser.hasMoreCommands():
             self.parser.advance()
             if self.parser.commandType(self.parser.getCommand()) == 'L_COMMAND':
-                self.f.write(symbol_table[self.parser.getCommand()])
+                self.f.write(self.symbol_table[self.parser.getCommand()])
             # Add support for L_Command reference here
             else:
                 hack_line = self.parse(self.parser.getCommand()) 
