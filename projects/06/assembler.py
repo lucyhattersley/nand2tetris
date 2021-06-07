@@ -41,8 +41,8 @@ class Assembler:
             # handle R commands
             if line[:2] == '@R':
                return "{0:016b}".format(int(line[2:])) # convert digit to 16-bit binary number
-            elif line[0] =='@' and line[1].isalpha(): # A_COMMAND is symbol reference
-                return self.symbol_table[line[1:]] # 
+            elif line[0] =='@' and line[1].isalpha() and line[1] != 'R': # A_COMMAND is symbol reference
+                return self.symbol_table[line[1:]]  
             else: # command is regular A variable
                 return "{0:016b}".format(int(line[1:])) # convert digit to 16-bit binary number
            
@@ -74,9 +74,9 @@ class Assembler:
         while self.symbol_parser.hasMoreCommands():
             self.symbol_parser.advance()
             hack_line = self.parse(self.symbol_parser.getCommand()) 
-            if self.symbol_parser.commandType(self.symbol_parser.getCommand()) == 'L_COMMAND':
+            if self.symbol_parser.commandType(hack_line) == 'L_COMMAND':
                 # convert sybol to binary
-                self.symbol_table[self.symbol_parser.getCommand] = "{0:016b}".format(int(symbol_val))
+                self.symbol_table[hack_line] = "{0:016b}".format(int(symbol_val))
                 symbol_val+=1 # write next symbol to next mem address
 
         # second pass to write hack file
@@ -90,5 +90,7 @@ class Assembler:
                 self.f.write(hack_line + '\n')
         
         self.f.close()
+    
 
 assembler = Assembler(sys.argv[1])
+assembler.parse_file()
