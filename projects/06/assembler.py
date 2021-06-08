@@ -33,7 +33,6 @@ class Assembler:
         Returns: 16 digit binary (Hack) command (str)
         Note: code is not error checking. Assumes all ASM commands are correct 
         """
-        # TODO Handle L_CCOMMAND here
         if self.parser.commandType(line) == 'L_COMMAND':
            return "{0:016b}".format(int(line[1:])) # convert digit to 16-bit binary number
 
@@ -74,6 +73,8 @@ class Assembler:
         while self.symbol_parser.hasMoreCommands():
             self.symbol_parser.advance()
             hack_line = self.parse(self.symbol_parser.getCommand()) 
+            if self.symbol_parser.commandType(hack_line) == 'L_COMMAND' and hack_line[0] == '@':
+                break
             if self.symbol_parser.commandType(hack_line) == 'L_COMMAND':
                 # convert sybol to binary
                 self.symbol_table[hack_line] = "{0:016b}".format(int(symbol_val))
