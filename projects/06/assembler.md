@@ -44,3 +44,12 @@ Go through list to find L Commands
 Add each L Command to symbol table with a variable number (starting at 16 0X0010000)
 Close file
 
+Go through file line by line
+
+while there are more commands
+Get next command
+If L command (loop)
+    return location of L command
+if A command
+    If R command return 
+
