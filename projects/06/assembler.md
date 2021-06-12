@@ -34,22 +34,28 @@ Plan
 
 import parser, code, os, re
 
-Set up the input from the .asm file
------------------------------------
-Get the filname from the command line (ARGV[1])
-Split the filename into pre, ext parts (so we can save pre and the .hack extension)
-Open the filname as input stream 
-Clean the stream to remove blank lines and split into list
-Go through list to find L Commands
-Add each L Command to symbol table with a variable number (starting at 16 0X0010000)
-Close file
+Set up the input stream
+-----------------------
+1. Get the filname from the command line (ARGV[1])
+2. Split the filename into pre, ext parts (so we can save pre and the .hack extension)
+3. Open the filname as input stream 
+4. Clean the stream to remove blank lines and split into list  
 
-Go through file line by line
+Create the symbol table
+-----------------------
+5. Create symbol table with Pre defined lables and RAM reference addresses 
+6. Go through list to find L Commands
+7. Add each L Command to the symbol table:
+    1. SYMBOL = line number IE: if (LOOP) is on line 16  
+    (LOOP) = 0000 0000 0000 1000
+    2. Remove SYMBOL from input stream array
+8. Close file
 
-while there are more commands
-Get next command
-If L command (loop)
-    return location of L command
-if A command
+Translate the stream to binary commands
+---------------------------------------
+
+9. while there are more commands
+10. Get next command
+if A_COMMAND (IE: @) command
     If R command return 
 
