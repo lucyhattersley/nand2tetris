@@ -44,6 +44,9 @@ Set up the input stream
 Create the symbol table
 -----------------------
 5. Create symbol table with Pre defined lables and RAM reference addresses 
+
+Parse input stream
+------------------
 6. Go through list to find L Commands
 7. Add each L Command to the symbol table:
     1. SYMBOL = line number IE: if (LOOP) is on line 16  
@@ -56,6 +59,13 @@ Translate the stream to binary commands
 
 9. while there are more commands
 10. Get next command
-if A_COMMAND (IE: @) command
-    If R command return 
+11. if A_COMMAND (IE: @) command  
+    If: Check if command is in symbol table
+    Else: Parse binary of address
+12. If C_COMMAND:
+    Parse C_COMMAND
+13. Write to file
+14. Close file
+    
 
+    
