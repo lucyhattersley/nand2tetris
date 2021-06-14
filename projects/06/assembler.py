@@ -71,34 +71,34 @@ class Assembler:
 
             return ins + comp + dest + jump
 
-    # def parse_file(self):
-    #     self.f = open(self.pre + '.hack', 'w')
+    def parse_file(self):
+        self.f = open(self.pre + '.hack', 'w')
 
-    #     self.symbol_parser = deepcopy(self.parser) # copy the parser
+        self.symbol_parser = deepcopy(self.parser) # copy the parser
 
-    #     # first pass to create symbol table
-    #     symbol_val = 16 # symbol values start at RAM address 16 (0x0010)
-    #     while self.symbol_parser.hasMoreCommands():
-    #         self.symbol_parser.advance()
-    #         hack_line = self.parse(self.symbol_parser.getCommand()) 
-    #         if self.symbol_parser.commandType(hack_line) == 'L_COMMAND' and hack_line[0] == '@':
-    #             break
-    #         if self.symbol_parser.commandType(hack_line) == 'L_COMMAND':
-    #             # convert sybol to binary
-    #             self.symbol_table[hack_line] = "{0:016b}".format(int(symbol_val))
-    #             symbol_val+=1 # write next symbol to next mem address
+        # first pass to create symbol table
+        symbol_val = 16 # symbol values start at RAM address 16 (0x0010)
+        while self.symbol_parser.hasMoreCommands():
+            self.symbol_parser.advance()
+            hack_line = self.parse(self.symbol_parser.getCommand()) 
+            if self.symbol_parser.commandType(hack_line) == 'L_COMMAND' and hack_line[0] == '@':
+                break
+            if self.symbol_parser.commandType(hack_line) == 'L_COMMAND':
+                # convert sybol to binary
+                self.symbol_table[hack_line] = "{0:016b}".format(int(symbol_val))
+                symbol_val+=1 # write next symbol to next mem address
 
-    #     # second pass to write hack file
-    #     while self.parser.hasMoreCommands():
-    #         self.parser.advance()
-    #         if self.parser.commandType(self.parser.getCommand()) == 'L_COMMAND':
-    #             self.f.write(self.symbol_table[self.parser.getCommand()])
-    #         # Add support for L_Command reference here
-    #         else:
-    #             hack_line = self.parse(self.parser.getCommand()) 
-    #             self.f.write(hack_line + '\n')
+        # second pass to write hack file
+        while self.parser.hasMoreCommands():
+            self.parser.advance()
+            if self.parser.commandType(self.parser.getCommand()) == 'L_COMMAND':
+                self.f.write(self.symbol_table[self.parser.getCommand()])
+            # Add support for L_Command reference here
+            else:
+                hack_line = self.parse(self.parser.getCommand()) 
+                self.f.write(hack_line + '\n')
         
-    #     self.f.close()
+        self.f.close()
     
 
 assembler = Assembler(sys.argv[1])
