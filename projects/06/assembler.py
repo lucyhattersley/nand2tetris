@@ -25,6 +25,7 @@ class Assembler:
         self.parser = parser.Parser(self.input)
         self.code = parser.Code()
 
+        # TODO move to symbolTable module
         #Create symbol table with predefined symbols
         self.symbol_table = {
         "SP":"0000000000000000",
@@ -57,7 +58,7 @@ class Assembler:
                 loc = "{0:016b}".format(self.input.index(command)) # convert index position to binary location
                 self.symbol_table[command] = loc
                 self.input.remove(command) # Symbol Table location now points to next command in ASM (loop point)
-            elif self.parser.commandType(command) == 'A_COMMMAND' and command[1].isalpha():
+            elif self.parser.commandType(command) == 'A_COMMMAND' and command[1].isalpha(): # Command is variable reference
                 loc = "{0:016b}".format(varAddr)
                 self.symbol_table[command] = loc
                 varAddr += 1
