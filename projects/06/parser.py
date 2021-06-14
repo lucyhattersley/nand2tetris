@@ -155,11 +155,11 @@ class SymbolTable:
         "R15":"0000000000001111"
         }
         
-    def addEntry(symbol, address):
+    def addEntry(self, symbol, address):
         self.symbol_table[symbol] = address
 
-    def contains(symbol):
+    def contains(self, symbol):
         return symbol in self.symbol_table
 
-    def getAddress(symbol):
+    def getAddress(self, symbol):
         return self.symbol_table[symbol]

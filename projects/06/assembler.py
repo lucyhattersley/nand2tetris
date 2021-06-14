@@ -31,13 +31,12 @@ class Assembler:
         varAddr = 16
         for command in self.input:
             if self.parser.commandType(command) == 'L_COMMAND':
-                loc = "{0:016b}".format(self.input.index(command)) # convert index position to binary location
-                TODO: Use setters / getters here 
-                self.symboltable[command] = loc
+                address = "{0:016b}".format(self.input.index(command)) # convert index position to binary location
+                self.symbolTable.addEntry(command, address)
                 self.input.remove(command) # Symbol Table location now points to next command in ASM (loop point)
             elif self.parser.commandType(command) == 'A_COMMMAND' and command[1].isalpha(): # Command is variable reference
                 loc = "{0:016b}".format(varAddr)
-                self.symbol_table[command] = loc
+                self.symbolTable.addEntry(command, address)
                 varAddr += 1
 
     def parse(self, line):
