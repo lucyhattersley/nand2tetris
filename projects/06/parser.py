@@ -3,7 +3,7 @@ import os # for filename extension
 import re # regex support
 
 class Parser:
-    def __init__(self, input):
+    def __init__(self, input=[]):
         self.input = input
 
     #Setter and getter for test

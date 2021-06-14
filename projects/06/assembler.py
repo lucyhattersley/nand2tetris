@@ -48,8 +48,11 @@ class Assembler:
         """
 
         if self.parser.commandType(line) == 'A_COMMAND':
-            if line in self.symbol_table: # first we check against sybol table
-                return self.symbol_table[line]
+            if self.symbolTable.contains(line):
+                return self.symbolTable.getAddress(line)
+            else:
+                return "{0:016b}".format(int(line[1:]))
+                
         elif self.parser.commandType(line) == 'C_COMMAND':
             ins = '111'
 
