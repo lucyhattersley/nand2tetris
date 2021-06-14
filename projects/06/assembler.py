@@ -50,11 +50,14 @@ class Assembler:
         "R15":"0000000000001111"
         }
          # Parse input stream
+         # We loop through input stream and add L_COMMANDS and binary index to Symbol Table
         for command in self.input:
             if self.parser.commandType(command) == 'L_COMMAND':
+                loc = "{0:016b}".format(self.input.index(command)) # convert index position to binary location
+                self.symbol_table[command] = loc
                 print(command)
                 print(self.input.index(command))
-                self.symbol_table[command] = self.input.index(command)
+                self.input.remove(command)
 
     # def parse(self, line):
     #     """
