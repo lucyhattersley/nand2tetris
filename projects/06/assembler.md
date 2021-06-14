@@ -11,6 +11,28 @@ Input space
 Input: .asm file
 Output: hack
 
+Example
+-------
+@R0              0000000000000000
+D=M              1111110000010000
+@R1              0000000000000001
+D=D-M            1111010011010000 
+@OUTPUT_FIRST    0000000000001010
+D;JGT            1110001100000001
+@R1i             0000000000000001
+D=M              1111110000010000
+@OUTPUT_D        0000000000001100
+0;JMP            1110101010000111
+(OUTPUT_FIRST)   
+@R0              0000000000000000
+D=M              1111110000010000
+(OUTPUT_D)
+@R2              0000000000000010
+M=D              1110001100001000
+(INFINITE_LOOP)
+@INFINITE_LOOP   0000000000001110
+0;JMP            1110101010000111
+
 Dependencies 
 ------------
 Parser module methods:
@@ -52,7 +74,6 @@ Parse input stream
     1. SYMBOL = line number IE: if (LOOP) is on line 16  
     (LOOP) = 0000 0000 0000 1000
     2. Remove SYMBOL from input stream array
-8. Close file
 
 Translate the stream to binary commands
 ---------------------------------------
