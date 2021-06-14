@@ -69,11 +69,14 @@ Create the symbol table
 
 Parse input stream
 ------------------
-6. Go through list to find L Commands
-7. Add each L Command to the symbol table:
-    1. SYMBOL = line number IE: if (LOOP) is on line 16  
-    (LOOP) = 0000 0000 0000 1000
-    2. Remove SYMBOL from input stream array
+6. Go through list to find
+    1. Add each L Command to the symbol table:
+        1. SYMBOL = line number IE: if (LOOP) is on line 16  
+        (LOOP) = 0000 0000 0000 1000
+        2. Remove SYMBOL from input stream array
+    2. Check if A COMMAND is Variable symbol
+        Map variable to memory location starting at RAM 16 (0x0010)
+
 
 Translate the stream to binary commands
 ---------------------------------------
@@ -82,6 +85,7 @@ Translate the stream to binary commands
 10. Get next command
 11. if A_COMMAND (IE: @) command  
     If: Check if command is in symbol table
+        return dict element
     Else: Parse binary of address
 12. If C_COMMAND:
     Parse C_COMMAND

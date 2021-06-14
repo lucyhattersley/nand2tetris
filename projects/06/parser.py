@@ -22,8 +22,6 @@ class Parser:
             self.command = self.input.pop(0)
 
     def commandType(self, command):
-        # if re.match("@\w", command): # line is L instruction (reference)
-        #     return('L_COMMAND')
         if re.match("@", command): # line is A instruction
             return('A_COMMAND')
         elif re.search(r"=|;", command): # line is C instruction (contract states that all code is correct and lines are either A or C)

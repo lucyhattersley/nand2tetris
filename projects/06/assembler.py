@@ -25,7 +25,7 @@ class Assembler:
         self.parser = parser.Parser(self.input)
         self.code = parser.Code()
 
-        #Create symbol table 
+        #Create symbol table with predefined symbols
         self.symbol_table = {
         "SP":"0000000000000000",
         "LCL":"0000000000000001",
@@ -51,48 +51,45 @@ class Assembler:
         }
          # Parse input stream
          # We loop through input stream and add L_COMMANDS and binary index to Symbol Table
+        varAddr = 16
         for command in self.input:
             if self.parser.commandType(command) == 'L_COMMAND':
                 loc = "{0:016b}".format(self.input.index(command)) # convert index position to binary location
                 self.symbol_table[command] = loc
-                print(command)
-                print(self.input.index(command))
-                self.input.remove(command)
+                self.input.remove(command) # Symbol Table location now points to next command in ASM (loop point)
+            elif self.parser.commandType(command) == 'A_COMMMAND' and command[1].isalpha():
+                loc = "{0:016b}".format(varAddr)
+                self.symbol_table[command] = loc
+                varAddr += 1
 
-    # def parse(self, line):
-    #     """
-    #     Parses an ASM command and outputs a corrosponding HACK file
-    #     Input: ASM command (str)
-    #     Returns: 16 digit binary (Hack) command (str)
-    #     Note: code is not error checking. Assumes all ASM commands are correct 
-    #     """
-    #     if self.parser.commandType(line) == 'L_COMMAND':
-    #        return "{0:016b}".format(int(line[1:])) # convert digit to 16-bit binary number
+    def parse(self, line):
+        """
+        Parses an ASM command and outputs a corrosponding HACK file
+        Input: ASM command (str)
+        Returns: 16 digit binary (Hack) command (str)
+        Note: code is not error checking. Assumes all ASM commands are correct 
+        """
 
-    #     elif self.parser.commandType(line) == 'A_COMMAND':
-    #         # handle R commands
-    #         if line[:2] == '@R':
-    #            return "{0:016b}".format(int(line[2:])) # convert digit to 16-bit binary number
-    #         else: # command is regular A variable
-    #             return "{0:016b}".format(int(line[1:])) # convert digit to 16-bit binary number
-           
-    #     elif self.parser.commandType(line) == 'C_COMMAND':
-    #         ins = '111'
+        if self.parser.commandType(line) == 'A_COMMAND':
+            if line in self.symbol_table: # first we check against sybol table
+                return self.symbol_table[line]
+        elif self.parser.commandType(line) == 'C_COMMAND':
+            ins = '111'
 
-    #         self.parser.setCommand(line)
-    #         mnem = self.parser.comp()
-    #         comp = self.code.comp(mnem)
+            self.parser.setCommand(line)
+            mnem = self.parser.comp()
+            comp = self.code.comp(mnem)
 
-    #         mnem = self.parser.dest()
-    #         dest = self.code.dest(mnem)
+            mnem = self.parser.dest()
+            dest = self.code.dest(mnem)
 
-    #         mnem = self.parser.comp()
-    #         try:
-    #             jump = self.code.jump(mnem)
-    #         except:
-    #             jump = '000'
+            mnem = self.parser.comp()
+            try:
+                jump = self.code.jump(mnem)
+            except:
+                jump = '000'
 
-    #         return ins + comp + dest + jump
+            return ins + comp + dest + jump
 
     # def parse_file(self):
     #     self.f = open(self.pre + '.hack', 'w')
