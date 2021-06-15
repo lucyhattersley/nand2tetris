@@ -75,11 +75,13 @@ class Assembler:
         self.f = open(self.pre + '.hack', 'w') # create output file
 
         while self.parser.hasMoreCommands():
-            self.parser.advance() # pops first item to parsers current command
-            command = self.parser.getCommand() # lets get a copy
-            hack_line = self.parse(command) # parse it to hack command
-            self.f.write(hack_line) # write to file
-        
+            try:
+                self.parser.advance() # pops first item to parsers current command
+                command = self.parser.getCommand() # lets get a copy
+                hack_line = self.parse(command) # parse it to hack command
+                self.f.write(hack_line + '\n') # write to file
+            except:
+                pass    
         self.f.close() # Close output file
     
 assembler = Assembler(sys.argv[1])
