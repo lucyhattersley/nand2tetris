@@ -24,7 +24,7 @@ class Assembler:
         # instantiate objects
         self.parser = parser.Parser(self.input)
         self.code = parser.Code()
-        self.symbolTable = parser.SymbolTable()
+        self.symbol_table = parser.SymbolTable()
 
         #  Parse input stream
         # We loop through input stream and add L_COMMANDS and binary index to Symbol Table
@@ -32,7 +32,7 @@ class Assembler:
         for command in self.input:
             if self.parser.commandType(command) == 'L_COMMAND':
                 address = "{0:016b}".format(self.input.index(command)) # convert index position to binary location
-                self.symbolTable.addEntry(command, address)
+                self.symbol_table.addEntry(command, address)
                 self.input.remove(command) # Symbol Table location now points to next command in ASM (loop point)
             elif self.parser.commandType(command) == 'A_COMMMAND' and command[1].isalpha(): # Command is variable reference
                 loc = "{0:016b}".format(varAddr)
@@ -48,8 +48,8 @@ class Assembler:
         """
 
         if self.parser.commandType(line) == 'A_COMMAND':
-            if self.symbolTable.contains(line):
-                return self.symbolTable.getAddress(line)
+            if self.symbol_table.contains(line[1:]):
+                return self.symbol_table.getAddress(line[1:])
             else:
                 return "{0:016b}".format(int(line[1:]))
                 
@@ -72,34 +72,15 @@ class Assembler:
             return ins + comp + dest + jump
 
     def parse_file(self):
-        self.f = open(self.pre + '.hack', 'w')
+        self.f = open(self.pre + '.hack', 'w') # create output file
 
-        self.symbol_parser = deepcopy(self.parser) # copy the parser
-
-        # first pass to create symbol table
-        symbol_val = 16 # symbol values start at RAM address 16 (0x0010)
-        while self.symbol_parser.hasMoreCommands():
-            self.symbol_parser.advance()
-            hack_line = self.parse(self.symbol_parser.getCommand()) 
-            if self.symbol_parser.commandType(hack_line) == 'L_COMMAND' and hack_line[0] == '@':
-                break
-            if self.symbol_parser.commandType(hack_line) == 'L_COMMAND':
-                # convert sybol to binary
-                self.symbol_table[hack_line] = "{0:016b}".format(int(symbol_val))
-                symbol_val+=1 # write next symbol to next mem address
-
-        # second pass to write hack file
         while self.parser.hasMoreCommands():
-            self.parser.advance()
-            if self.parser.commandType(self.parser.getCommand()) == 'L_COMMAND':
-                self.f.write(self.symbol_table[self.parser.getCommand()])
-            # Add support for L_Command reference here
-            else:
-                hack_line = self.parse(self.parser.getCommand()) 
-                self.f.write(hack_line + '\n')
+            self.parser.advance() # pops first item to parsers current command
+            command = self.parser.getCommand() # lets get a copy
+            hack_line = self.parse(command) # parse it to hack command
+            self.f.write(hack_line) # write to file
         
-        self.f.close()
+        self.f.close() # Close output file
     
-
 assembler = Assembler(sys.argv[1])
-# assembler.parse_file()
+assembler.parse_file()
