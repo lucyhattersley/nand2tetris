@@ -120,13 +120,19 @@ class Code:
         }
 
     def dest(self, mnemonic):
-        return self.d_table[mnemonic]
+        try:
+            return self.d_table[mnemonic]
+        except:
+            return '000'
     
     def comp(self, mnemonic):
         return self.c_table[mnemonic] 
     
     def jump(self, mnemonic):
-        return self.j_table[mnemonic]
+        try:
+            return self.j_table[mnemonic]
+        except:
+            return '000'
 
 class SymbolTable:
     def __init__(self):

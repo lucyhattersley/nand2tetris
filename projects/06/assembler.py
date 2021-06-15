@@ -63,7 +63,7 @@ class Assembler:
             mnem = self.parser.dest()
             dest = self.code.dest(mnem)
 
-            mnem = self.parser.comp()
+            mnem = self.parser.jump()
             try:
                 jump = self.code.jump(mnem)
             except:
