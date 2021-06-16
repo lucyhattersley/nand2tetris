@@ -43,7 +43,7 @@ class TestAssembler(unittest.TestCase):
 
         def test_max(self):
             self.test_code = assembler.Assembler(argv='max/Max.asm') 
-            self.f = open('max/Max_test.hack') # first we open test file (created by course assembler) 
+            self.f = open('max/Max_test.hack')  
             test_file = self.f.read()
 
             self.test_code.parse_file() # This creates hack output file
@@ -55,6 +55,23 @@ class TestAssembler(unittest.TestCase):
 
             self.f.close() # close the files to tidy up
             self.g.close() 
+
+        def test_pong(self):
+            self.test_code = assembler.Assembler(argv='pong/Pong.asm') 
+ 
+            self.f = open('pong/Pong_test.hack')  
+            test_file = self.f.read()
+
+            self.test_code.parse_file() # This creates hack output file
+
+            self.g = open('pong/Pong.hack') # Open hack output file
+            out_file = self.g.read()
+
+            self.assertEqual(out_file, test_file) # Check both files the same
+
+            self.f.close() # close the files to tidy up
+            self.g.close() 
+
 
 if __name__ == "__main__":
     unittest.main(argv=['first-arg-is-ignored'], exit=False) # ignores arg to prevent attribute error
