@@ -77,7 +77,9 @@ class Assembler:
         while self.parser.hasMoreCommands():
             self.parser.advance() # pops first item to parsers current command
             command = self.parser.getCommand() # lets get a copy
+            print(command)
             hack_line = self.parse(command) # parse it to hack command
+            print(hack_line)
             self.f.write(hack_line + '\n') # write to file
         self.f.close() # Close output file
     
