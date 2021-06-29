@@ -50,5 +50,9 @@ class TestParser(unittest.TestCase):
         self.test_parser.command = 'D;JMP'
         self.assertEqual(self.test_parser.jump(), 'JMP')
 
+    def test_pseudocommand(self):
+        self.test_parser.command = '(ball.new)'
+        self.assertEqual(self.test_parser.symbol(), 'ball.new')
+
 if __name__ == "__main__":
     unittest.main()
