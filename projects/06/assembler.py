@@ -29,16 +29,20 @@ class Assembler:
         #  Parse input stream
         # We loop through input stream and add L_COMMANDS and binary index to Symbol Table
         varAddr = 16
-        for command in self.input: # this is skipping commands. Refactor.
+
+        # Iter through list and remove items: see https://stackoverflow.com/questions/1207406/how-to-remove-items-from-a-list-while-iterating
+        def determine(command):
             if self.parser.commandType(command) == 'L_COMMAND':
                 address = "{0:016b}".format(self.input.index(command)) # convert index position to binary location
                 self.symbol_table.addEntry(command[1:-1], address) # note, first and last char '(' and ')' sliced from command
-                # Refactor. Removes command and for-loop then skips to next command.
-                self.input.remove(command) # Symbol Table location now points to next command in ASM (loop point)
+                return False
+
             elif self.parser.commandType(command) == 'A_COMMMAND' and command[1].isalpha(): # Command is variable reference
                 loc = "{0:016b}".format(varAddr)
                 self.symbolTable.addEntry(command, address)
                 varAddr += 1
+                return True
+        self.input[:] = [command for command in self.input if not determine(command)]
 
     def parse(self, line):
         """
