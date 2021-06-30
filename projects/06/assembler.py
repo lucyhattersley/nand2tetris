@@ -29,11 +29,12 @@ class Assembler:
         #  Parse input stream
         # We loop through input stream and add L_COMMANDS and binary index to Symbol Table
         varAddr = 16
-        for command in self.input:
+        for command in self.input: # this is skipping commands. Refactor.
             if self.parser.commandType(command) == 'L_COMMAND':
                 address = "{0:016b}".format(self.input.index(command)) # convert index position to binary location
                 self.symbol_table.addEntry(command[1:-1], address) # note, first and last char '(' and ')' sliced from command
-                # self.input.remove(command) # Symbol Table location now points to next command in ASM (loop point)
+                # Refactor. Removes command and for-loop then skips to next command.
+                self.input.remove(command) # Symbol Table location now points to next command in ASM (loop point)
             elif self.parser.commandType(command) == 'A_COMMMAND' and command[1].isalpha(): # Command is variable reference
                 loc = "{0:016b}".format(varAddr)
                 self.symbolTable.addEntry(command, address)
