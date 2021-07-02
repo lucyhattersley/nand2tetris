@@ -30,6 +30,7 @@ class Assembler:
         varAddr = 16
 
         # Iter through list and remove items: see https://stackoverflow.com/questions/1207406/how-to-remove-items-from-a-list-while-iterating
+        # Todo: Work through logic here
         def determine(command):
             if self.parser.commandType(command) == 'L_COMMAND':
                 address = "{0:016b}".format(self.input.index(command)) # convert index position to binary location
