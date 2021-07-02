@@ -40,7 +40,9 @@ class Assembler:
                 loc = "{0:016b}".format(varAddr)
                 self.symbolTable.addEntry(command, address)
                 varAddr += 1
-                return True
+            
+            return True
+        
         self.input[:] = [command for command in self.input if not determine(command)]
 
     def parse(self, line):
