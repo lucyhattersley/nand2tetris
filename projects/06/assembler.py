@@ -53,7 +53,6 @@ class Assembler:
         Returns: 16 digit binary (Hack) command (str)
         Note: code is not error checking. Assumes all ASM commands are correct 
         """
-
         if self.parser.commandType(line) == 'A_COMMAND':
             if self.symbol_table.contains(line[1:]):
                 return self.symbol_table.getAddress(line[1:])
