@@ -6,11 +6,11 @@ import re
 class Assembler:
     def __init__(self, argv=sys.argv[1]):
         # split into filename and extenstion 
-        self.pre, self.ext = os.path.splitext(argv)
-        self.f = open(self.pre + self.ext, 'r') 
+        self.pre, ext = os.path.splitext(argv)
+        f = open(self.pre + ext, 'r') 
 
         # create input stream
-        self.input = self.f.read()
+        self.input = f.read()
 
         # clean code: remove blank lines and split into list 
         comment_free = re.sub('(/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/)|(//.*)|[^\S\r\n]', '', self.input) # removes comments
@@ -18,34 +18,36 @@ class Assembler:
         self.input = [x for x in lines if x] # removes empty items / blank lines from list
 
         # close file
-        self.f.close()
+        f.close()
 
         # instantiate objects
         self.parser = parser.Parser(self.input)
         self.code = parser.Code()
         self.symbol_table = parser.SymbolTable()
 
-        #  Parse input stream
+        #  First-pass through input stream
         # We loop through input stream and add L_COMMANDS and binary index to Symbol Table
-        varAddr = 16
+        input_dupe = [] 
+        varAddr = 16 # Variables are assigned from memory address 16
 
-        # Iter through list and remove items: see https://stackoverflow.com/questions/1207406/how-to-remove-items-from-a-list-while-iterating
-        # Todo: Work through logic here
-        def determine(command):
+        # Todo: Replace logic with .pop approach to remove command from list
+        while self.parser.hasMoreCommands():
+            self.parser.advance()
+            command = self.parser.getCommand()
+
             if self.parser.commandType(command) == 'L_COMMAND':
-                address = "{0:016b}".format(self.input.index(command)) # convert index position to binary location
+                address = "{0:016b}".format(len(input_dupe)) # convert index position to binary location
                 self.symbol_table.addEntry(command[1:-1], address) # note, first and last char '(' and ')' sliced from command
-                return False
 
             elif self.parser.commandType(command) == 'A_COMMMAND' and command[1].isalpha(): # Command is variable reference
                 loc = "{0:016b}".format(varAddr)
-                self.symbolTable.addEntry(command, address)
+                self.symbolTable.addEntry(command, loc)
                 varAddr += 1
-                return True
+                input_dupe.append(command)
             else:
-                return True
-        
-        self.input[:] = [command for command in self.input if determine(command)]
+                input_dupe.append(command)
+
+        self.parser.input = input_dupe.copy() # replace original list with duplicate
 
     def parse(self, line):
         """
@@ -79,14 +81,14 @@ class Assembler:
             return ins + comp + dest + jump
 
     def parse_file(self):
-        self.f = open(self.pre + '.hack', 'w') # create output file
+        f = open(self.pre + '.hack', 'w') # create output file
 
         while self.parser.hasMoreCommands():
             self.parser.advance() # pops first item to parsers current command
             command = self.parser.getCommand() # lets get a copy
             hack_line = self.parse(command) # parse it to hack command
-            self.f.write(hack_line + '\n') # write to file
-        self.f.close() # Close output file
+            f.write(hack_line + '\n') # write to file
+        f.close() # Close output file
     
 assembler = Assembler(sys.argv[1])
 assembler.parse_file()

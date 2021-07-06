@@ -69,7 +69,7 @@ Create the symbol table
 
 Parse input stream
 ------------------
-6. Create duplicate input stream
+6. Create empty list 
    Set var address to 16
 
     1. While there are items in duplication stream
