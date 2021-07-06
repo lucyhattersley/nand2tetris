@@ -69,13 +69,22 @@ Create the symbol table
 
 Parse input stream
 ------------------
-6. Go through list to find
-    1. Add each L Command to the symbol table:
-        1. SYMBOL = line number IE: if (LOOP) is on line 16  
+6. Create duplicate input stream
+   Set var address to 16
+
+    1. While there are items in duplication stream
+        pop next item
+    1. If L Command 
+        Add to the symbol table:
+        SYMBOL = duplicate stream index number IE: if (LOOP) is on line 16  
         (LOOP) = 0000 0000 0000 1000
-        2. Remove SYMBOL from input stream array
-    2. Check if A COMMAND is Variable symbol
-        Map variable to memory location starting at RAM 16 (0x0010)
+    2.  If Variable symbol (these are @ followed by an alphanumerical char)
+            Map variable to memory location starting at RAM 16 (0x0010)
+            Increase var address by 1
+            Add item to duplicate input stream
+    3.  Add all other items to duplicate input stream (A_commands and C_Commands)
+
+    4.  Replace original input stream with duplicate input stream
 
 
 Translate the stream to binary commands
