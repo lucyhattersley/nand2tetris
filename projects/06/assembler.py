@@ -30,10 +30,9 @@ class Assembler:
         input_dupe = [] 
         varAddr = 16 # Variables are assigned from memory address 16
 
-        # Todo: Replace logic with .pop approach to remove command from list
+        # First pass through input file. Remove L_COMMANDS and add Variables to symbol_table
         while self.parser.hasMoreCommands():
-            self.parser.advance()
-            command = self.parser.getCommand()
+            command = self.parser.advance()
 
             if self.parser.commandType(command) == 'L_COMMAND':
                 address = "{0:016b}".format(len(input_dupe)) # convert index position to binary location
@@ -84,8 +83,7 @@ class Assembler:
         f = open(self.pre + '.hack', 'w') # create output file
 
         while self.parser.hasMoreCommands():
-            self.parser.advance() # pops first item to parsers current command
-            command = self.parser.getCommand() # lets get a copy
+            command = self.parser.advance() # pops first item to parsers current command
             hack_line = self.parse(command) # parse it to hack command
             f.write(hack_line + '\n') # write to file
         f.close() # Close output file
