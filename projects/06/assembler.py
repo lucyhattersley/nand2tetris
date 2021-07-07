@@ -30,6 +30,8 @@ class Assembler:
         input_dupe = [] 
         varAddr = 16 # Variables are assigned from memory address 16
 
+        #TODO: Replace command with self.command
+
         # First pass through input file. Remove L_COMMANDS and add Variables to symbol_table
         while self.parser.hasMoreCommands():
             self.parser.advance()
@@ -83,6 +85,7 @@ class Assembler:
 
             return ins + comp + dest + jump
 
+    #TODO: Replace command with self.command
     def parse_file(self):
         f = open(self.pre + '.hack', 'w') # create output file
 
