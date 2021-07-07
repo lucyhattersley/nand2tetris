@@ -56,21 +56,37 @@ class TestAssembler(unittest.TestCase):
             self.f.close() # close the files to tidy up
             self.g.close() 
 
-        def test_pong(self):
-            self.test_code = assembler.Assembler(argv='pong/Pong.asm') 
+        # def test_pongtest(self): # one line program that tests 'ponggame.0' command
+        #     self.test_code = assembler.Assembler(argv='pongtest/Pongtest.asm') 
  
-            self.f = open('pong/Pong_test.hack')  
-            test_file = self.f.read()
+        #     self.f = open('pongtest/Pongtest_test.hack')  
+        #     test_file = self.f.read()
 
-            self.test_code.parse_file() # This creates hack output file
+        #     self.test_code.parse_file() # This creates hack output file
 
-            self.g = open('pong/Pong.hack') # Open hack output file
-            out_file = self.g.read()
+        #     self.g = open('pong/Pong.hack') # Open hack output file
+        #     out_file = self.g.read()
 
-            self.assertEqual(out_file, test_file) # Check both files the same
+        #     self.assertEqual(out_file, test_file) # Check both files the same
 
-            self.f.close() # close the files to tidy up
-            self.g.close() 
+        #     self.f.close() # close the files to tidy up
+        #     self.g.close() 
+
+        # def test_pong(self):
+        #     self.test_code = assembler.Assembler(argv='pong/Pong.asm') 
+ 
+        #     self.f = open('pong/Pong_test.hack')  
+        #     test_file = self.f.read()
+
+        #     self.test_code.parse_file() # This creates hack output file
+
+        #     self.g = open('pongtest/Pongtest.hack') # Open hack output file
+        #     out_file = self.g.read()
+
+        #     self.assertEqual(out_file, test_file) # Check both files the same
+
+        #     self.f.close() # close the files to tidy up
+        #     self.g.close() 
 
 
 if __name__ == "__main__":

@@ -20,7 +20,7 @@ class Parser:
     def advance(self):
         if self.hasMoreCommands():
             self.command = self.input.pop(0)
-            return self.command
+            return self.getCommand()
 
     def commandType(self, command):
         if re.match("@", command): # line is A instruction

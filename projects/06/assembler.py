@@ -32,15 +32,19 @@ class Assembler:
 
         # First pass through input file. Remove L_COMMANDS and add Variables to symbol_table
         while self.parser.hasMoreCommands():
-            command = self.parser.advance()
+            self.parser.advance()
+            command = self.parser.getCommand()
 
             if self.parser.commandType(command) == 'L_COMMAND':
                 address = "{0:016b}".format(len(input_dupe)) # convert index position to binary location
                 self.symbol_table.addEntry(command[1:-1], address) # note, first and last char '(' and ')' sliced from command
 
-            elif self.parser.commandType(command) == 'A_COMMMAND' and command[1].isalpha(): # Command is variable reference
+            elif self.parser.commandType(command) == ('A_COMMAND') and self.symbol_table.contains(command[1:]):
+                input_dupe.append(command)
+
+            elif self.parser.commandType(command) == 'A_COMMAND' and command[1].isalpha(): # Command is variable reference
                 loc = "{0:016b}".format(varAddr)
-                self.symbolTable.addEntry(command, loc)
+                self.symbol_table.addEntry(command[1:], loc)
                 varAddr += 1
                 input_dupe.append(command)
             else:
