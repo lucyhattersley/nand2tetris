@@ -24,6 +24,7 @@ class Assembler:
         self.parser = parser.Parser(self.input)
         self.code = parser.Code()
         self.symbol_table = parser.SymbolTable()
+        self.addr = 16
 
         #  First-pass through input stream
         # We loop through input stream and add L_COMMANDS and binary index to Symbol Table
@@ -51,15 +52,15 @@ class Assembler:
         Returns: 16 digit binary (Hack) command (str)
         Note: code is not error checking. Assumes all ASM commands are correct 
         """
-        varAddr = 16 # Variables are assigned from memory address 16
         
         if self.symbol_table.contains(line[1:]):
             return(self.symbol_table.getAddress(line[1:]))
 
         elif self.parser.commandType(line) == 'A_COMMAND' and line[1].isalpha(): # Command is variable reference
-            loc = "{0:016b}".format(varAddr)
+            loc = "{0:016b}".format(self.addr)
             self.symbol_table.addEntry(line[1:], loc)
-            varAddr += 1
+            self.addr += 1
+            return loc
 
         elif self.parser.commandType(line) == 'A_COMMAND':
             if self.symbol_table.contains(line[1:]):
