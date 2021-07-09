@@ -18,9 +18,7 @@ class Parser:
         return(not not self.input)
 
     def advance(self):
-        if self.hasMoreCommands():
-            self.command = self.input.pop(0)
-            # return self.getCommand()
+        self.command = self.input.pop(0)
 
     def commandType(self, command):
         if re.match("@", command): # line is A instruction
@@ -159,7 +157,9 @@ class SymbolTable:
             "R12":"0000000000001100",
             "R13":"0000000000001101",
             "R14":"0000000000001110",
-            "R15":"0000000000001111"
+            "R15":"0000000000001111",
+            "SCREEN":"0100000000000000",
+            "KBD":"0110000000000000"
         }
         
     def addEntry(self, symbol, address):
