@@ -85,13 +85,13 @@ class Assembler:
 
             return ins + comp + dest + jump
 
-    #TODO: Replace command with self.command
+    # Write input file to output
     def parse_file(self):
         f = open(self.pre + '.hack', 'w') # create output file
 
         while self.parser.hasMoreCommands():
-            command = self.parser.advance() # pops first item to parsers current command
-            hack_line = self.parse(command) # parse it to hack command
+            self.parser.advance() # pops first item to parsers current command
+            hack_line = self.parse(self.parser.getCommand()) # parse it to hack command
             f.write(hack_line + '\n') # write to file
         f.close() # Close output file
     

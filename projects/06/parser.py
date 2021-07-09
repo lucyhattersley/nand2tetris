@@ -20,7 +20,7 @@ class Parser:
     def advance(self):
         if self.hasMoreCommands():
             self.command = self.input.pop(0)
-            return self.getCommand()
+            # return self.getCommand()
 
     def commandType(self, command):
         if re.match("@", command): # line is A instruction
@@ -141,9 +141,9 @@ class SymbolTable:
         self.symbol_table = {
             "SP":"0000000000000000",
             "LCL":"0000000000000001",
-            "ARG":"0000000000000002",
-            "THIS":"0000000000000003",
-            "THAT":"0000000000000004",
+            "ARG":"0000000000000010",
+            "THIS":"0000000000000011",
+            "THAT":"0000000000000100",
             "R0":"0000000000000000",
             "R1":"0000000000000001",
             "R2":"0000000000000010",
