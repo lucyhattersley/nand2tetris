@@ -88,7 +88,7 @@ class Assembler:
 
     # Write input file to output
     def parse_file(self):
-        f = open(self.pre + '.hack', 'w') # create output file
+        f = open(self.pre + '1.hack', 'w') # create output file
 
         while self.parser.hasMoreCommands():
             self.parser.advance() # pops first item to parsers current command
