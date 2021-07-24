@@ -13,7 +13,7 @@ class Parser:
     def getCommand(self):
         return self.command
 
-    # Routine's outlined in "The elements of computing systems"
+    # Routines outlined in "The elements of computing systems"
     def hasMoreCommands(self):
         return(not not self.input)
 
