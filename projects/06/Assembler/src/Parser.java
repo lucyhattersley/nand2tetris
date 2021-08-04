@@ -14,25 +14,21 @@ public class Parser {
 
 			while ((line = br.readLine()) != null) {
 				boolean finished = false;
-				String newLine = null;
+				String newLine = "";
 
 				// now let's remove comments
-				for (int i=0; i < line.length()-1;i++) {
+				for (int i=0; i < line.length();i++) {
 					char c = line.charAt(i);
-					char d = line.charAt(i+1); 
 					if (!finished) {
-						if (c == comment && d == comment) { //c, d both "//"
+						if (c == comment) { //c, d both "//"
 							finished = true; // we found a comment so stop writing to the newLine
-							break;
 						} else {
-							newLine = newLine + c + d; // write the char to the newLine
-							//newLine = newline + d; // write the char to the newLine
-
+							newLine = newLine + c; // write the char to the newLine
 						}
 					}
 
 				}
-				if (newLine != null) {
+				if (!newLine.isEmpty()) {
 					System.out.println(newLine); // let's see if it worked
 				}
 				
