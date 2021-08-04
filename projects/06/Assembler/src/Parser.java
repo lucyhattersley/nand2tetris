@@ -52,4 +52,8 @@ public class Parser {
 		}
 	}
 
+	public boolean hasMoreCommands() {
+		return !input.isEmpty();
+	}
+
 }
