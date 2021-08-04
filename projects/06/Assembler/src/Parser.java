@@ -10,28 +10,32 @@ public class Parser {
 			
 			// Test code to print contents of file
 			String line = null;
-			String newLine = null;
 			char comment = '/';
 
 			while ((line = br.readLine()) != null) {
 				boolean finished = false;
+				String newLine = null;
 
 				// now let's remove comments
 				for (int i=0; i < line.length()-1;i++) {
 					char c = line.charAt(i);
 					char d = line.charAt(i+1); 
 					if (!finished) {
-						if (c == comment && d == comment) {
+						if (c == comment && d == comment) { //c, d both "//"
 							finished = true; // we found a comment so stop writing to the newLine
 							break;
 						} else {
-							newLine += Character.toString(c); // write the char to the newLine
+							newLine = newLine + c + d; // write the char to the newLine
+							//newLine = newline + d; // write the char to the newLine
+
 						}
 					}
 
 				}
+				if (newLine != null) {
+					System.out.println(newLine); // let's see if it worked
+				}
 				
-				System.out.println(newLine); // let's see if it worked
 			}
 
 
