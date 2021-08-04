@@ -7,6 +7,8 @@ public class TestParser {
 		String testFile = "/Users/lucy/nand2tetris/projects/06/add/Add.asm";
 		myParser.initialize(testFile);
 
+		myParser.printInput();
+
 	}
 
 }
