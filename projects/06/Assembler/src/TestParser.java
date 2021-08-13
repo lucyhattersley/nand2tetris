@@ -1,7 +1,8 @@
+import junit.framework.TestCase;
 import static org.junit.Assert.assertArrayEquals;
 import java.util.ArrayList;
 
-public class TestParser {
+public class TestParser extends TestCase {
 		
 		@Test
 		public void testInitializer() {
@@ -18,8 +19,6 @@ public class TestParser {
 
 		}
 	}
-
-}
 
 	// public static void main(String[] args) {
 	// 	// TODO Auto-generated method stub
