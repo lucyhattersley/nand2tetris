@@ -70,7 +70,13 @@ public class Parser {
 		 *  L_COMMAND
 		 */
 		
-		return("A_COMMAND");
+		if(currentCommand.startsWith("@")) {
+			return("A_COMMAND");
+		} else if(currentCommand.contains("=") || currentCommand.contains(";")) {
+			return("C_COMMAND");
+		} else {
+			return("L_COMMAND");
+		}
 	}
 	
 	
