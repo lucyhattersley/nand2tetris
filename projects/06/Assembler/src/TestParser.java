@@ -4,14 +4,16 @@ import java.util.*;
 
 
 public class TestParser extends TestCase {
+
+	// Setup parser
+	Parser testParser = new Parser();
 	
-	public TestParser(String name) {
-		super(name);
-	}
+//	public TestParser(String name) {
+//		super(name);
+//	}
 
 	@Test
 	public void testInput() {
-		Parser testParser = new Parser();
 		
 		String testFile = "/Users/lucy/nand2tetris/projects/06/add/Add.asm"; 
 		testParser.initialize(testFile);
@@ -20,6 +22,11 @@ public class TestParser extends TestCase {
 		
 		assertEquals(testInput, testParser.input);
 
+	}
+	
+	@Test
+	public void testHasMoreCommands() {
+		assertTrue(testParser.hasMoreCommands());
 	}
 
 }
