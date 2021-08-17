@@ -77,5 +77,16 @@ public class TestParser extends TestCase {
 		
 		
 	}
+	
+	@Test
+	public void testSymbol() {
+		myParser.initialize(testFile);
+		
+		myParser.currentCommand = "@2";
+		assertEquals("2", myParser.symbol());
+		
+		myParser.currentCommand = "(LOOP)";
+		assertEquals("LOOP", myParser.symbol());
+	}
 
 }

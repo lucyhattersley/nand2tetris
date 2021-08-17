@@ -79,6 +79,16 @@ public class Parser {
 		}
 	}
 	
+	public String symbol() {
+		if(this.commandType() == "A_COMMAND") {
+			return currentCommand.substring(1);
+		} else if (this.commandType() == "L_COMMAND") {
+			return currentCommand.substring(1, currentCommand.length() - 1);
+		} else {
+			return ""; // failsafe. C_COMMAND has no symbol
+		}
+	}
+	
 	
 
 }
