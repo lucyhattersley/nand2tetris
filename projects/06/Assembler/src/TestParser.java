@@ -11,21 +11,51 @@ public class TestParser extends TestCase {
 
 	//Setup
 	String testFile = "/Users/lucy/nand2tetris/projects/06/add/Add.asm";
-	Parser testParser = new Parser();	
+	Parser myParser = new Parser();	
 	
 	@Test
 	public void testInput() {
-		testParser.initialize(testFile);	
+		myParser.initialize(testFile);	
 		ArrayList<String> testInput = new ArrayList<String>(Arrays.asList("@2", "D=A", "@3", "D=D+A", "@0", "M=D"));
 		
-		assertEquals(testInput, testParser.input);
+		assertEquals(testInput, myParser.input);
 
 	}
 	
 	@Test
 	public void testHasMoreCommands() {
-		testParser.initialize(testFile);
-		assertTrue(testParser.hasMoreCommands());
+		myParser.initialize(testFile);
+		assertTrue(myParser.hasMoreCommands());
+	}
+	
+	@Test
+	public void testAdvance() {
+		myParser.initialize(testFile);
+		System.out.print(myParser.input);
+		
+		myParser.advance();
+		assertEquals("@2", myParser.currentCommand);
+		
+		myParser.advance();
+		assertEquals("D=A", myParser.currentCommand);
+
+		
+		myParser.advance();
+		assertEquals("@3", myParser.currentCommand);
+
+		
+		myParser.advance();
+		assertEquals("D=D+A", myParser.currentCommand);
+
+		
+		myParser.advance();
+		assertEquals("@0", myParser.currentCommand);
+
+		
+		myParser.advance();
+		assertEquals("M=D", myParser.currentCommand);
+
+		
 	}
 
 }

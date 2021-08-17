@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 public class Parser {
 	ArrayList<String> input = new ArrayList<String>(); // where we hold our commands
+	String currentCommand;
 
 	public void initialize(String filename) {
 		// First we open the file
@@ -55,5 +56,12 @@ public class Parser {
 	public boolean hasMoreCommands() {
 		return !input.isEmpty();
 	}
+	
+	public void advance() {
+		currentCommand = input.remove(0);
+		
+	}
+	
+	
 
 }
