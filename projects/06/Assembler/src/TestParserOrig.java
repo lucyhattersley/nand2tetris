@@ -2,7 +2,7 @@ import junit.framework.TestCase;
 import static org.junit.Assert.assertArrayEquals;
 import java.util.ArrayList;
 
-public class TestParser extends TestCase {
+public class TestParserOrig extends TestCase {
 		
 		@Test
 		public void testInitializer() {
