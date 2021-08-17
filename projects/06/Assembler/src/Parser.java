@@ -62,6 +62,15 @@ public class Parser {
 		
 	}
 	
+	public void commandType() {
+		/*
+		 * Returns:
+		 *  A_COMMAND
+		 *  C_COMMMAND
+		 *  L_COMMAND
+		 */
+	}
+	
 	
 
 }

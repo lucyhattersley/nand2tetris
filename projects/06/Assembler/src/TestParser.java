@@ -55,6 +55,13 @@ public class TestParser extends TestCase {
 		myParser.advance();
 		assertEquals("M=D", myParser.currentCommand);
 
+	}
+	
+	@Test
+	public void testCommandType() {
+		myParser.initialize(testFile);
+
+		
 		
 	}
 
