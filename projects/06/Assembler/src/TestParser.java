@@ -1,4 +1,3 @@
-import static org.junit.Assert.*;
 import junit.framework.*;
 import org.junit.Test;
 import java.util.*;
