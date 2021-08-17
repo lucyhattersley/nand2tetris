@@ -89,6 +89,13 @@ public class Parser {
 		}
 	}
 	
+	public String dest() {
+		if(this.commandType() == "C_COMMAND" ) {
+			ArrayList<String> commands = new ArrayList();
+//			commands = currentCommand.split("=");
+		}
+	}
+	
 	
 
 }
