@@ -5,19 +5,17 @@ import java.util.*;
 
 public class TestParser extends TestCase {
 
-	// Setup parser
-	Parser testParser = new Parser();
-	
-//	public TestParser(String name) {
-//		super(name);
-//	}
+	public TestParser(String name) {
+		super(name);
+	}
 
+	//Setup
+	String testFile = "/Users/lucy/nand2tetris/projects/06/add/Add.asm";
+	Parser testParser = new Parser();	
+	
 	@Test
 	public void testInput() {
-		
-		String testFile = "/Users/lucy/nand2tetris/projects/06/add/Add.asm"; 
-		testParser.initialize(testFile);
-		
+		testParser.initialize(testFile);	
 		ArrayList<String> testInput = new ArrayList<String>(Arrays.asList("@2", "D=A", "@3", "D=D+A", "@0", "M=D"));
 		
 		assertEquals(testInput, testParser.input);
@@ -26,6 +24,7 @@ public class TestParser extends TestCase {
 	
 	@Test
 	public void testHasMoreCommands() {
+		testParser.initialize(testFile);
 		assertTrue(testParser.hasMoreCommands());
 	}
 
