@@ -95,6 +95,9 @@ public class TestParser extends TestCase {
 		
 		myParser.currentCommand = "D=A";
 		assertEquals("A", myParser.dest());
+		
+		myParser.currentCommand = "D=D+A";
+		assertEquals("D+A", myParser.dest());
 	}
 
 }
