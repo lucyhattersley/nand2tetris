@@ -103,21 +103,17 @@ public class TestParser extends TestCase {
 	@Test
 	public void testComp() {
 		myParser.initialize(testFile);
-		myParser.currentCommand = "0";
-		assertEquals("0101010", myParser.comp());
 		
-		myParser.currentCommand = "-M";
-		assertEquals("1110011", myParser.comp());
+		myParser.currentCommand = "D=A";
+		assertEquals("0110000", myParser.comp());
 
 	}
 	
-	@Test
-	public void testDest() {
-		myParser.initialize(testFile);
-		myParser.currentCommand = "null";
-		assertEquals("000", myParser.dest());
-
-		
-	}
+//	@Test
+//	public void testDest() {
+//		myParser.initialize(testFile);
+//		myParser.currentCommand = "null";
+//		assertEquals("000", myParser.dest());
+//	}
 
 }

@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Parser {
 	ArrayList<String> input = new ArrayList<String>(); // where we hold our commands
-	String currentCommand;
+	public String currentCommand;
 	public Code myCode = new Code(); 
 
 
@@ -92,7 +92,7 @@ public class Parser {
 	}
 	
 	public String dest() {
-		if(this.commandType() == "C_COMMAND" ) {
+		if (this.commandType() == "C_COMMAND") {
 			String[] commands = currentCommand.split("=");
 			return commands[commands.length-1];
 		}
@@ -100,8 +100,16 @@ public class Parser {
 	}
 	
 	public String comp() {
-		return myCode.comp(currentCommand);
+		if (this.commandType() == "C_COMMAND")  {
+			String compCommand = this.dest();
+			return myCode.comp(compCommand);
+		}
+		return "";
 	}
+	
+//	public String jump() {
+//		
+//	}
 	
 	
 	
