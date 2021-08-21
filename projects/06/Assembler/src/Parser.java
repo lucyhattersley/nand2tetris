@@ -100,10 +100,9 @@ public class Parser {
 	}
 	
 	public String comp() {
-		String returnComp = new String();
-		returnComp = myCode.comp(currentCommand);
-		return returnComp;
+		return myCode.comp(currentCommand);
 	}
+	
 	
 	
 
