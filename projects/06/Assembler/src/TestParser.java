@@ -100,4 +100,11 @@ public class TestParser extends TestCase {
 		assertEquals("D+A", myParser.dest());
 	}
 
+	@Test
+	public void testComp() {
+		myParser.initialize(testFile);
+		myParser.currentCommand = "0";
+		assertEquals("101010", myParser.comp());
+	}
+
 }
