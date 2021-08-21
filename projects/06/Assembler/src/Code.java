@@ -64,7 +64,7 @@ public class Code {
     	j_table.put("JMP","111");
     }
 
-    public String comp(String mnem) {
+    public String comp(String mnem) {    	
     	return c_table.get(mnem);
     }
 

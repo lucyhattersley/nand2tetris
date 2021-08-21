@@ -4,6 +4,8 @@ import java.util.ArrayList;
 public class Parser {
 	ArrayList<String> input = new ArrayList<String>(); // where we hold our commands
 	String currentCommand;
+	public Code myCode = new Code(); 
+
 
 	public void initialize(String filename) {
 		// First we open the file
@@ -12,7 +14,7 @@ public class Parser {
 			FileReader fr = new FileReader(myFile);
 			BufferedReader br = new BufferedReader(fr);
 
-			// Sanatize file so we only have ASM code (not comments)
+			// Sanitise file so we only have ASM code (not comments)
 			String line = null;
 			char comment = '/';
 
@@ -95,6 +97,12 @@ public class Parser {
 			return commands[commands.length-1];
 		}
 		return "";
+	}
+	
+	public String comp() {
+		String returnComp = new String();
+		returnComp = myCode.comp(currentCommand);
+		return returnComp;
 	}
 	
 	

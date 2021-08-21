@@ -30,7 +30,7 @@ public class TestParser extends TestCase {
 	@Test
 	public void testAdvance() {
 		myParser.initialize(testFile);
-		System.out.print(myParser.input);
+//		System.out.print(myParser.input);
 		
 		myParser.advance();
 		assertEquals("@2", myParser.currentCommand);
