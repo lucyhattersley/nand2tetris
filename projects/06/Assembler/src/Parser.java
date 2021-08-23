@@ -94,24 +94,27 @@ public class Parser {
 	public String dest() {
 		if (this.commandType() == "C_COMMAND") {
 			String[] commands = currentCommand.split("=");
-			return commands[commands.length-1];
+			return commands[0];
 		}
 		return "";
 	}
 	
 	public String comp() {
 		if (this.commandType() == "C_COMMAND")  {
-			String compCommand = this.dest();
-			return myCode.comp(compCommand);
+			String[] commands = currentCommand.split("=");
+			return commands[commands.length-1];
 		}
 		return "";
 	}
 	
-//	public String jump() {
-//		
-//	}
-	
-	
-	
+	public String jump() {
+		if (this.commandType() == "C_COMMAND") {
+			String[] commands = currentCommand.split(";");
+			return commands[commands.length-1];
+
+		}
+		return "";
+	}
+		
 
 }

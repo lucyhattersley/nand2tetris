@@ -3,6 +3,17 @@ import org.junit.Test;
 import java.util.*;
 
 public class TestParser extends TestCase {
+	
+	/* Add.asm -> Add.hack
+	 * 
+	 * @2    -> 0000000000000010
+     * D=A   -> 1110110000010000
+     * @3    -> 0000000000000011
+     * D=D+A -> 1110000010010000
+     * @0    -> 0000000000000000
+     * M=D   -> 1110001100001000
+	 * 
+	 * */
 
 	public TestParser(String name) {
 		super(name);
@@ -94,19 +105,40 @@ public class TestParser extends TestCase {
 		myParser.initialize(testFile);
 		
 		myParser.currentCommand = "D=A";
-		assertEquals("A", myParser.dest());
+		assertEquals("D", myParser.dest());
 		
 		myParser.currentCommand = "D=D+A";
-		assertEquals("D+A", myParser.dest());
+		assertEquals("D", myParser.dest());
+		
+		myParser.currentCommand = "M=D";
+		assertEquals("M", myParser.dest());
 	}
-
+	
 	@Test
 	public void testComp() {
 		myParser.initialize(testFile);
 		
 		myParser.currentCommand = "D=A";
-		assertEquals("0110000", myParser.comp());
+		assertEquals("A", myParser.comp());
+		
+		myParser.currentCommand = "D=D+A";
+		assertEquals("D+A", myParser.comp());
+		
+		myParser.currentCommand = "M=D";
+		assertEquals("D", myParser.comp());
 
+	}
+	
+	@Test
+	public void testJump() {
+		myParser.initialize(testFile);
+		
+		myParser.currentCommand = "0;JMP";
+		assertEquals("JMP", myParser.jump());
+		
+		myParser.currentCommand = " D;JLE";
+		assertEquals("JLE", myParser.jump());
+		
 	}
 	
 //	@Test
