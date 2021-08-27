@@ -4,6 +4,8 @@ import org.junit.Test;
 public class TestSymbolTable extends TestCase {
 	
 	SymbolTable mySymbolTable = new SymbolTable();
+	String symbol = "A";
+	Integer address = 1;
 
 	@Test
 	public void testConstructor() {
@@ -12,11 +14,15 @@ public class TestSymbolTable extends TestCase {
 	
 	@Test
 	public void testAddEntry( ) {
-		String symbol = "A";
-		Integer address = 1;
 		mySymbolTable.addEntry(symbol, address);
 		assertTrue(mySymbolTable.symbolTable.containsKey("A"));
 		
+	}
+	
+	@Test
+	public void testContains() {
+		mySymbolTable.addEntry(symbol, address);
+		assertTrue(mySymbolTable.contains("A"));
 	}
 
 }
