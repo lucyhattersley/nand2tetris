@@ -24,5 +24,12 @@ public class TestSymbolTable extends TestCase {
 		mySymbolTable.addEntry(symbol, address);
 		assertTrue(mySymbolTable.contains("A"));
 	}
+	
+	@Test
+	public void testGetAddress() {
+		mySymbolTable.addEntry(symbol, address);
+		assertEquals(Integer 1, mySymbolTable.GetAddress("A"));
+		
+	}
 
 }

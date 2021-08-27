@@ -10,4 +10,8 @@ public class SymbolTable {
 	public Boolean contains(String symbol) {
 		return symbolTable.containsKey(symbol);
 	}
+	
+	public Integer GetAddress(String symbol) {
+		reutrn symbolTable.getAddress(symbol);
+	}
 }
