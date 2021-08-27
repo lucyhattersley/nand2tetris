@@ -11,9 +11,10 @@ public class TestAssembler {
 	}
 	
 	@Test
-	public void testInitializer() {
+	public void testInitialize() {
 		myAssembler.initialize();
-		assertTrue(myAssembler.symbolTable.contains("SP"));
+		assertTrue(myAssembler.symbolTable.containsKey("SP"));
+
 	}
 
 }
