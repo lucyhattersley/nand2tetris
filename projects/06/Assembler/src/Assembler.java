@@ -32,11 +32,6 @@ public class Assembler {
 		symbolTable.put("R15", 15);
 		symbolTable.put("SCREEN", 16384);
 		symbolTable.put("KBD", 24756);
-		
-
-
-
-
 
 	}
 
