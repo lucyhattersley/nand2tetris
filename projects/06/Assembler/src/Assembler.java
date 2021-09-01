@@ -5,6 +5,8 @@ public class Assembler {
 	
 	public static void main(String[] args) {
 		//TODO
+		String ASMfile = "/Users/lucy/nand2tetris/projects/06/add/Add.asm";
+		Parser myParser = new Parser(ASMfile);
 
 	}
 	
