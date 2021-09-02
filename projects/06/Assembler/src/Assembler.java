@@ -4,9 +4,19 @@ public class Assembler {
 	HashMap<String, Integer> symbolTable = new HashMap<String, Integer>();
 	
 	public static void main(String[] args) {
-		//TODO
-		String ASMfile = "/Users/lucy/nand2tetris/projects/06/add/Add.asm";
-		Parser myParser = new Parser(ASMfile);
+		
+		Parser myParser = new Parser();
+		
+		
+		// FIRST PASS
+        // We loop through input stream and add L_COMMANDS and binary index to Symbol Table
+        // First pass through input file. Remove L_COMMANDS and add Variables to symbol_table
+
+		// TODO
+		// SECOND PASS
+		// Parse each ASM command to corrosponding HACK command
+		
+		
 
 	}
 	
