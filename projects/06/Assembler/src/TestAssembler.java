@@ -4,6 +4,7 @@ import org.junit.Test;
 import java.io.*;
 
 public class TestAssembler {
+
 	Assembler myAssembler = new Assembler();
 	
 	@Test
@@ -17,10 +18,6 @@ public class TestAssembler {
 		for(String line; (line=br.readLine()) != null; response += line); 
 		br.close();
 				
-		// Run Assembler with Add.asm (creates Add1.hack)
-		// For setup testing we are importing file
-		
-
 		// Load Add1.hack
 		//		String add1File = "/Users/lucy/nand2tetris/projects/06/add/Add.hack";
 		FileReader fr2 = new FileReader("/Users/lucy/nand2tetris/projects/06/add/Add1.hack");
@@ -56,11 +53,5 @@ public class TestAssembler {
 	 * KBD 24576
 	 */
 	
-	@Test
-	public void testInitialize() {
-		myAssembler.initialize();
-		assertTrue(myAssembler.symbolTable.containsKey("SP"));
-
-	}
 
 }
