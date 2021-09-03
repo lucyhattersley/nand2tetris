@@ -6,7 +6,7 @@ public class Assembler {
 	public static void main(String[] args) {
 		
 		Parser myParser = new Parser();
-		
+		Code myCode = new Code();
 		
 		// FIRST PASS
         // We loop through input stream and add L_COMMANDS and binary index to Symbol Table
@@ -15,6 +15,9 @@ public class Assembler {
 		// TODO
 		// SECOND PASS
 		// Parse each ASM command to corrosponding HACK command
+		while(myParser.hasMoreCommands()) {
+			myParser.advance();
+		}
 		
 		
 
