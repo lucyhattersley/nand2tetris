@@ -1,23 +1,35 @@
 import java.util.HashMap;
 
+import jdk.tools.jaotc.binformat.SymbolTable;
+
 public class Assembler {
 	HashMap<String, Integer> symbolTable = new HashMap<String, Integer>();
 	
 	public static void main(String[] args) {
 		
-		Parser myParser = new Parser();
-		Code myCode = new Code();
+		Parser parser = new Parser();
+		Code code = new Code();
+		SymbolTable symbolTable = new SymbolTable();
+		symbolTable.initalize();
 		
 		// FIRST PASS
         // We loop through input stream and add L_COMMANDS and binary index to Symbol Table
         // First pass through input file. Remove L_COMMANDS and add Variables to symbol_table
+		ArrayList inputDuplication = new ArrayList();
+		
+		while(parser.hasMoreCommands()) {
+			parser.advance();
+		}
+
+		if(parser.commandType == "L_COMMAND") {
+			Integer listSize = inputDuplication.size();
+			symbolTable.put(parser.symbol(), Integer.toBinaryString(listSize));
+		}
 
 		// TODO
 		// SECOND PASS
 		// Parse each ASM command to corrosponding HACK command
-		while(myParser.hasMoreCommands()) {
-			myParser.advance();
-		}
+		
 		
 		
 
