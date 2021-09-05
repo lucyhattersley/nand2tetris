@@ -8,7 +8,7 @@ public class Assembler {
 	
 	public static void main(String[] args) {
 		// Todo: Fix
-		parser.initialize(args[1]);
+		parser.initialize();
 		
 	}
 

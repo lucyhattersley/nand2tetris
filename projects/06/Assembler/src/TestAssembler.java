@@ -6,13 +6,23 @@ import java.io.*;
 public class TestAssembler {
 
 	Assembler myAssembler = new Assembler();
-	
 	@Test
-	public void testFirstPass() throws Exception {
+	public void testAssembler(){
+		Assembler assembler = new Assembler();
+		String[] args = null;
+		String arg = "/Users/lucy/nand2tetris/projects/06/add/Add.hack";
+	
+		args[0] = arg;
+		assembler.main(args);
+	
+	}
+	
+	
+	
+//	@Test
+//	public void testFirstPass() throws Exception {
 		// ("/Users/lucy/nand2tetris/projects/06/max/Max.hack");
 		// Todo: setup Assember with Parser pointing at this file
-
-	}
 	
 	
 //	@Test
