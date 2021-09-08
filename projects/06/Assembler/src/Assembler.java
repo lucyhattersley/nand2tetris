@@ -7,14 +7,21 @@ public class Assembler {
 	Code code = new Code();
 	
 	public static void main(String[] args) {
-		// Todo: Fix
-		parser.initialize();
+		Assembler assembler = new Assembler();
+		String asmFile = new String();
+		if(args.length >= 0) {
+			asmFile = args[0];
+			assembler.firstPass(asmFile);
+
+		} else {
+			System.out.println("Missing argument: ASM file");
+		}
 		
 	}
 
-	public void firstPass() {
-		initialize();
-		
+	public void firstPass(String asmFile) {
+		parser.initialize(asmFile);
+
 		ArrayList inputDuplication = new ArrayList();
 		
 		while(parser.hasMoreCommands()) {

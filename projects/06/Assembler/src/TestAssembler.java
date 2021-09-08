@@ -9,11 +9,9 @@ public class TestAssembler {
 	@Test
 	public void testAssembler(){
 		Assembler assembler = new Assembler();
-		String[] args = null;
-		String arg = "/Users/lucy/nand2tetris/projects/06/add/Add.hack";
+		String asmFile = "/Users/lucy/nand2tetris/projects/06/add/Add.hack";
 	
-		args[0] = arg;
-		assembler.main(args);
+		assembler.main(asmFile);
 	
 	}
 	
