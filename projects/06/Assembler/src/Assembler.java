@@ -31,7 +31,7 @@ public class Assembler {
 			if(parser.commandType() == "L_COMMAND") {
 				Integer listSize = inputDuplication.size();
 				symbolTable.put(parser.symbol(), lineNumber);
-				parser.input.clear();
+				parser.input.remove(parser.currentCommand);
 			} 
 			
 			lineNumber += 1; 

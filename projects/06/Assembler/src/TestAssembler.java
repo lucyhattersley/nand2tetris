@@ -5,7 +5,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class TestAssembler {
-	String asm = "/Users/lucy/nand2tetris/projects/06/add/Add.hack";
+	String asm = "/Users/lucy/nand2tetris/projects/06/add/Add.asm";
 	Assembler assembler = new Assembler();
 	
 	
@@ -29,17 +29,23 @@ public class TestAssembler {
 	
 	@Test
 	public void testFirstPassMax() {
-		String asm = "/Users/lucy/nand2tetris/projects/06/max/Max.hack";
-		Assembler assembler = new Assembler();
+		String asm = "/Users/lucy/nand2tetris/projects/06/max/Max.asm";
+//		Assembler assembler = new Assembler();
+//		assembler.main(new String[] {asm});
+		
 		assembler.firstPass(asm);
 		assertTrue(assembler.symbolTable.containsKey("OUTPUT_FIRST"));
-		assertTrue(assembler.symbolTable.containsValue(0101));
-		
-		assertTrue(assembler.symbolTable.containsKey("OUTPUT_D"));
-		assertTrue(assembler.symbolTable.containsValue(1100));
-		
-		assertTrue(assembler.symbolTable.containsKey("INFINITE_LOOP"));
-		assertTrue(assembler.symbolTable.containsValue(1110));
+		assertTrue(assembler.symbolTable.containsValue(10));
+
+		assertEquals(assembler.symbolTable.get("OUTPUT_FIRST"), 10);
+
+//		assertTrue(assembler.symbolTable.containsValue(0101));
+//		
+//		assertTrue(assembler.symbolTable.containsKey("OUTPUT_D"));
+//		assertTrue(assembler.symbolTable.containsValue(1100));
+//		
+//		assertTrue(assembler.symbolTable.containsKey("INFINITE_LOOP"));
+//		assertTrue(assembler.symbolTable.containsValue(1110));
 	}
 	
 //	@Test
