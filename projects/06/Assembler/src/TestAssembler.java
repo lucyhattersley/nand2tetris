@@ -37,8 +37,17 @@ public class TestAssembler {
 		assertTrue(assembler.symbolTable.containsKey("OUTPUT_FIRST"));
 		assertTrue(assembler.symbolTable.containsValue(10));
 
-		assertEquals(assembler.symbolTable.get("OUTPUT_FIRST"), 10);
+		Integer testVal = assembler.symbolTable.get("OUTPUT_FIRST");
+		System.out.println(testVal);
+		assertTrue(testVal==10);
 
+		testVal = assembler.symbolTable.get("OUTPUT_D");
+		System.out.println(testVal);
+		assertTrue(testVal==12);
+
+		
+		
+		
 //		assertTrue(assembler.symbolTable.containsValue(0101));
 //		
 //		assertTrue(assembler.symbolTable.containsKey("OUTPUT_D"));
