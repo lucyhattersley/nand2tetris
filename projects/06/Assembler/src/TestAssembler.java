@@ -5,15 +5,15 @@ import java.io.*;
 
 public class TestAssembler {
 
-	Assembler myAssembler = new Assembler();
 	@Test
 	public void testAssembler(){
-		Assembler assembler = new Assembler();
 		String asm = "/Users/lucy/nand2tetris/projects/06/add/Add.hack";
-		String[] arguments;
+		String[] arguments = new String[1];
 		arguments[0] = asm;
-	
-		assembler.main(arguments);
+		
+		Assembler assembler = new Assembler(arguments);
+
+
 	
 	}
 	
