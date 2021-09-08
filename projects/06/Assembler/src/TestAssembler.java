@@ -27,6 +27,15 @@ public class TestAssembler {
 		
 	}	
 	
+	@Test
+	public void testFirstPassMax() {
+		String asm = "/Users/lucy/nand2tetris/projects/06/max/Max.hack";
+		Assembler assembler = new Assembler();
+		assembler.firstPass(asm);
+		assertTrue(assembler.symbolTable.containsKey("OUTPUT_FIRST"));
+		assertTrue(assembler.symbolTable.containsValue(0101));
+	}
+	
 //	@Test
 //	public void testAssembler() throws Exception {
 //		assertNotNull(myAssembler);
