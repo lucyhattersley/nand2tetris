@@ -8,11 +8,11 @@ public class TestAssembler {
 	@Test
 	public void testAssembler(){
 		String asm = "/Users/lucy/nand2tetris/projects/06/add/Add.hack";
-		String[] arguments = new String[1];
-		arguments[0] = asm;
-		
-		Assembler assembler = new Assembler(arguments);
-
+		Assembler assembler = new Assembler();
+		assembler.main(new String[] {asm});
+		assertNotNull(assembler);
+		assertNotNull(assembler.parser);
+		assertNotNull(assembler.code);
 
 	
 	}
