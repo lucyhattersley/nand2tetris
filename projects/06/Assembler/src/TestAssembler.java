@@ -34,6 +34,12 @@ public class TestAssembler {
 		assembler.firstPass(asm);
 		assertTrue(assembler.symbolTable.containsKey("OUTPUT_FIRST"));
 		assertTrue(assembler.symbolTable.containsValue(0101));
+		
+		assertTrue(assembler.symbolTable.containsKey("OUTPUT_D"));
+		assertTrue(assembler.symbolTable.containsValue(1100));
+		
+		assertTrue(assembler.symbolTable.containsKey("INFINITE_LOOP"));
+		assertTrue(assembler.symbolTable.containsValue(1110));
 	}
 	
 //	@Test
