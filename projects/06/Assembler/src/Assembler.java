@@ -3,6 +3,7 @@ import java.util.*;
 public class Assembler {
 	HashMap<String, Integer> symbolTable = new HashMap<String, Integer>();
 	Parser parser = new Parser();
+	ArrayList inputDuplication = new ArrayList();
 	
 	Code code = new Code();
 	
@@ -11,7 +12,8 @@ public class Assembler {
 		String asmFile = new String();
 		if(args.length >= 0) {
 			asmFile = args[0];
-			assembler.firstPass(asmFile);
+			assembler.firstPass(asmFile);			
+			assembler.secondPass(asmFile);
 
 		} else {
 			System.out.println("Missing argument: ASM file");
@@ -22,16 +24,22 @@ public class Assembler {
 	public void firstPass(String asmFile) {
 		parser.initialize(asmFile);
 
-		ArrayList inputDuplication = new ArrayList();
+
 		
 		while(parser.hasMoreCommands()) {
 			parser.advance();
-		}
+			
+			if(parser.commandType() == "L_COMMAND") {
+				Integer listSize = inputDuplication.size();
+				symbolTable.put(parser.symbol(), Integer.parseInt(Integer.toBinaryString(listSize)));
 
-		if(parser.commandType() == "L_COMMAND") {
-			Integer listSize = inputDuplication.size();
-			symbolTable.put(parser.symbol(), Integer.parseInt(Integer.toBinaryString(listSize)));
+			}
+
 		}
+	}
+	
+	public void secondPass(String asmFile) {
+		//TODO
 	}
 	
 	public void initialize() {

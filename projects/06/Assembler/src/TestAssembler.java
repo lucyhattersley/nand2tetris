@@ -2,13 +2,15 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 import java.io.*;
+import java.util.ArrayList;
 
 public class TestAssembler {
-
+	String asm = "/Users/lucy/nand2tetris/projects/06/add/Add.hack";
+	Assembler assembler = new Assembler();
+	
+	
 	@Test
-	public void testAssembler(){
-		String asm = "/Users/lucy/nand2tetris/projects/06/add/Add.hack";
-		Assembler assembler = new Assembler();
+	public void testMain(){
 		assembler.main(new String[] {asm});
 		assertNotNull(assembler);
 		assertNotNull(assembler.parser);
@@ -17,13 +19,13 @@ public class TestAssembler {
 	
 	}
 	
-	
-	
 //	@Test
-//	public void testFirstPass() throws Exception {
-		// ("/Users/lucy/nand2tetris/projects/06/max/Max.hack");
-		// Todo: setup Assember with Parser pointing at this file
-	
+	public void testFirstPass() throws Exception {
+		assembler.firstPass(asm);
+		ArrayList testInputDuplication = new ArrayList();
+		assertEquals(assembler.inputDuplication, testInputDuplication); // should be empty with Add.hack
+		
+	}	
 	
 //	@Test
 //	public void testAssembler() throws Exception {
