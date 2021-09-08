@@ -23,19 +23,20 @@ public class Assembler {
 
 	public void firstPass(String asmFile) {
 		parser.initialize(asmFile);
-		int lineNumber = 0;
-
+		
+		int lineNumber = 1;
+		
 		while(parser.hasMoreCommands()) {
 			parser.advance();
-			lineNumber += 1;
 			
 			if(parser.commandType() == "L_COMMAND") {
-				Integer listSize = inputDuplication.size();
 				symbolTable.put(parser.symbol(), lineNumber);
 				parser.input.remove(parser.currentCommand);
-			} 
-			 
-
+			} else {
+				lineNumber += 1;
+			}
+		
+			
 		}
 	}
 	
