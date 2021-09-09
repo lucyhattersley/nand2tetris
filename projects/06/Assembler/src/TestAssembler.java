@@ -15,36 +15,25 @@ public class TestAssembler {
 		assertNotNull(assembler);
 		assertNotNull(assembler.parser);
 		assertNotNull(assembler.code);
-
-	
 	}
 	
-	@Test
-	public void testFirstPass() throws Exception {
-		assembler.firstPass(asm);
-		ArrayList testInputDuplication = new ArrayList();
-		assertEquals(assembler.inputDuplication, testInputDuplication); // should be empty with Add.hack
-		
-	}	
+	// @Test
+	// public void testFirstPass() throws Exception {
+	// 	assembler.firstPass(asm);
+	// 	ArrayList testInputDuplication = new ArrayList();
+	// 	assertEquals(assembler.inputDuplication, testInputDuplication); // should be empty with Add.hack
+	// }	
 	
 	@Test
 	public void testFirstPassMaxSymbolTable() {
 		String asm = "/Users/lucy/nand2tetris/projects/06/max/Max.asm";
-//		Assembler assembler = new Assembler();
-//		assembler.main(new String[] {asm});
-		
-		assembler.firstPass(asm);
+		assembler.firstPass(asm); // add the symbols from Max.asm to the SymbolTable
 
 		assertTrue(assembler.symbolTable.containsKey("OUTPUT_FIRST"));
-		System.out.println(assembler.symbolTable);
 		assertTrue(assembler.symbolTable.containsValue(10));
-
 		assertEquals(assembler.symbolTable.get("OUTPUT_FIRST"), Integer.valueOf(10));
-
 		assertEquals(assembler.symbolTable.get("OUTPUT_D"), Integer.valueOf(12));
-
 		assertEquals(assembler.symbolTable.get("INFINITE_LOOP"), Integer.valueOf(14));
-
 	}
 
 	@Test
@@ -58,18 +47,21 @@ public class TestAssembler {
 		for (String i : assembler.parser.input) {System.out.println(i);}
 		assertTrue(assembler.parser.input.contains("@R0")); // does it contain the first line?
 
+		assembler.firstPass(asm);
+		System.out.println("After first pass"); // Let's take a peek inside
+		for (String i : assembler.parser.input) {System.out.println(i);}
+
+
 		// System.out.println("After first pass");
 		// assembler.firstPass(asm);
 		// assertTrue(assembler.parser.input.contains("@R0")); // does it still contain the first line?
 
-		
 		// for (String i : assembler.parser.input) {System.out.println(i);}
 		
 		// ArrayList testInput = new ArrayList();
 		// testInput.add("@R0");
 
 		// assembler.firstPass(asm);
-
 	}
 	
 //	@Test

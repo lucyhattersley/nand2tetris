@@ -2,10 +2,7 @@ import java.util.*;
 
 public class Assembler {
 	HashMap<String, Integer> symbolTable = new HashMap<String, Integer>();
-	Parser parser = new Parser();
-	
-	ArrayList inputDuplication = new ArrayList();
-	
+	Parser parser = new Parser();	
 	Code code = new Code();
 	
 	public static void main(String[] args) {
@@ -16,7 +13,7 @@ public class Assembler {
 			asm = args[0];
 
 			assembler.firstPass(asm);			
-			assembler.secondPass(asm);
+			// assembler.secondPass(asm);
 
 		} else {
 			System.out.println("Missing argument: ASM file");
@@ -26,19 +23,22 @@ public class Assembler {
 
 	public void firstPass(String asm) {
 		parser.initialize(asm);
-		int lineNumber = 0;
 		
+		int lineNumber = 0;
+		ArrayList<String> inputWithoutL = new ArrayList<String>(); // where we hold all commands bar L_COMMANDs
+
 		while(parser.hasMoreCommands()) {
 			parser.advance();
 			
 			if(parser.commandType() == "L_COMMAND") {
 				symbolTable.put(parser.symbol(), lineNumber);
-				parser.input.remove(parser.currentCommand);
 			} else {
+				inputWithoutL.add(parser.currentCommand);
 				lineNumber += 1;
 			}
-		
-			
+
+		parser.input.addAll(inputWithoutL);
+
 		}
 	}
 	
