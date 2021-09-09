@@ -19,7 +19,7 @@ public class TestAssembler {
 	
 	}
 	
-//	@Test
+	@Test
 	public void testFirstPass() throws Exception {
 		assembler.firstPass(asm);
 		ArrayList testInputDuplication = new ArrayList();
