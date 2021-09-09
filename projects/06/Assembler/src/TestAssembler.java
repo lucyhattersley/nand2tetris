@@ -1,7 +1,6 @@
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import java.io.*;
 import java.util.ArrayList;
 
 public class TestAssembler {
@@ -51,10 +50,27 @@ public class TestAssembler {
 		System.out.println("After first pass"); // Let's take a peek inside
 		for (String i : assembler.parser.input) {System.out.println(i);}
 
+		assertTrue(assembler.parser.input.contains("@R0")); // does it still contain the first line?
 
-		// System.out.println("After first pass");
-		// assembler.firstPass(asm);
-		// assertTrue(assembler.parser.input.contains("@R0")); // does it still contain the first line?
+		ArrayList<String> testInput = new ArrayList<String>();
+		testInput.add("@R0");
+		testInput.add("D=M");
+		testInput.add("@R1");
+		testInput.add("D=D-M");
+		testInput.add("@OUTPUT_FIRST");
+		testInput.add("D;JGT");
+		testInput.add("@R1");
+		testInput.add("D=M");
+		testInput.add("@OUTPUT_D");
+		testInput.add("0;JMP"); 
+		testInput.add("@R0");
+		testInput.add("D=M");
+		testInput.add("@R2");
+		testInput.add("M=D");
+		testInput.add("@INFINITE_LOOP");
+
+		// assertEquals(testInput, assembler.parser.input);
+		
 
 		// for (String i : assembler.parser.input) {System.out.println(i);}
 		

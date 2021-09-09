@@ -36,10 +36,9 @@ public class Assembler {
 				inputWithoutL.add(parser.currentCommand);
 				lineNumber += 1;
 			}
-
-		parser.input.addAll(inputWithoutL);
-
 		}
+		// parser.input.clear();
+		parser.input.addAll(inputWithoutL);
 	}
 	
 	public void secondPass(String asm) {
