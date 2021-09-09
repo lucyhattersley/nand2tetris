@@ -34,28 +34,17 @@ public class TestAssembler {
 //		assembler.main(new String[] {asm});
 		
 		assembler.firstPass(asm);
+
 		assertTrue(assembler.symbolTable.containsKey("OUTPUT_FIRST"));
 		System.out.println(assembler.symbolTable);
 		assertTrue(assembler.symbolTable.containsValue(10));
 
-//		Integer testVal = assembler.symbolTable.get("OUTPUT_FIRST");
-//		System.out.println(testVal);
-//		assertTrue(testVal==10);
-//
-//		testVal = assembler.symbolTable.get("OUTPUT_D");
-//		System.out.println(testVal);
-//		assertTrue(testVal==12);
-//
-		
-		
-		
-//		assertTrue(assembler.symbolTable.containsValue(0101));
-//		
-//		assertTrue(assembler.symbolTable.containsKey("OUTPUT_D"));
-//		assertTrue(assembler.symbolTable.containsValue(1100));
-//		
-//		assertTrue(assembler.symbolTable.containsKey("INFINITE_LOOP"));
-//		assertTrue(assembler.symbolTable.containsValue(1110));
+		assertEquals(assembler.symbolTable.get("OUTPUT_FIRST"), Integer.valueOf(10));
+
+		assertEquals(assembler.symbolTable.get("OUTPUT_D"), Integer.valueOf(12));
+
+		assertEquals(assembler.symbolTable.get("INFINITE_LOOP"), Integer.valueOf(14));
+
 	}
 	
 //	@Test

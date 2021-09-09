@@ -24,7 +24,7 @@ public class Assembler {
 	public void firstPass(String asmFile) {
 		parser.initialize(asmFile);
 		
-		int lineNumber = 1;
+		int lineNumber = 0;
 		
 		while(parser.hasMoreCommands()) {
 			parser.advance();
