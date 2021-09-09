@@ -1,4 +1,3 @@
-import static org.junit.Assert.*;
 import junit.framework.*;
 
 public class TestCode extends TestCase {

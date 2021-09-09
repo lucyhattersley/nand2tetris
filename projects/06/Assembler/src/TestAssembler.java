@@ -28,7 +28,7 @@ public class TestAssembler {
 	}	
 	
 	@Test
-	public void testFirstPassMax() {
+	public void testFirstPassMaxSymbolTable() {
 		String asm = "/Users/lucy/nand2tetris/projects/06/max/Max.asm";
 //		Assembler assembler = new Assembler();
 //		assembler.main(new String[] {asm});
@@ -44,6 +44,31 @@ public class TestAssembler {
 		assertEquals(assembler.symbolTable.get("OUTPUT_D"), Integer.valueOf(12));
 
 		assertEquals(assembler.symbolTable.get("INFINITE_LOOP"), Integer.valueOf(14));
+
+	}
+
+	@Test
+	public void testFirstPassMaxInput() {
+		String asm = "/Users/lucy/nand2tetris/projects/06/max/Max.asm";
+		Assembler assembler = new Assembler();
+		
+		assembler.parser.initialize(asm);
+
+		System.out.println("Initial input"); // Let's take a peek inside
+		for (String i : assembler.parser.input) {System.out.println(i);}
+		assertTrue(assembler.parser.input.contains("@R0")); // does it contain the first line?
+
+		// System.out.println("After first pass");
+		// assembler.firstPass(asm);
+		// assertTrue(assembler.parser.input.contains("@R0")); // does it still contain the first line?
+
+		
+		// for (String i : assembler.parser.input) {System.out.println(i);}
+		
+		// ArrayList testInput = new ArrayList();
+		// testInput.add("@R0");
+
+		// assembler.firstPass(asm);
 
 	}
 	

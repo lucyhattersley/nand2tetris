@@ -84,10 +84,7 @@ public class TestParser extends TestCase {
 		assertEquals("C_COMMAND", myParser.commandType());
 		
 		myParser.currentCommand = "(LOOP)";
-		assertEquals("L_COMMAND", myParser.commandType());
-
-		myParser.currentCommand = "     @2";		
-		
+		assertEquals("L_COMMAND", myParser.commandType());		
 	}
 	
 	@Test

@@ -8,6 +8,7 @@ public class Parser {
 
 
 	public void initialize(String filename) {
+
 		// First we open the file
 		try {
 			File myFile = new File(filename);
