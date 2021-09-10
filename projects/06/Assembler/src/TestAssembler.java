@@ -4,13 +4,15 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 public class TestAssembler {
-	String asm = "/Users/lucy/nand2tetris/projects/06/add/Add.asm";
+	String addAsm = "../add/Add.asm";
+	String maxAsm = "../max/Max.asm";
+
 	Assembler assembler = new Assembler();
 	
 	
 	@Test
 	public void testMain(){
-		assembler.main(new String[] {asm});
+		assembler.main(new String[] {addAsm});
 		assertNotNull(assembler);
 		assertNotNull(assembler.parser);
 		assertNotNull(assembler.code);
@@ -25,8 +27,7 @@ public class TestAssembler {
 	
 	@Test
 	public void testFirstPassMaxSymbolTable() {
-		String asm = "/Users/lucy/nand2tetris/projects/06/max/Max.asm";
-		assembler.firstPass(asm); // add the symbols from Max.asm to the SymbolTable
+		assembler.firstPass(maxAsm); // add the symbols from Max.asm to the SymbolTable
 
 		assertTrue(assembler.symbolTable.containsKey("OUTPUT_FIRST"));
 		assertTrue(assembler.symbolTable.containsValue(10));
@@ -37,16 +38,13 @@ public class TestAssembler {
 
 	@Test
 	public void testFirstPassMaxInput() {
-		String asm = "/Users/lucy/nand2tetris/projects/06/max/Max.asm";
-		Assembler assembler = new Assembler();
-		
-		assembler.parser.initialize(asm);
+		assembler.parser.initialize(maxAsm);
 
 		System.out.println("Initial input"); // Let's take a peek inside
 		for (String i : assembler.parser.input) {System.out.println(i);}
 		assertTrue(assembler.parser.input.contains("@R0")); // does it contain the first line?
 
-		assembler.firstPass(asm);
+		assembler.firstPass(maxAsm);
 		System.out.println("After first pass"); // Let's take a peek inside
 		for (String i : assembler.parser.input) {System.out.println(i);}
 
