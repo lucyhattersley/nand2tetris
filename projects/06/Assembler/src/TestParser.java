@@ -20,7 +20,7 @@ public class TestParser extends TestCase {
 	}
 
 	//Setup
-	String testFile = "/Users/lucy/nand2tetris/projects/06/add/Add.asm";
+	String testFile = "../add/Add.asm";
 	Parser myParser = new Parser();	
 	
 	@Test

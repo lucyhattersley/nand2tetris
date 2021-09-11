@@ -1,21 +1,26 @@
 import static org.junit.Assert.*;
-
+// import junit.framework.*;
 import org.junit.Test;
+
+import junit.extensions.TestSetup;
+
 import java.util.ArrayList;
 
 public class TestAssembler {
+
 	String addAsm = "../add/Add.asm";
 	String maxAsm = "../max/Max.asm";
-
 	Assembler assembler = new Assembler();
-	
-	
+
 	@Test
 	public void testMain(){
+
 		assembler.main(new String[] {addAsm});
 		assertNotNull(assembler);
 		assertNotNull(assembler.parser);
 		assertNotNull(assembler.code);
+		assembler = null; // clear assembler object
+
 	}
 	
 	// @Test
@@ -27,6 +32,7 @@ public class TestAssembler {
 	
 	@Test
 	public void testFirstPassMaxSymbolTable() {
+		Assembler assembler = new Assembler();
 		assembler.firstPass(maxAsm); // add the symbols from Max.asm to the SymbolTable
 
 		assertTrue(assembler.symbolTable.containsKey("OUTPUT_FIRST"));
@@ -34,10 +40,14 @@ public class TestAssembler {
 		assertEquals(assembler.symbolTable.get("OUTPUT_FIRST"), Integer.valueOf(10));
 		assertEquals(assembler.symbolTable.get("OUTPUT_D"), Integer.valueOf(12));
 		assertEquals(assembler.symbolTable.get("INFINITE_LOOP"), Integer.valueOf(14));
+		
+		// Teardown
+		assembler = null; // clear assembler object
 	}
 
 	@Test
 	public void testFirstPassMaxInput() {
+		Assembler assembler = new Assembler();
 		assembler.parser.initialize(maxAsm);
 
 		System.out.println("Initial input"); // Let's take a peek inside
@@ -67,7 +77,7 @@ public class TestAssembler {
 		testInput.add("M=D");
 		testInput.add("@INFINITE_LOOP");
 
-		// assertEquals(testInput, assembler.parser.input);
+		assertEquals(testInput, assembler.parser.input);
 		
 
 		// for (String i : assembler.parser.input) {System.out.println(i);}
