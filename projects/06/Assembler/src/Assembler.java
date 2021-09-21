@@ -21,6 +21,7 @@ public class Assembler {
 		
 	}
 
+	// TODO: Fix duplication errror in parser.input here
 	public void firstPass(String asm) {
 		parser.initialize(asm);
 		
