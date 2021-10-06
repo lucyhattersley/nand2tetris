@@ -78,16 +78,16 @@ public class TestAssembler {
 		testInput.add("0;JMP");
 
 		assertEquals(testInput, assembler.parser.input);
-		
 
-		// for (String i : assembler.parser.input) {System.out.println(i);}
+		assembler = null; // clear Assembler object
 		
-		// ArrayList testInput = new ArrayList();
-		// testInput.add("@R0");
-
-		// assembler.firstPass(asm);
 	}
 	
+	@Test
+	public void testSecondPass() {
+		// Todo
+	}
+
 //	@Test
 //	public void testAssembler() throws Exception {
 //		assertNotNull(myAssembler);
