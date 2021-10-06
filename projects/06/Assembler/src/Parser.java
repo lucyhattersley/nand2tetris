@@ -30,6 +30,7 @@ public class Parser {
 					if (!finished) {
 						if (c == comment) { // we found a comment so...
 							finished = true; // we stop writing chars to newLine
+							break;
 						} else {
 							newLine = newLine + c; // write the ASM char to newLine
 						}
