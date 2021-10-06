@@ -48,13 +48,12 @@ public class TestAssembler {
 	@Test
 	public void testFirstPassMaxInput() {
 		Assembler assembler = new Assembler();
-		assembler.parser.initialize(maxAsm);
+		assembler.firstPass(maxAsm);
 
 		System.out.println("Initial input"); // Let's take a peek inside
 		for (String i : assembler.parser.input) {System.out.println(i);}
 		assertTrue(assembler.parser.input.contains("@R0")); // does it contain the first line?
 
-		assembler.firstPass(maxAsm);
 		System.out.println("After first pass"); // Let's take a peek inside
 		for (String i : assembler.parser.input) {System.out.println(i);}
 
@@ -76,6 +75,7 @@ public class TestAssembler {
 		testInput.add("@R2");
 		testInput.add("M=D");
 		testInput.add("@INFINITE_LOOP");
+		testInput.add("0;JMP");
 
 		assertEquals(testInput, assembler.parser.input);
 		
