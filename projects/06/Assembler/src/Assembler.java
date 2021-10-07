@@ -41,8 +41,23 @@ public class Assembler {
 		parser.input.addAll(inputWithoutL);
 	}
 	
-	public void secondPass(String asm) {
+	public void secondPass() {
 		//TODO
+
+		// Parse each line
+
+		// Where A-instruction -> look up number in symbol table
+			// if found replace with numeric meaning and translate
+
+			// if not found add to to Symbol table and translate
+			// RAM Numbers start at address 16
+
+		// C_Command?
+		// L_Command?
+
+		// OUTPUT to filename.hack? Here or in separate function
+
+		
 	}
 	
 	public void initialize() {

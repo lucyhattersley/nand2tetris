@@ -86,6 +86,11 @@ public class TestAssembler {
 	@Test
 	public void testSecondPass() {
 		// Todo
+		Assembler assembler = new Assembler();
+		assembler.firstPass(maxAsm);
+
+		assembler.secondPass();
+
 	}
 
 //	@Test
