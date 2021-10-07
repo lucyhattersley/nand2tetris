@@ -23,13 +23,6 @@ public class TestAssembler {
 
 	}
 	
-	// @Test
-	// public void testFirstPass() throws Exception {
-	// 	assembler.firstPass(asm);
-	// 	ArrayList testInputDuplication = new ArrayList();
-	// 	assertEquals(assembler.inputDuplication, testInputDuplication); // should be empty with Add.hack
-	// }	
-	
 	@Test
 	public void testFirstPassMaxSymbolTable() {
 		Assembler assembler = new Assembler();
@@ -84,12 +77,15 @@ public class TestAssembler {
 	}
 	
 	@Test
-	public void testSecondPass() {
+	public void testSecondPassAdd() {
 		// Todo
 		Assembler assembler = new Assembler();
-		assembler.firstPass(maxAsm);
+		assembler.firstPass(addAsm);
 
 		assembler.secondPass();
+
+		// Teardown
+		assembler = null;
 
 	}
 
