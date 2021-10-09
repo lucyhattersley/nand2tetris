@@ -4,6 +4,7 @@ public class Assembler {
 	HashMap<String, Integer> symbolTable = new HashMap<String, Integer>();
 	Parser parser = new Parser();	
 	Code code = new Code();
+	ArrayList output = new ArrayList<String>();
 	
 	public static void main(String[] args) {
 		
@@ -42,7 +43,11 @@ public class Assembler {
 	}
 	
 	public void secondPass() {
-		//TODO
+		while(parser.hasMoreCommands()) {
+			parser.advance();
+			String currentCommand = parser.symbol();
+			output.add(currentCommand);
+		}
 
 		// Parse each line
 

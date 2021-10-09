@@ -84,6 +84,16 @@ public class TestAssembler {
 
 		assembler.secondPass();
 
+		ArrayList testOutput = new ArrayList<String>();
+		testOutput.add("0000000000000010");
+		testOutput.add("1110110000010000");
+		testOutput.add("0000000000000011");
+		testOutput.add("1110000010010000");
+		testOutput.add("0000000000000000");
+		testOutput.add("1110001100001000");
+
+		assertEquals(testOutput, assembler.output);
+
 		// Teardown
 		assembler = null;
 

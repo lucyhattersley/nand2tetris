@@ -90,9 +90,12 @@ public class Parser {
 			return currentCommand.substring(1);
 		} else if (this.commandType() == "L_COMMAND") {
 			return currentCommand.substring(1, currentCommand.length() - 1);
+		} else if (this.commandType() == "C_COMMAND") {
+			return dest() + comp() + jump();
 		} else {
-			return ""; // failsafe. C_COMMAND has no symbol
+			return ""; // failsafe
 		}
+
 	}
 	
 	public String dest() {
