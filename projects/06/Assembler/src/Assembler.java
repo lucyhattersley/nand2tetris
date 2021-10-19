@@ -44,21 +44,27 @@ public class Assembler {
 	
 	public void secondPass() {
 
-		Code myCode = new Code();
-
 		while(parser.hasMoreCommands()) {
 			parser.advance();
-			String currentCommand = parser.symbol();
 			
 			if (parser.commandType() == "A_COMMAND") {
+				String currentCommand = parser.symbol();
 				int i = Integer.parseInt(currentCommand);
-				// String.format("%5s", Integer.toBinaryString(data)).replace(' ', '0');
 				String b = String.format("%16s", Integer.toBinaryString(i)).replace(' ', '0');
 				
 				output.add(b);
 			}
 
+			else if (parser.commandType() == "C_COMMAND") {
+				
+				String d = code.dest(parser.dest());
+				String c = code.comp(parser.comp());
+				String j = code.jump(parser.jump());
+				output.add("111" + d + c + j);
+			}
+
 			else {
+				String currentCommand = parser.symbol();
 				output.add(currentCommand);
 			}
 		}

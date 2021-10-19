@@ -1,9 +1,5 @@
 import static org.junit.Assert.*;
-// import junit.framework.*;
 import org.junit.Test;
-
-import junit.extensions.TestSetup;
-
 import java.util.ArrayList;
 
 public class TestAssembler {
@@ -92,8 +88,12 @@ public class TestAssembler {
 		testOutput.add("0000000000000000");
 		testOutput.add("1110001100001000");
 
-		// Test first item. Binary
+		// Test first item. A_COMMAND
 		assertEquals(testOutput.get(0), assembler.output.get(0));
+
+		// Test second item. C_COMMAND
+		assertEquals(testOutput.get(1), assembler.output.get(1));
+
 
 		// Teardown
 		assembler = null;
