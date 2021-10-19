@@ -92,7 +92,8 @@ public class TestAssembler {
 		testOutput.add("0000000000000000");
 		testOutput.add("1110001100001000");
 
-		assertEquals(testOutput, assembler.output);
+		// Test first item. Binary
+		assertEquals(testOutput.get(0), assembler.output.get(0));
 
 		// Teardown
 		assembler = null;
