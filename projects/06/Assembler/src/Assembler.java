@@ -60,6 +60,7 @@ public class Assembler {
 				String d = code.dest(parser.dest());
 				String c = code.comp(parser.comp());
 				String j = code.jump(parser.jump());
+
 				output.add("111" + d + c + j);
 			}
 

@@ -65,15 +65,18 @@ public class Code {
     }
 
     public String comp(String mnem) {    	
-    	return c_table.get(mnem);
+    	String c =  c_table.get(mnem);
+		if (c != null) { return c; } else {return "0000000";}
     }
 
     public String dest(String mnem) {
-    	return d_table.get(mnem);
+    	String d =  d_table.get(mnem);
+		if (d != null) { return d; } else {return "000";}
     }
 
     public String jump(String mnem) {
-    	return j_table.get(mnem);
+    	String j =  j_table.get(mnem);
+		if (j != null) { return j; } else {return "000";}
     }
  
 }
