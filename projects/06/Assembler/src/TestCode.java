@@ -1,4 +1,5 @@
 import junit.framework.*;
+import junit.extensions.TestSetup;
 
 public class TestCode extends TestCase {
 	
