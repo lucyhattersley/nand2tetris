@@ -81,12 +81,12 @@ public class TestAssembler {
 		assembler.secondPass();
 
 		ArrayList testOutput = new ArrayList<String>();
-		testOutput.add("0000000000000010");
-		testOutput.add("1110110000010000");
-		testOutput.add("0000000000000011");
-		testOutput.add("1110000010010000");
-		testOutput.add("0000000000000000");
-		testOutput.add("1110001100001000");
+		testOutput.add("0000000000000010"); // @2
+		testOutput.add("1110110000010000"); // D=A
+		testOutput.add("0000000000000011"); // @3
+		testOutput.add("1110000010010000"); // D=D+A
+		testOutput.add("0000000000000000"); // @0
+		testOutput.add("1110001100001000"); // M=D
 
 		// Test first item. A_COMMAND
 		assertEquals(testOutput.get(0), assembler.output.get(0));
