@@ -94,6 +94,10 @@ public class TestAssembler {
 		// Test second item. C_COMMAND
 		assertEquals(testOutput.get(1), assembler.output.get(1));
 
+		// Test array
+		assertEquals(testOutput, assembler.output);
+
+
 
 		// Teardown
 		assembler = null;

@@ -61,7 +61,7 @@ public class Assembler {
 				String c = code.comp(parser.comp());
 				String j = code.jump(parser.jump());
 
-				output.add("111" + d + c + j);
+				output.add("111" + c + d + j);
 			}
 
 			else {
