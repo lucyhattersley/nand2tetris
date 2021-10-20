@@ -48,6 +48,8 @@ public class Assembler {
 			parser.advance();
 			
 			if (parser.commandType() == "A_COMMAND") {
+				// TODO Variable integration
+
 				String currentCommand = parser.symbol();
 				int i = Integer.parseInt(currentCommand);
 				String b = String.format("%16s", Integer.toBinaryString(i)).replace(' ', '0');
@@ -62,6 +64,10 @@ public class Assembler {
 				String j = code.jump(parser.jump());
 
 				output.add("111" + c + d + j);
+			}
+
+			else if (parser.commandType() == "L_COMMAND") {
+
 			}
 
 			else {
