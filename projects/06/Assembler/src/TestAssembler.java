@@ -74,7 +74,7 @@ public class TestAssembler {
 	
 	@Test
 	public void testSecondPassAdd() {
-		// Todo
+		
 		Assembler assembler = new Assembler();
 		assembler.firstPass(addAsm);
 
@@ -97,12 +97,30 @@ public class TestAssembler {
 		// Test array
 		assertEquals(testOutput, assembler.output);
 
+		// Teardown
+		assembler = null;
+	}
 
+	@Test
+	public void testSecondPassMax() {
+		
+		Assembler assembler = new Assembler();
+		assembler.firstPass(maxAsm);
+
+		assembler.secondPass();
+
+		ArrayList testOutput = new ArrayList<String>();
+		testOutput.add("0000000000000010"); // @2
+
+		// Test array
+		assertEquals(testOutput, assembler.output);
 
 		// Teardown
 		assembler = null;
 
+
 	}
+	
 
 //	@Test
 //	public void testAssembler() throws Exception {
