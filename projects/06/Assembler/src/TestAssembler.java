@@ -107,7 +107,7 @@ public class TestAssembler {
 		Assembler assembler = new Assembler();
 		assembler.firstPass(maxAsm);
 
-		assembler.secondPass();
+		// assembler.secondPass();
 
 		// ArrayList testOutput = new ArrayList<String>();
 		// testOutput.add("0000000000000000");
@@ -132,7 +132,6 @@ public class TestAssembler {
 
 		// Teardown
 		assembler = null;
-
 
 	}
 	
