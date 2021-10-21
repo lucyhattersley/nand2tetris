@@ -76,7 +76,7 @@ public class Parser {
 		 *  L_COMMAND
 		 */
 		
-		if(currentCommand.startsWith("@")) {
+		if( currentCommand.startsWith("@") ) {
 			return("A_COMMAND");
 		} else if(currentCommand.contains("=") || currentCommand.contains(";")) {
 			return("C_COMMAND");
@@ -86,7 +86,7 @@ public class Parser {
 	}
 	
 	public String symbol() {
-		if(this.commandType() == "A_COMMAND") {
+		if( this.commandType() == "A_COMMAND" ) {
 			return currentCommand.substring(1);
 		} else if (this.commandType() == "L_COMMAND") {
 			return currentCommand.substring(1, currentCommand.length() - 1);
@@ -96,13 +96,21 @@ public class Parser {
 
 	}
 
-	public static boolean isNumeric(String strNum) {
-		if (strNum == null) {
+	public String getCurrent() {
+		return currentCommand;
+	}
+
+
+	public boolean isNumeric() {
+	// From https://www.baeldung.com/java-check-string-number
+	// Outputs true if currentCommand.symbol is numeric. Otherwise false 
+	// Output: Bool
+		if ( this.symbol() == null ) {
 			return false;
 		}
 		try {
-			double d = Double.parseDouble(strNum);
-		} catch (NumberFormatException nfe) {
+			double d = Double.parseDouble( this.symbol() );
+		} catch ( NumberFormatException nfe ) {
 			return false;
 		}
 		return true;
