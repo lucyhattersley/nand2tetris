@@ -49,10 +49,10 @@ public class Assembler {
 			Integer symbolTableVal = 16;
 			
 			if (parser.commandType() == "A_COMMAND") {
-				String currentCommand = parser.symbol();
+				String currentSymbol = parser.symbol();
 
 				if ( !parser.isNumeric() ) {
-					if ( symbolTable.containsKey(currentCommand) ) {
+					if ( symbolTable.containsKey(currentSymbol) ) {
 						output.add(parser.symbol());
 					} 
 					else {
@@ -63,7 +63,7 @@ public class Assembler {
 				
 				else {
 
-					int i = Integer.parseInt(currentCommand);
+					int i = Integer.parseInt(currentSymbol);
 					String b = String.format("%16s", Integer.toBinaryString(i)).replace(' ', '0');
 					
 					output.add(b);	
@@ -85,8 +85,8 @@ public class Assembler {
 			}
 
 			else {
-				String currentCommand = parser.symbol();
-				output.add(currentCommand);
+				String currentSymbol = parser.symbol();
+				output.add(currentSymbol);
 			}
 		}
 
