@@ -105,7 +105,6 @@ public class TestAssembler {
 	public void testSecondPassMax() {
 		
 		Assembler assembler = new Assembler();
-		assembler.initialize();
 
 		assembler.firstPass(maxAsm);
 
