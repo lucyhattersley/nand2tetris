@@ -3,7 +3,6 @@ import java.util.*;
 public class Assembler {
 	// HashMap<String, Integer> symbolTable = new HashMap<String, Integer>();
 	SymbolTable symbolTable = new SymbolTable();
-
 	Parser parser = new Parser();	
 	Code code = new Code();
 	ArrayList output = new ArrayList<String>();
@@ -11,7 +10,6 @@ public class Assembler {
 	public static void main(String[] args) {
 		
 		Assembler assembler = new Assembler();
-		assembler.symbolTable.initialize();
 		
 		String asm = new String();
 		if(args.length >= 0) {
@@ -23,6 +21,9 @@ public class Assembler {
 		} else {
 			System.out.println("Missing argument: ASM file");
 		}
+
+		assembler.firstPass(asm);
+		assembler.secondPass();
 		
 	}
 
