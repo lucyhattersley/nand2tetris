@@ -1,13 +1,15 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-public class TestAssembler {
+public class TestSymbolTable {
 
     SymbolTable testSymbolTable = new SymbolTable();
 
     @Test
 	public void testInit() {
-        assertFalse(testSymbolTable.symbolTable);
+        testSymbolTable.initialize();
+        
+        assertTrue( testSymbolTable.contains("R0") );
     
     }
 
