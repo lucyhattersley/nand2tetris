@@ -1,7 +1,8 @@
 import java.util.*;
 
 public class Assembler {
-	HashMap<String, Integer> symbolTable = new HashMap<String, Integer>();
+	// HashMap<String, Integer> symbolTable = new HashMap<String, Integer>();
+	SymbolTable symbolTable = new SymbolTable();
 
 	Parser parser = new Parser();	
 	Code code = new Code();
@@ -10,7 +11,8 @@ public class Assembler {
 	public static void main(String[] args) {
 		
 		Assembler assembler = new Assembler();
-		assembler.initialize();
+		assembler.symbolTable.initialize();
+		
 		String asm = new String();
 		if(args.length >= 0) {
 			asm = args[0];
@@ -26,6 +28,7 @@ public class Assembler {
 
 	public void firstPass(String asm) {
 		parser.initialize(asm);
+		symbolTable.initialize();
 		
 		int lineNumber = 0;
 		ArrayList<String> inputWithoutL = new ArrayList<String>(); // where we hold all commands bar L_COMMANDs
@@ -34,7 +37,7 @@ public class Assembler {
 			parser.advance();
 			
 			if(parser.commandType() == "L_COMMAND") {
-				symbolTable.put(parser.symbol(), lineNumber);
+				symbolTable.addEntry(parser.symbol(), lineNumber);
 			} else {
 				inputWithoutL.add(parser.currentCommand);
 				lineNumber += 1;
@@ -54,11 +57,11 @@ public class Assembler {
 				String currentSymbol = parser.symbol();
 
 				if ( !parser.isNumeric() ) {
-					if ( symbolTable.containsKey(currentSymbol) ) {
+					if ( symbolTable.contains(currentSymbol) ) {
 						output.add(parser.symbol());
 					} 
 					else {
-						symbolTable.put(parser.symbol(), symbolTableVal);
+						symbolTable.addEntry(parser.symbol(), symbolTableVal);
 						symbolTableVal += 1;
 					}
 				} 
