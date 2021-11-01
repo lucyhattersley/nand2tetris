@@ -102,6 +102,13 @@ public class TestAssembler {
 	}
 
 	@Test
+	public void testIntToBin() {
+		Assembler assembler = new Assembler();
+		assertEquals(assembler.intToBin(0), "0000000000000000");
+
+	}
+
+	@Test
 	public void testSecondPassMax() {
 		
 		Assembler assembler = new Assembler();

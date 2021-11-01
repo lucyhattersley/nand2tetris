@@ -6,6 +6,14 @@ public class Assembler {
 	Parser parser = new Parser();	
 	Code code = new Code();
 	ArrayList output = new ArrayList<String>();
+
+	public String intToBin(Integer num) {
+
+		int i = Integer.parseInt(num);
+		String b = String.format("%16s", Integer.toBinaryString(num)).replace(' ', '0');
+		return(b);
+
+	}
 	
 	public static void main(String[] args) {
 		
@@ -59,7 +67,8 @@ public class Assembler {
 
 				if ( !parser.isNumeric() ) {
 					if ( symbolTable.contains(currentSymbol) ) {
-						output.add(parser.symbol());
+
+						output.add(symbolTable.getAddress(currentSymbol));
 					} 
 					else {
 						symbolTable.addEntry(parser.symbol(), symbolTableVal);
