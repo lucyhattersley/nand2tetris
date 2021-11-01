@@ -13,4 +13,16 @@ public class TestSymbolTable {
     
     }
 
+    @Test
+    public void testAddEntry() {
+        testSymbolTable.addEntry("Test", 0);
+        assertTrue( testSymbolTable.contains("Test") );
+    }
+
+    @Test
+    public void testGetAddress() {
+        testSymbolTable.addEntry("Test", 0);
+        assertEquals (testSymbolTable.getAddress("Test"), Integer.valueOf(0));    
+    }
+
 }

@@ -39,4 +39,8 @@ public class SymbolTable {
 		return( symbolTable.containsKey(symbol) );
 	}
 
+	public Integer getAddress(String symbol) {
+		return (symbolTable.get(symbol));
+	}
+
 }
