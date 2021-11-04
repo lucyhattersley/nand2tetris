@@ -104,7 +104,15 @@ public class TestAssembler {
 	@Test
 	public void testIntToBin() {
 		Assembler assembler = new Assembler();
-		assertEquals(assembler.intToBin(0), "0000000000000000");
+		Integer num = 0;
+		assertEquals(assembler.intToBin(num), "0000000000000000");
+
+		num = 1;
+		assertEquals(assembler.intToBin(num), "0000000000000001");
+
+		num = 2;
+		assertEquals(assembler.intToBin(num), "0000000000000010");
+
 
 	}
 

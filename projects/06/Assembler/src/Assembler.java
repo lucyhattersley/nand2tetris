@@ -6,14 +6,6 @@ public class Assembler {
 	Parser parser = new Parser();	
 	Code code = new Code();
 	ArrayList output = new ArrayList<String>();
-
-	public String intToBin(Integer num) {
-
-		int i = Integer.parseInt(num);
-		String b = String.format("%16s", Integer.toBinaryString(num)).replace(' ', '0');
-		return(b);
-
-	}
 	
 	public static void main(String[] args) {
 		
@@ -34,6 +26,14 @@ public class Assembler {
 		assembler.secondPass();
 		
 	}
+
+	public String intToBin(Integer num) {
+		//int i = Integer.parseInt(num);
+		String b = String.format("%16s", Integer.toBinaryString(num)).replace(' ', '0');
+		return(b);
+
+	}
+
 
 	public void firstPass(String asm) {
 		parser.initialize(asm);
