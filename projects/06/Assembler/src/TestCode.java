@@ -1,6 +1,8 @@
 import junit.framework.*;
-import junit.extensions.TestSetup;
 import org.junit.Test;
+
+// This isn't used but keeping around just in case (for now)
+//import junit.extensions.TestSetup; 
 
 
 public class TestCode extends TestCase {

@@ -113,6 +113,24 @@ public class TestAssembler {
 		num = 2;
 		assertEquals(assembler.intToBin(num), "0000000000000010");
 
+		assembler = null;
+
+	}
+
+	@Test
+	public void testStringToBin() {
+		Assembler assembler = new Assembler();
+		String num = "0";
+		assertEquals(assembler.stringToBin(num), "0000000000000000");
+
+		num = "1";
+		assertEquals(assembler.stringToBin(num), "0000000000000001");
+
+		num = "2";
+		assertEquals(assembler.stringToBin(num), "0000000000000010");
+
+		assembler = null;
+
 
 	}
 

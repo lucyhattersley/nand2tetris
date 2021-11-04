@@ -5,7 +5,7 @@ public class Assembler {
 	SymbolTable symbolTable = new SymbolTable();
 	Parser parser = new Parser();	
 	Code code = new Code();
-	ArrayList output = new ArrayList<String>();
+	ArrayList<String> output = new ArrayList<String>();
 	
 	public static void main(String[] args) {
 		
@@ -33,6 +33,12 @@ public class Assembler {
 
 	}
 
+	public String stringToBin(String num) {
+		Integer i = Integer.parseInt(num);
+		String b = String.format("%16s", Integer.toBinaryString(i)).replace(' ', '0');
+		return(b);
+
+	}
 
 	public void firstPass(String asm) {
 		parser.initialize(asm);
@@ -61,12 +67,12 @@ public class Assembler {
 			parser.advance();
 			Integer symbolTableVal = 16;
 			
-			if (parser.commandType() == "A_COMMAND") {
+			if( parser.commandType() == "A_COMMAND" ) {
 				String currentSymbol = parser.symbol();
 
 				if ( !parser.isNumeric() ) {
 					if ( symbolTable.contains(currentSymbol) ) {
-
+						// currentSymbol needs converting to binary? stringToBin?
 						output.add(symbolTable.getAddress(currentSymbol));
 					} 
 					else {
