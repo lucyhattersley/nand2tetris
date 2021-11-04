@@ -28,7 +28,6 @@ public class Assembler {
 	}
 
 	public String intToBin(Integer num) {
-		//int i = Integer.parseInt(num);
 		String b = String.format("%16s", Integer.toBinaryString(num)).replace(' ', '0');
 		return(b);
 
