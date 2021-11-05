@@ -72,7 +72,6 @@ public class Assembler {
 
 				if ( !parser.isNumeric() ) {
 					if ( symbolTable.contains(currentSymbol) ) {
-						// currentSymbol needs converting to binary? stringToBin?
 						Integer key = symbolTable.getAddress(currentSymbol);
 						String binary = intToBin(key);
 						output.add(binary);

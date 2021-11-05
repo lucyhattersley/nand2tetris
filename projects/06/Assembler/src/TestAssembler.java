@@ -162,11 +162,32 @@ public class TestAssembler {
 		testOutput.add("0000000000001110");
 		testOutput.add("1110101010000111");
 		
-		// Test first item. A_COMMAND
+		// Test first item. A_COMMAND: R0
 		assertEquals(testOutput.get(0), assembler.output.get(0));
 
+		// Test first item. C_COMMAND: D=M
+		assertEquals(testOutput.get(1), assembler.output.get(1));
 
-		// Test array
+		//Test
+		assertEquals(testOutput.get(3), assembler.output.get(3));
+
+		//Test
+		assertEquals(testOutput.get(4), assembler.output.get(4));
+
+		//Test
+		assertEquals(testOutput.get(5), assembler.output.get(5));
+
+		//Test
+		assertEquals(testOutput.get(6), assembler.output.get(6));
+
+		//Test
+		assertEquals(testOutput.get(7), assembler.output.get(7));
+
+		//Test
+		assertEquals(testOutput.get(8), assembler.output.get(8));
+
+
+		//Test array
 		// assertEquals(testOutput, assembler.output);
 
 		// Teardown

@@ -124,6 +124,7 @@ public class Parser {
 		return "";
 	}
 	
+	// This not working for D;JGT command (returning D;JGT not in code table (so returning 000))
 	public String comp() {
 		if (this.commandType() == "C_COMMAND")  {
 			String[] commands = currentCommand.split("=");
