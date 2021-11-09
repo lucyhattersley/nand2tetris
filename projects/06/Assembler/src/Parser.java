@@ -118,7 +118,7 @@ public class Parser {
 	
 	public String dest() {
 		if (this.commandType() == "C_COMMAND") {
-			String[] commands = currentCommand.split("=");
+			String[] commands = currentCommand.split("=|;");
 			return commands[0];
 		}
 		return "";

@@ -110,6 +110,10 @@ public class TestParser extends TestCase {
 		
 		myParser.currentCommand = "M=D";
 		assertEquals("M", myParser.dest());
+
+		myParser.currentCommand = "D;JGT";
+		assertEquals("D", myParser.dest());
+
 	}
 	
 	@Test
