@@ -186,9 +186,8 @@ public class TestAssembler {
 		//Test
 		assertEquals(testOutput.get(8), assembler.output.get(8));
 
-
 		//Test array
-		// assertEquals(testOutput, assembler.output);
+		assertEquals(testOutput, assembler.output);
 
 		// Teardown
 		assembler = null;

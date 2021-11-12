@@ -118,17 +118,29 @@ public class Parser {
 	
 	public String dest() {
 		if (this.commandType() == "C_COMMAND") {
-			String[] commands = currentCommand.split("=|;");
-			return commands[0];
+			if (currentCommand.contains("=")) {
+				String[] commands = currentCommand.split("=");
+				return commands[0];	
+			} else if (currentCommand.contains(";")) {
+				String[] commands = currentCommand.split("=");
+				return commands[0];	
+			}
 		}
-		return "";
+		return ""; // failsafe
 	}
 	
 	// This not working for D;JGT command (returning D;JGT not in code table (so returning 000))
 	public String comp() {
 		if (this.commandType() == "C_COMMAND")  {
-			String[] commands = currentCommand.split("=");
-			return commands[commands.length-1];
+			if (currentCommand.contains(";")) {
+				String[] commands = currentCommand.split(";");
+				return commands[0];	
+			}
+			else if (currentCommand.contains("=")) {
+				String[] commands = currentCommand.split("=");
+				return commands[1];	
+
+			}
 		}
 		return "";
 	}
