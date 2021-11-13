@@ -198,7 +198,7 @@ public class TestAssembler {
 	@Test
 	public void testAssembler() throws Exception {
 		String asm = new String();
-		addAsm = "..add/Add.asm";
+		addAsm = "../add/Add.asm";
 	
 		Assembler assembler = new Assembler();
 

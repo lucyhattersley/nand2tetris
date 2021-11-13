@@ -1,5 +1,6 @@
 import java.util.*;
-import java.io.File;
+import java.io.*;
+import java.nio.file.Path;
 
 public class Assembler {
 	// HashMap<String, Integer> symbolTable = new HashMap<String, Integer>();
@@ -116,8 +117,13 @@ public class Assembler {
 
 	// Output
 	public void output(String asm) {
+		File myFile = new File(asm);
+		Path path = myFile.toPath();
+		String fileName = myFile.getName();
+		String fileNoExt = fileName.split(".")[0];
+
 		try {
-			File file = new File(asm + "1.hack");
+			File file = new File(path + fileName + "1.hack");
 			file.createNewFile();
 			System.out.println("File" + file); 
 		} catch(Exception ex) {
