@@ -127,6 +127,8 @@ public class Assembler {
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		}
+		
+		// implement FileWriter https://www.tutorialspoint.com/java-program-to-write-int-array-to-a-file
 	}
 		
 	
