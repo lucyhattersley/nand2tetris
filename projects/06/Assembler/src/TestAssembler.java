@@ -197,10 +197,14 @@ public class TestAssembler {
 	
 	@Test
 	public void testAssembler() throws Exception {
+		String asm = new String();
+		addAsm = "..add/Add.asm";
+	
 		Assembler assembler = new Assembler();
 
-		assembler.firstPass(maxAsm);
+		assembler.firstPass(addAsm);
 		assembler.secondPass();
+		assembler.output(addAsm);
 		
 		// Load Add.hack
 		FileReader fr = new FileReader("/Users/lucy/nand2tetris/projects/06/add/Add.hack");

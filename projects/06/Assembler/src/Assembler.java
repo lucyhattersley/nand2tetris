@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.File;
 
 public class Assembler {
 	// HashMap<String, Integer> symbolTable = new HashMap<String, Integer>();
@@ -16,8 +17,8 @@ public class Assembler {
 			asm = args[0];
 
 			assembler.firstPass(asm);			
-			assembler.secondPass(asm);
-			// assembler.output(asm)
+			assembler.secondPass();
+			// assembler.output()
 
 		} else {
 			System.out.println("Missing argument: ASM file");
@@ -111,13 +112,19 @@ public class Assembler {
 				output.add(currentSymbol);
 			}
 		}
-
-		// OUTPUT to filename.hack? Here or in separate function
-		public void output(asm) {
-			// Create asm1.hack file here
-		}
-
-		
 	}
+
+	// Output
+	public void output(String asm) {
+		try {
+			File file = new File(asm + "1.hack");
+			file.createNewFile();
+			System.out.println("File" + file); 
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+		
+	
 
 }
