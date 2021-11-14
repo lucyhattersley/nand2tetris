@@ -115,24 +115,18 @@ public class Assembler {
 	}
 
 	// Output
-	public void output(String fileName) {
+	public void output(String fileName) throws IOException {
 		String[] tokens = fileName.split("\\.(?=[^\\.]+$)");
 		String path = tokens[0];
 
-		try {
-			File file = new File(path + "1.hack");
-			file.createNewFile();
-			System.out.println("File" + file); 
-		} catch(Exception ex) {
-			ex.printStackTrace();
-		}
-		
-		// implement FileWriter https://www.tutorialspoint.com/java-program-to-write-int-array-to-a-file
+		File file = new File(path + "1.hack");
+		file.createNewFile();
+		FileWriter fw = new FileWriter(file);
 		for (int i = 0;i < output.size(); i++) {
-			System.out.print(output.get(i) + " ");
+			fw.append(output.get(i) + "\n");
 		}
+		fw.close();
+				
 	}
 		
-	
-
 }
