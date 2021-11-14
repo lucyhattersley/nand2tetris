@@ -81,7 +81,7 @@ public class TestAssembler {
 		assembler.firstPass(addAsm);
 		assembler.secondPass();
 
-		ArrayList testOutput = new ArrayList<String>();
+		ArrayList<String> testOutput = new ArrayList<String>();
 		testOutput.add("0000000000000010"); // @2
 		testOutput.add("1110110000010000"); // D=A
 		testOutput.add("0000000000000011"); // @3
@@ -144,7 +144,7 @@ public class TestAssembler {
 
 		assembler.secondPass();
 
-		ArrayList testOutput = new ArrayList<String>();
+		ArrayList<String> testOutput = new ArrayList<String>();
 
 		testOutput.add("0000000000000000");
 		testOutput.add("1111110000010000");

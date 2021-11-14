@@ -1,13 +1,12 @@
 import java.util.*;
 import java.io.*;
-import java.nio.file.Path;
 
 public class Assembler {
 	// HashMap<String, Integer> symbolTable = new HashMap<String, Integer>();
 	SymbolTable symbolTable = new SymbolTable();
 	Parser parser = new Parser();	
 	Code code = new Code();
-	ArrayList<String> output = new ArrayList<String>();
+	List<String> output = new ArrayList<String>();
 	
 	public static void main(String[] args) {
 		
@@ -129,6 +128,9 @@ public class Assembler {
 		}
 		
 		// implement FileWriter https://www.tutorialspoint.com/java-program-to-write-int-array-to-a-file
+		for (int i = 0;i < output.size(); i++) {
+			System.out.print(output.get(i) + " ");
+		}
 	}
 		
 	
