@@ -196,7 +196,7 @@ public class TestAssembler {
 	}
 	
 	@Test
-	public void testAssembler() throws Exception {
+	public void testAssemblerAdd() throws Exception {
 		String asm = new String();
 		addAsm = "../add/Add.asm";
 	
@@ -225,17 +225,65 @@ public class TestAssembler {
 		
 	}
 	
-	/*
-	 * Assembler should initalize with the following
-	 * SP 0
-	 * LCL 1
-	 * ARG 2
-	 * THIS 3
-	 * THAT 4
-	 * R0-R15 0-15
-	 * SCREEN 16384
-	 * KBD 24576
-	 */
+	@Test
+	public void testAssemblerMax() throws Exception {
+		String asm = new String();
+		maxAsm = "../max/Max.asm";
+	
+		Assembler assembler = new Assembler();
+
+		assembler.firstPass(addAsm);
+		assembler.secondPass();
+		assembler.output(addAsm);
+		
+		// Load Add.hack
+		FileReader fr = new FileReader(maxAsm);
+		BufferedReader br = new BufferedReader(fr);
+		String response = new String();
+		for(String line; (line=br.readLine()) != null; response += line); 
+		br.close();
+				
+		// Load Add1.hack
+		FileReader fr2 = new FileReader(maxAsm);
+		BufferedReader br2 = new BufferedReader(fr2);
+		String response2 = new String();
+		for(String line; (line=br2.readLine()) != null; response2 += line); 
+		br2.close();		
+
+		// Diff files
+		assertEquals(response, response2);
+		
+	}
+	
+	@Test
+	public void testAssemblerPong() throws Exception {
+		String asm = new String();
+		maxAsm = "../pong/Pong.asm";
+	
+		Assembler assembler = new Assembler();
+
+		assembler.firstPass(addAsm);
+		assembler.secondPass();
+		assembler.output(addAsm);
+		
+		// Load Add.hack
+		FileReader fr = new FileReader(maxAsm);
+		BufferedReader br = new BufferedReader(fr);
+		String response = new String();
+		for(String line; (line=br.readLine()) != null; response += line); 
+		br.close();
+				
+		// Load Add1.hack
+		FileReader fr2 = new FileReader(maxAsm);
+		BufferedReader br2 = new BufferedReader(fr2);
+		String response2 = new String();
+		for(String line; (line=br2.readLine()) != null; response2 += line); 
+		br2.close();		
+
+		// Diff files
+		assertEquals(response, response2);
+		
+	}
 	
 
 }
