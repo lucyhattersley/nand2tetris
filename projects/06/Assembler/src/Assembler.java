@@ -2,7 +2,6 @@ import java.util.*;
 import java.io.*;
 
 public class Assembler {
-	// HashMap<String, Integer> symbolTable = new HashMap<String, Integer>();
 	SymbolTable symbolTable = new SymbolTable();
 	Parser parser = new Parser();	
 	Code code = new Code();
