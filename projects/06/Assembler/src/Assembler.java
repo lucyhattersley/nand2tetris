@@ -18,7 +18,7 @@ public class Assembler {
 
 			assembler.firstPass(asm);			
 			assembler.secondPass();
-			// assembler.output()
+			assembler.output(asm);
 
 		} else {
 			System.out.println("Missing argument: ASM file");
@@ -115,18 +115,21 @@ public class Assembler {
 	}
 
 	// Output
-	public void output(String fileName) throws IOException {
+	public void output(String fileName) {
 		String[] tokens = fileName.split("\\.(?=[^\\.]+$)");
 		String path = tokens[0];
 
-		File file = new File(path + "1.hack");
-		file.createNewFile();
-		FileWriter fw = new FileWriter(file);
-		for (int i = 0;i < output.size(); i++) {
-			fw.append(output.get(i) + "\n");
-		}
-		fw.close();
-				
+		try {
+			File file = new File(path + "1.hack");
+			file.createNewFile();
+			FileWriter fw = new FileWriter(file);
+			for (int i = 0;i < output.size(); i++) {
+				fw.append(output.get(i) + "\n");
+				}
+			fw.close();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			}		
 	}
 		
 }
