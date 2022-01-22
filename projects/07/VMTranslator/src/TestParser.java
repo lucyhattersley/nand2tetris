@@ -16,4 +16,11 @@ public class TestParser extends TestCase  {
 
     }
 
+    @Test
+    public void testHasMoreCommands() {
+        myParser.initialize(testFile);
+        assertTrue(myParser.hasMoreCommands());
+    }
+
+
 }

@@ -55,5 +55,9 @@ public class Parser {
 		}
 	}
 
+	public boolean hasMoreCommands() {
+		return (input.size() > 0);
+	}
+
     
 }
