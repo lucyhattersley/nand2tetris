@@ -15,8 +15,8 @@ D=D+A
 M=D
 */
 
-import java.util.*;
-import java.io.*;
+// import java.util.*;
+// import java.io.*;
 
 public class VMEmulator {
     public static void main(String[] args) {
