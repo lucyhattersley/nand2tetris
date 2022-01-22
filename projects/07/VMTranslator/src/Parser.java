@@ -40,7 +40,7 @@ public class Parser {
 				}
 
 				// Remove whitespace
-				newLine = newLine.replaceAll(" ", "");
+				//newLine = newLine.replaceAll(" ", "");
 
 				// Now add newLine of ASM code to our input
 				if (!newLine.isEmpty()) {
