@@ -3,12 +3,11 @@ import java.util.ArrayList;
 
 public class Parser {
 
-    // Taken from Assembler (Project 06)
+    // NOTE. Code repurposed from Parser.java (Project 06)
     ArrayList<String> input = new ArrayList<String>(); // where we hold our commands
 	public String currentCommand;
 	// public Code myCode = new Code(); 
 
-    // Taken from Assembler (Project 06)
     public void initialize(String filename) {
 
 		// First we open the file
@@ -58,6 +57,19 @@ public class Parser {
 	public boolean hasMoreCommands() {
 		return (input.size() > 0);
 	}
+
+	public void advance() {
+		if (hasMoreCommands()) {
+			currentCommand = input.remove(0);
+		}
+		
+	}
+
+	public String getCurrentCommand() {
+		return currentCommand;
+	}
+
+	// 
 
     
 }
