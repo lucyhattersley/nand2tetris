@@ -65,9 +65,14 @@ public class Parser {
 		
 	}
 
+	public String commandType() {
+		return ""; // TODO
+	}
+
 	public String getCurrentCommand() {
 		return currentCommand;
 	}
+
 
 	// 
 

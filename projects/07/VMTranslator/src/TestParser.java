@@ -25,10 +25,19 @@ public class TestParser extends TestCase  {
     @Test
     public void testCurrentCommand() {
         myParser.initialize(testFile);
-
         myParser.advance();
         String testInput = "push constant 7";
         assertEquals(testInput, myParser.getCurrentCommand());
+    }
+
+    @Test
+    public void testCommandType() {
+        myParser.initialize(testFile);
+        myParser.advance();
+        String testCommandType = "C_PUSH";
+        assertEquals(testCommandType, myParser.commandType());
+
+
     }
 
 
