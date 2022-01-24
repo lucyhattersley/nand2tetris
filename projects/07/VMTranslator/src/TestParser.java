@@ -5,7 +5,7 @@ import java.util.*;
 public class TestParser extends TestCase  {
 
     //Setup
-	String testFile = "/Users/lucy/nand2tetris/projects/07/StackArithmetic/SimpleAdd/SimpleAdd.vm";
+	String testFile = "../../StackArithmetic/SimpleAdd/SimpleAdd.vm";
 	Parser myParser = new Parser();	
 
     @Test
