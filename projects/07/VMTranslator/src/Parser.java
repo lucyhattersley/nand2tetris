@@ -1,5 +1,5 @@
 import java.io.*;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Parser {
 
@@ -66,15 +66,19 @@ public class Parser {
 	}
 
 	public String commandType() {
-		return ""; // TODO
+		String[] commands = currentCommand.split(" ");
+		String command = commands[0];
+
+		if (command.equals("push")) {
+			return "C_PUSH";
+		} else {
+			return ""; // TODO: Enter other commandTypes (implement switch Case Statement)
+		}
 	}
+	
 
 	public String getCurrentCommand() {
 		return currentCommand;
 	}
 
-
-	// 
-
-    
 }

@@ -37,7 +37,6 @@ public class TestParser extends TestCase  {
         String testCommandType = "C_PUSH";
         assertEquals(testCommandType, myParser.commandType());
 
-
     }
 
 
