@@ -31,7 +31,7 @@ public class TestParser extends TestCase  {
     }
 
     @Test
-    public void testCommandType() {
+    public void testCommandPush() {
         myParser.initialize(testFile);
         myParser.advance();
         String testCommandType = "C_PUSH";
