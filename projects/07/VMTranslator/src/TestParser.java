@@ -47,5 +47,21 @@ public class TestParser extends TestCase  {
 
     }
 
+    @Test
+    public void testCommandArithmetic() {
+        myParser.currentCommand = "add arg1 arg2";
+        String testCommandAdd = "C_ARITHMETIC";
+        assertEquals(testCommandAdd, myParser.commandType());
+
+        myParser.currentCommand = "sub arg1 arg2";
+        String testCommandSub = "C_ARITHMETIC";
+        assertEquals(testCommandSub, myParser.commandType());
+
+        myParser.currentCommand = "neg arg1 arg2";
+        String testCommandNeg = "C_ARITHMETIC";
+        assertEquals(testCommandNeg, myParser.commandType());
+
+    }
+
 
 }

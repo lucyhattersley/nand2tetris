@@ -66,16 +66,20 @@ public class Parser {
 	}
 
 	public String commandType() {
-		String[] commands = currentCommand.split(" ");
-		String command = commands[0];
+	String[] commands = currentCommand.split(" ");
+	String command = commands[0];
 
-		if (command.equals("push")) {
-			return "C_PUSH";
-		} else {
-			return ""; // TODO: Enter other commandTypes (implement switch Case Statement)
+	// Switch statement here
+	switch (command) {
+		case "push": return "C_PUSH";
+		case "pull": return "C_PULL";
+		case "add":
+		case "sub":
+		case "neg":
+				   return "C_ARITHMETIC";
+		default: return "";
 		}
 	}
-	
 
 	public String getCurrentCommand() {
 		return currentCommand;
