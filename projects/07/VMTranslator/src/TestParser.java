@@ -5,8 +5,8 @@ import java.util.*;
 public class TestParser extends TestCase  {
 
     // WSL Linux
-	String testFile = "/home/lucy/nand2tetris/projects/07/StackArithmetic/SimpleAdd/SimpleAdd.vm";
-	Parser myParser = new Parser();
+    String testFile = "/home/lucy/nand2tetris/projects/07/StackArithmetic/SimpleAdd/SimpleAdd.vm";
+    Parser myParser = new Parser();
 
     @Test
 	public void testInput() {
@@ -35,6 +35,14 @@ public class TestParser extends TestCase  {
         myParser.initialize(testFile);
         myParser.advance();
         String testCommandType = "C_PUSH";
+        assertEquals(testCommandType, myParser.commandType());
+    }
+
+    @Test
+    public void testCommandPull() {
+        myParser.initialize(testFile);
+        myParser.currentCommand = "pull arg1 arg2";
+        String testCommandType = "C_PULL";
         assertEquals(testCommandType, myParser.commandType());
 
     }
