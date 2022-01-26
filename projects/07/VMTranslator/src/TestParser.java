@@ -63,5 +63,14 @@ public class TestParser extends TestCase  {
 
     }
 
+    // TODO Chapter 8
+    // @Test 
+    // public void testCommandLabel() {
+    //     myParser.currentCommand = "add arg1 arg2";
+    //     String testCommandAdd = "C_ARITHMETIC";
+    //     assertEquals(testCommandAdd, myParser.commandType());
+
+    // }
+
 
 }
