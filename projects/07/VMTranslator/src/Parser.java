@@ -83,14 +83,27 @@ public class Parser {
 	/************************************************************************** 
 	Returns the first argument of currentCommand.
 	IE: returns constant if currentCommand "push constant 7"
-	Returns first constant for C_ARITHMATIC commands, ie 'add'
-	Should not be called if C_RETURN
+	Returns first constant for C_ARITHMATIC commandType, ie 'add'
+	Should not be called if commandType C_RETURN
 
 	@param none (uses currentCommand instance variable)
 	@return arg1 the first argument of currentCommand
 	**************************************************************************/
 	public String arg1() {
-		return "";
+		String command;
+
+		if (commandType() == "C_PUSH" || commandType() == "C_PULL") {
+			String[] commands = currentCommand.split(" ");
+			command = commands[1];
+			
+		} else if (commandType() == "C_ARITHMETIC") {
+			String[] commands = currentCommand.split(" ");
+			command = commands[0];
+		} else {
+			command = "";
+		}
+		
+		return command;
 	}
 
 	public String getCurrentCommand() {
