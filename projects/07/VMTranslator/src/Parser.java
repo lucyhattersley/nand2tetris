@@ -53,18 +53,18 @@ public class Parser {
 			ex.printStackTrace();
 		}
 	}
-
+	/**@return true if input has more commands */
 	public boolean hasMoreCommands() {
 		return (input.size() > 0);
 	}
-
+	/**Removes first command from input and makes it the current command */
 	public void advance() {
 		if (hasMoreCommands()) {
 			currentCommand = input.remove(0);
 		}
 		
 	}
-
+	/**@return the command type, string */
 	public String commandType() {
 	String[] commands = currentCommand.split(" ");
 	String command = commands[0];
