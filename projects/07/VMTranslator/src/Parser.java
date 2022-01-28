@@ -80,6 +80,19 @@ public class Parser {
 		}
 	}
 
+	/************************************************************************** 
+	Returns the first argument of currentCommand.
+	IE: returns constant if currentCommand "push constant 7"
+	Returns first constant for C_ARITHMATIC commands, ie 'add'
+	Should not be called if C_RETURN
+
+	@param none (uses currentCommand instance variable)
+	@return arg1 the first argument of currentCommand
+	**************************************************************************/
+	public String arg1() {
+		return "";
+	}
+
 	public String getCurrentCommand() {
 		return currentCommand;
 	}

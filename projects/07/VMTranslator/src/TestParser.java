@@ -65,9 +65,14 @@ public class TestParser extends TestCase  {
 
     @Test
     public void testArg1() {
-    myParser.currentCommand = "add arg1 arg2";
-    String testArg1 = "add";
-    assertEquals(testArg1, myParser.arg1());
+    myParser.currentCommand = "push constant 7";
+    String testArg1Constant = "constant";
+    assertEquals(testArg1Constant, myParser.arg1());
+
+    myParser.currentCommand = "add";
+    String testArg1Add = "add";
+    assertEquals(testArg1Add, myParser.arg1());
+
 
     }
 
