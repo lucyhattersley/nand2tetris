@@ -69,7 +69,6 @@ public class Parser {
 	String[] commands = currentCommand.split(" ");
 	String command = commands[0];
 
-	// Switch statement here
 	switch (command) {
 		case "push": return "C_PUSH";
 		case "pull": return "C_PULL";

@@ -63,6 +63,14 @@ public class TestParser extends TestCase  {
 
     }
 
+    @Test
+    public void testArg1() {
+    myParser.currentCommand = "add arg1 arg2";
+    String testArg1 = "add";
+    assertEquals(testArg1, myParser.arg1());
+
+    }
+
     // TODO Chapter 8
     // @Test 
     // public void testCommandLabel() {
