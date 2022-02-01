@@ -1,6 +1,6 @@
 import junit.framework.*;
 import org.junit.Test;
-import org.junit.jupiter.api.TestClassOrder;
+// import org.junit.jupiter.api.TestClassOrder;
 
 import java.util.*;
 
@@ -81,7 +81,7 @@ public class TestParser extends TestCase  {
     @Test
     public void testArg2() {
         myParser.currentCommand = "push constant 7";
-        String testArg2Constant = "7";
+        int testArg2Constant = 7;
         assertEquals(testArg2Constant, myParser.arg2());
 
     }

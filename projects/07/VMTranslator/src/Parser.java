@@ -86,7 +86,6 @@ public class Parser {
 	Returns first constant for C_ARITHMATIC commandType, ie 'add'
 	Should not be called if commandType C_RETURN
 
-	@param none (uses currentCommand instance variable)
 	@return arg1 the first argument of currentCommand
 	**************************************************************************/
 	public String arg1() {
@@ -104,6 +103,31 @@ public class Parser {
 		}
 		
 		return command;
+	}
+
+	/****
+	 * Returns the second argument of the current command.
+	 * Should be called only if the current command is one of:
+	 *    C_PUSH
+	 *    C_POP
+	 *    C_FUNCTION
+	 *    C_CALL
+	 * @return int
+	 */
+	public int arg2() {
+		List<String> validCommandTypes = Arrays.asList("C_PUSH", "C_POP", "C_FUNCTION", "C_CALL");
+		if (validCommandTypes.contains(commandType())) {
+			String command;
+			
+			String[] commands = currentCommand.split(" ");
+			command = commands[2];
+			int number = Integer.parseInt(command);
+			return number;
+		} else {
+			return 0;
+		}
+
+
 	}
 
 	public String getCurrentCommand() {
