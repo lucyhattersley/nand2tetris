@@ -1,5 +1,7 @@
 import junit.framework.*;
 import org.junit.Test;
+import org.junit.jupiter.api.TestClassOrder;
+
 import java.util.*;
 
 public class TestParser extends TestCase  {
@@ -65,14 +67,22 @@ public class TestParser extends TestCase  {
 
     @Test
     public void testArg1() {
-    myParser.currentCommand = "push constant 7";
-    String testArg1Constant = "constant";
-    assertEquals(testArg1Constant, myParser.arg1());
+        myParser.currentCommand = "push constant 7";
+        String testArg1Constant = "constant";
+        assertEquals(testArg1Constant, myParser.arg1());
 
-    myParser.currentCommand = "add";
-    String testArg1Add = "add";
-    assertEquals(testArg1Add, myParser.arg1());
+        myParser.currentCommand = "add";
+        String testArg1Add = "add";
+        assertEquals(testArg1Add, myParser.arg1());
 
+
+    }
+
+    @Test
+    public void testArg2() {
+        myParser.currentCommand = "push constant 7";
+        String testArg2Constant = "7";
+        assertEquals(testArg2Constant, myParser.arg2());
 
     }
 
