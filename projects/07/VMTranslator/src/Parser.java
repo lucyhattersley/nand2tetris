@@ -8,6 +8,10 @@ public class Parser {
 	public String currentCommand;
 	// public Code myCode = new Code(); 
 
+	/**
+	 * Opens the input filestream and gets ready to parse it
+	 * @param filename
+	 */
     public void initialize(String filename) {
 
 		// First we open the file
