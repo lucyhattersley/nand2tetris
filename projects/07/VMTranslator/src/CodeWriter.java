@@ -2,6 +2,8 @@ import java.io.*;
 import java.util.*;
 
 public class CodeWriter {
+    String fileName;
+
     /**
      * Opens the output filestream and gets ready to write into it
      * @param output filestream. The file to save the filestream to
@@ -15,6 +17,10 @@ public class CodeWriter {
         catch (Exception ex) {
             ex.printStackTrace();
             }
+    }
+
+    public void setFileName(String fileName) {
+        fileName = fileName;
     }
 
     /**

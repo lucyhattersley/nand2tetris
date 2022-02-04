@@ -19,7 +19,7 @@ public class TestCodeWriter extends TestCase  {
     public void setFileName() {
         String testFile = "SimpleAdd.vm";
         myCodeWriter.setFileName(testFile);
-        assertTrue(myCodeWriter.fileName, testFile);
+        assertEquals(myCodeWriter.fileName.toString(), testFile);
     }
 
 
