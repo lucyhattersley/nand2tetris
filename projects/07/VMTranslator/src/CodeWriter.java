@@ -28,6 +28,15 @@ public class CodeWriter {
     }
 
     /**
+     * Writes the assembly code that is the translation of the given arithmetic command
+     * @param command
+     * @return
+     */
+    public String writeArithmetic(String command) {
+        //TODO write assembly of command to String
+    }
+
+    /**
      * Closes the output file
      */
     // public void Close() {

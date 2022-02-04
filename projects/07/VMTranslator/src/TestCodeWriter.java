@@ -19,7 +19,16 @@ public class TestCodeWriter extends TestCase  {
     public void setFileName() {
         String testFile = "SimpleAdd.vm";
         myCodeWriter.setFileName(testFile);
-        assertEquals(myCodeWriter.fileName.toString(), testFile);
+        assertEquals(testFile, myCodeWriter.fileName.toString());
+    }
+
+    @Test
+    public void testWriteArithmetic() {
+        String command = "push constant 7";
+        String expected = "@7\nD=A"; // TODO: Check this asm code is correct. THis is added to the testFile
+        
+        myCodeWriter.writeArithmetic(command);
+        assertEquals(expected, actual);
     }
 
 
