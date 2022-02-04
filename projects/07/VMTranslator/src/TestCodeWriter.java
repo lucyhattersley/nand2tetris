@@ -15,4 +15,13 @@ public class TestCodeWriter extends TestCase  {
 
     }
 
+    @Test
+    public void setFileName() {
+        String testFile = "SimpleAdd.vm";
+        myCodeWriter.setFileName(testFile);
+        assertTrue(myCodeWriter.fileName, testFile);
+    }
+
+
+
 }
