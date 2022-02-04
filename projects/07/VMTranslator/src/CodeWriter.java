@@ -19,6 +19,10 @@ public class CodeWriter {
             }
     }
 
+    /**
+     * Informs the code writer that the translation of a new VM file is started
+     * @param fileName
+     */
     public void setFileName(String fileName) {
         fileName = fileName;
     }
