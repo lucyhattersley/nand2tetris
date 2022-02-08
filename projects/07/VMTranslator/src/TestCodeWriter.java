@@ -1,6 +1,7 @@
 import junit.framework.*;
 import org.junit.Test;
 import java.util.*;
+import java.io.PrintStream;
 import java.nio.file.*; 
 
 public class TestCodeWriter extends TestCase  {
@@ -25,11 +26,24 @@ public class TestCodeWriter extends TestCase  {
     @Test
     public void testWriteArithmetic() {
         String command = "push constant 7";
-        String expected = "@7\nD=A"; // TODO: Check this asm code is correct. THis is added to the testFile
         
-        myCodeWriter.writeArithmetic(command);
-        assertEquals(expected, actual);
+        myCodeWriter.writeArithmetic(command);        
+        
+        //Test contents writtent to testFile
+        System.out.println("Running testWriteArithmetic");
+        
+        System.out.println(testFile.length()); // TODO displaying length of filename?
+
+        PrintStream printr = new PrintStream(System.out);
+        printr.print(testFile);
     }
+
+    //Teardown
+    // @Test
+    // public void testClose() {
+    //     myCodeWriter.close();
+    //     // assertTrue(); // TODO create test for closing of FW (FileWriter)
+    // }
 
 
 

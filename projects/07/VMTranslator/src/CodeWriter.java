@@ -32,14 +32,15 @@ public class CodeWriter {
      * @param command
      * @return
      */
-    public String writeArithmetic(String command) {
+    public void writeArithmetic(String command) {
         //TODO write assembly of command to String
+        System.out.println("Running writeArithmetic");
     }
 
     /**
      * Closes the output file
      */
-    // public void Close() {
-    //     fw.close();
-    // }
+    public void close() {
+        // fw.close(); Todo. Close FW
+    }
 }
