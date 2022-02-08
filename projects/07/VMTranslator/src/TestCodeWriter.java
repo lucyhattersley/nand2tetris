@@ -32,10 +32,10 @@ public class TestCodeWriter extends TestCase  {
         //Test contents writtent to testFile
         System.out.println("Running testWriteArithmetic");
         
-        System.out.println(testFile.length()); // TODO displaying length of filename?
+        System.out.println(testFile.length()); 
 
         PrintStream printr = new PrintStream(System.out);
-        printr.print(testFile);
+        printr.print(testFile); // TODO displaying length of filename?
     }
 
     //Teardown
