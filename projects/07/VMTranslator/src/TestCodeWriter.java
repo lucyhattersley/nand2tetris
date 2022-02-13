@@ -31,11 +31,12 @@ public class TestCodeWriter extends TestCase {
 
     @Test
     public void testWriteArithmetic() {
-        String command = "push constant 7";
+        String command = "push constant 7"; // Test simple command
         
-        myCodeWriter.writeArithmetic(command);        
+        myCodeWriter.writeArithmetic(command); // Ask codeWriter to write to test file
         
-        //Test contents writtent to testFile
+        // Test contents written to testFile
+        // TODO Move from print statements to assert
         System.out.println("Running testWriteArithmetic");
         System.out.println(testFile.length()); 
         
