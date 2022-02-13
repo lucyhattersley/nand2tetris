@@ -1,13 +1,15 @@
 import junit.framework.*;
 import org.junit.Test;
 import java.util.*;
+import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.PrintStream;
 import java.nio.file.*; 
 
-public class TestCodeWriter extends TestCase  {
-    //String testFile = "/home/lucy/nand2tetris/projects/07/StackArithmetic/SimpleAdd/SimpleAdd.asm"; // WSL
-    String testFile = "/Users/lucy/nand2tetris/projects/07/StackArithmetic/SimpleAdd/SimpleAdd.asm"; // Mac
+public class TestCodeWriter extends TestCase {
+    String testFile = "/home/lucy/nand2tetris/projects/07/StackArithmetic/SimpleAdd/SimpleAdd.asm"; // WSL
+    //String testFile = "/Users/lucy/nand2tetris/projects/07/StackArithmetic/SimpleAdd/SimpleAdd.asm"; // Mac
 
     CodeWriter myCodeWriter = new CodeWriter();
 
@@ -37,20 +39,29 @@ public class TestCodeWriter extends TestCase  {
         System.out.println(testFile.length()); 
         
         try {
-            FileInputStream fs = new FileInputStream(testFile);
-            int i = fs.read(); // Gets first byte
-            while(i != -1) {
-                System.out.print((char)i);
-                i = fs.read(); // get next char
+            FileReader fr = new FileReader(testFile);
+            BufferedReader br = new BufferedReader(fr);
+            while(br.ready()) {
+                System.out.println(br.readLine());
             }
-            fs.close();
+        } catch(Exception e) {
+            e.printStackTrace();
         }
-        catch(Exception ex) {
-            ex.getStackTrace();
-        } 
-
-
     }
+        
+        // try {
+        //     FileInputStream fs = new FileInputStream(testFile);
+        //     int i = fs.read(); // Gets first byte
+        //     while(i != -1) {
+        //         System.out.print((char)i);
+        //         i = fs.read(); // get next char
+        //     }
+        //     fs.close();
+        // }
+        // catch(Exception ex) {
+        //     ex.getStackTrace();
+        // } 
+    // }
 
     //Teardown
     // @Test
@@ -58,7 +69,5 @@ public class TestCodeWriter extends TestCase  {
     //     myCodeWriter.close();
     //     // assertTrue(); // TODO create test for closing of FW (FileWriter)
     // }
-
-
 
 }
