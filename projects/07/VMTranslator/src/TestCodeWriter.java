@@ -1,11 +1,14 @@
 import junit.framework.*;
 import org.junit.Test;
 import java.util.*;
+import java.io.FileInputStream;
 import java.io.PrintStream;
 import java.nio.file.*; 
 
 public class TestCodeWriter extends TestCase  {
-    String testFile = "/home/lucy/nand2tetris/projects/07/StackArithmetic/SimpleAdd/SimpleAdd.asm";
+    //String testFile = "/home/lucy/nand2tetris/projects/07/StackArithmetic/SimpleAdd/SimpleAdd.asm"; // WSL
+    String testFile = "/Users/lucy/nand2tetris/projects/07/StackArithmetic/SimpleAdd/SimpleAdd.asm"; // Mac
+
     CodeWriter myCodeWriter = new CodeWriter();
 
     @Test
@@ -31,11 +34,22 @@ public class TestCodeWriter extends TestCase  {
         
         //Test contents writtent to testFile
         System.out.println("Running testWriteArithmetic");
-        
         System.out.println(testFile.length()); 
+        
+        try {
+            FileInputStream fs = new FileInputStream(testFile);
+            int i = fs.read(); // Gets first byte
+            while(i != -1) {
+                System.out.print((char)i);
+                i = fs.read(); // get next char
+            }
+            fs.close();
+        }
+        catch(Exception ex) {
+            ex.getStackTrace();
+        } 
 
-        PrintStream printr = new PrintStream(System.out);
-        printr.print(testFile); // TODO displaying length of filename?
+
     }
 
     //Teardown
