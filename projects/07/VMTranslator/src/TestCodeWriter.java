@@ -13,6 +13,7 @@ public class TestCodeWriter extends TestCase {
 
     CodeWriter myCodeWriter = new CodeWriter();
 
+
     @Test
 	public void testConstructor() {
 		myCodeWriter.Constructor(testFile);
@@ -48,20 +49,6 @@ public class TestCodeWriter extends TestCase {
             e.printStackTrace();
         }
     }
-        
-        // try {
-        //     FileInputStream fs = new FileInputStream(testFile);
-        //     int i = fs.read(); // Gets first byte
-        //     while(i != -1) {
-        //         System.out.print((char)i);
-        //         i = fs.read(); // get next char
-        //     }
-        //     fs.close();
-        // }
-        // catch(Exception ex) {
-        //     ex.getStackTrace();
-        // } 
-    // }
 
     //Teardown
     // @Test
