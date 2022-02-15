@@ -8,8 +8,8 @@ import java.io.PrintStream;
 import java.nio.file.*; 
 
 public class TestCodeWriter extends TestCase {
-    String testFile = "/home/lucy/nand2tetris/projects/07/StackArithmetic/SimpleAdd/SimpleAdd.asm"; // WSL
-    //String testFile = "/Users/lucy/nand2tetris/projects/07/StackArithmetic/SimpleAdd/SimpleAdd.asm"; // Mac
+    String testFile = "/home/lucy/nand2tetris/projects/07/StackArithmetic/SimpleAdd/TestSimpleAdd.asm"; // WSL
+    //String testFile = "/Users/lucy/nand2tetris/projects/07/StackArithmetic/SimpleAdd/TestSimpleAdd.asm"; // Mac
 
     CodeWriter myCodeWriter = new CodeWriter();
 
