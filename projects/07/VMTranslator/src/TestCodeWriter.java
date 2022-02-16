@@ -51,10 +51,12 @@ public class TestCodeWriter extends TestCase {
         System.out.println(testFile.length()); 
         
         try {
-            FileReader fr = new FileReader(testFile);
+            FileReader fr = new FileReader(testFile); // TODO compare two files
             BufferedReader br = new BufferedReader(fr);
-            while(br.ready()) { // TODO move to first 7 lines of testFile
+            for(int i=0; i < 7; i++) {
                 System.out.println(br.readLine()); // TODO Change to assert
+
+            } { // TODO move to first 7 lines of testFile
             }
         } catch(Exception e) {
             e.printStackTrace();
