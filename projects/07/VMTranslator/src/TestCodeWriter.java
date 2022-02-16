@@ -42,7 +42,7 @@ public class TestCodeWriter extends TestCase {
      * M=M+1
      */
     @Test
-    public void testWriteArithmeticPush7() {
+    public void testWriteArithmeticPushConstant7() {
         String command = "push constant 7"; // Test simple command
         myCodeWriter.writeArithmetic(command); // Ask codeWriter to write to test file
         
