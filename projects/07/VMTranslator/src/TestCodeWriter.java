@@ -29,22 +29,32 @@ public class TestCodeWriter extends TestCase {
         assertEquals(testFile, myCodeWriter.fileName.toString());
     }
 
+    /***
+     * Test: push constant 7
+     * 
+     * Expected result: these lines added to TestSimpleAdd.asm file
+     * @7
+     * D=A
+     * @SP
+     * A=M
+     * M=D
+     * @SP
+     * M=M+1
+     */
     @Test
-    public void testWriteArithmetic() {
+    public void testWriteArithmeticPush7() {
         String command = "push constant 7"; // Test simple command
-        
         myCodeWriter.writeArithmetic(command); // Ask codeWriter to write to test file
         
-        // Test contents written to testFile
-        // TODO Move from print statements to assert
+        // TODO Remove debug print statements
         System.out.println("Running testWriteArithmetic");
         System.out.println(testFile.length()); 
         
         try {
             FileReader fr = new FileReader(testFile);
             BufferedReader br = new BufferedReader(fr);
-            while(br.ready()) {
-                System.out.println(br.readLine());
+            while(br.ready()) { // TODO move to first 7 lines of testFile
+                System.out.println(br.readLine()); // TODO Change to assert
             }
         } catch(Exception e) {
             e.printStackTrace();
