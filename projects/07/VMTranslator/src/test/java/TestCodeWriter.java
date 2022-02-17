@@ -8,10 +8,11 @@ import java.io.PrintStream;
 import java.nio.file.*; 
 
 public class TestCodeWriter extends TestCase {
+    
     String testFile = "/home/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/TestSimpleAdd.asm"; // WSL
     // String testFile = "src/test/resources/TestSimpleAdd.asm"; // relative path (doesn't work)
+    
     CodeWriter myCodeWriter = new CodeWriter();
-
 
     @Test
 	public void testConstructor() {

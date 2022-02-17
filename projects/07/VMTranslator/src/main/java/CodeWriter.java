@@ -11,8 +11,8 @@ public class CodeWriter {
      */
     public void Constructor(String output) {
         try {
-            File myFile = new File(output);
-            FileWriter fw = new FileWriter(myFile);    
+            File outfile = new File(output);
+            FileWriter fw = new FileWriter(outfile);    
         }
         catch (Exception ex) {
             ex.printStackTrace();
