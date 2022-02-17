@@ -4,7 +4,7 @@ import java.util.*;
 
 public class TestParser extends TestCase  {
 
-    // WSL Linux
+    // TODO Move to resources folder
     String testFile = "/home/lucy/nand2tetris/projects/07/StackArithmetic/SimpleAdd/SimpleAdd.vm";
     Parser myParser = new Parser();
 
@@ -82,15 +82,5 @@ public class TestParser extends TestCase  {
         int testArg2Constant = 7;
         assertEquals(testArg2Constant, myParser.arg2());
     }
-
-    // TODO Chapter 8
-    // @Test 
-    // public void testCommandLabel() {
-    //     myParser.currentCommand = "add arg1 arg2";
-    //     String testCommandAdd = "C_ARITHMETIC";
-    //     assertEquals(testCommandAdd, myParser.commandType());
-
-    // }
-
 
 }
