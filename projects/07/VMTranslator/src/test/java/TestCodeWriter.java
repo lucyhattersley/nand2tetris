@@ -11,11 +11,10 @@ public class TestCodeWriter extends TestCase {
     
     // String testFile = "/home/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/TestSimpleAdd.asm"; // WSL
     String testFile = "/Users/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/TestSimpleAdd.asm"; // Mac
-    
     CodeWriter myCodeWriter = new CodeWriter();
 
     @Test
-	public void testConstructor() {
+	public void testConstructor() {        
 		myCodeWriter.Constructor(testFile); // creates output file
         Path path = Paths.get(testFile);
         assertTrue(Files.exists(path)); // Check asm file exists
