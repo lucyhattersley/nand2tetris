@@ -1,3 +1,4 @@
 **/launch.json
 **/settings.json
-**/venv
+**/venv:
+**/.DS_Store
