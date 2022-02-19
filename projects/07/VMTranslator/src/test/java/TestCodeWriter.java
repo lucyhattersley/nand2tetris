@@ -38,21 +38,22 @@ public class TestCodeWriter extends TestCase {
      */
     @Test
     public void testWriteArithmeticPushConstant7() {
-        String command = "push constant 7"; // Test simple command
-        myCodeWriter.writeArithmetic(command); // Ask codeWriter to write to test file
-        
-        // TODO Remove debug print statements
-        System.out.println("Running testWriteArithmetic");
-        System.out.println(testFile.length()); 
-        
+        String outputFile = "/Users/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/TestPushConstant7.asm"; // Mac
+        CodeWriter myCodeWriter = new CodeWriter();
+        myCodeWriter.Constructor(outputFile); // creates output file
+   
+        // Write asm code to output file
+        String command = "push constant 7";
+        myCodeWriter.writeArithmetic(command);
+                
         try {
-            FileReader fr = new FileReader(testFile); // TODO compare two files
+            FileReader fr = new FileReader(outputFile);
             BufferedReader br = new BufferedReader(fr);
-            for(int i=0; i < 7; i++) {
-                System.out.println(br.readLine()); // TODO Change to assert
+            // TODO: import TestPushConstant7Expected.asm
+            // TODO diff outputFile and TestPushConstant7Expected.asm
 
-            } { // TODO move to first 7 lines of testFile
             }
+
         } catch(Exception e) {
             e.printStackTrace();
         }
