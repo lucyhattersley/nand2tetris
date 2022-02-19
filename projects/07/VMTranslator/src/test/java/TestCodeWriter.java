@@ -51,9 +51,6 @@ public class TestCodeWriter extends TestCase {
             BufferedReader br = new BufferedReader(fr);
             // TODO: import TestPushConstant7Expected.asm
             // TODO diff outputFile and TestPushConstant7Expected.asm
-
-            }
-
         } catch(Exception e) {
             e.printStackTrace();
         }
