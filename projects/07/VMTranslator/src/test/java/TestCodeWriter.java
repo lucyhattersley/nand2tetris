@@ -59,16 +59,16 @@ public class TestCodeWriter extends TestCase {
             List<String> lOutput = new ArrayList<String>();
             List<String> lExpectedOutput = new ArrayList<String>();
             
-            // Parse output to list
+            // Parse ExcepctedOutout to list
             String sCurrentLine;
 
-            while ((sCurrentLine = rOutput.readLine()) != null) {
-                lOutput.add(sCurrentLine);
-            }
-
-            // Parse ExcepctedOutout to list
             while ((sCurrentLine = rExpectedOutput.readLine()) != null) {
                 lExpectedOutput.add(sCurrentLine);
+            }
+            
+            // Parse output to list
+            while ((sCurrentLine = rOutput.readLine()) != null) {
+                lOutput.add(sCurrentLine);
             }
 
             assertEquals(lExpectedOutput, lOutput);
@@ -77,22 +77,6 @@ public class TestCodeWriter extends TestCase {
             e.printStackTrace();
         }
     }
-
-    // Diff files code from https://www.baeldung.com/java-compare-files
-    // @Test
-    // public void whenFilesIdenticalIgnoreEOF_thenReturnTrue() throws IOException {
-    //     Path path1 = Files.createTempFile("file1Test", ".txt");
-    //     Path path2 = Files.createTempFile("file2Test", ".txt");
-    
-    //     Files.writeString(path1, "testing line 1 \n line 2");
-    //     Files.writeString(path2, "testing line 1 \r\n line 2");
-    
-    //     Reader reader1 = new BufferedReader(new FileReader(path1.toFile()));
-    //     Reader reader2 = new BufferedReader(new FileReader(path2.toFile()));
-    
-    //     assertTrue(IOUtils.contentEqualsIgnoreEOL(reader1, reader2));
-    // }
-
 
     //Teardown
     // @Test
