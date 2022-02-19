@@ -1,10 +1,7 @@
 import junit.framework.*;
 import org.junit.Test;
 import java.util.*;
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileReader;
-import java.io.PrintStream;
+import java.io.*;
 import java.nio.file.*; 
 
 public class TestCodeWriter extends TestCase {
