@@ -31,6 +31,21 @@ public class CodeWriter {
      * Writes the assembly code that is the translation of the given arithmetic command
      * @param command
      * @return
+     * 
+     * Todo: From This: 
+     * 
+     * push constant 7 
+     * 
+     * to this
+     * 
+     *  @7
+        D=A
+        @SP
+        A=M
+        M=D
+        @SP
+        M=M+1
+     * 
      */
     public void writeArithmetic(String command) {
         //TODO write assembly of command to String
