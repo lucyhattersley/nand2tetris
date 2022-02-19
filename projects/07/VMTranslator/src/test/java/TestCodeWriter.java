@@ -40,34 +40,41 @@ public class TestCodeWriter extends TestCase {
      */
     @Test
     public void testWriteArithmeticPushConstant7() {
-        String outputFile = "/home/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/TestPushConstant7.asm"; // WSL
+ 
+        // File locations
+        String input = "/home/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/TestPushConstant7.vm";
+        String output = "/home/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/TestPushConstant7.asm";
+        String expectedOutput = "/home/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/TestPushConstant7Expected.asm";
+
         CodeWriter myCodeWriter = new CodeWriter();
-        myCodeWriter.Constructor(outputFile); // creates output file
+        myCodeWriter.Constructor(output); // creates output file
    
-        // Write asm code to output file
+        // TODO Move inside try statement and loop over input file
         String command = "push constant 7";
         myCodeWriter.writeArithmetic(command);
                 
         try {            
-            String input = "/home/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/TestPushConstant7.vm";
-            String output = "/home/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/TestPushConstant7.asm";
-            String expectedOutput = "/home/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/TestPushConstant7Expected.asm";
-
-            BufferedReader rOutput = new BufferedReader(new FileReader(output));
-            BufferedReader rExpectedOutput = new BufferedReader(new FileReader(expectedOutput));
+            BufferedReader brInput = new BufferedReader(new FileReader(output));
+            BufferedReader brOutput = new BufferedReader(new FileReader(output));
+            BufferedReader brExpectedOutput = new BufferedReader(new FileReader(expectedOutput));
 
             List<String> lOutput = new ArrayList<String>();
             List<String> lExpectedOutput = new ArrayList<String>();
             
-            // Parse ExcepctedOutout to list
             String sCurrentLine;
 
-            while ((sCurrentLine = rExpectedOutput.readLine()) != null) {
+            // Parse input line by line
+            while ((sCurrentLine = brInput.readLine()) != null) {
+                myCodeWriter.writeArithmetic(sCurrentLine);
+            }
+
+            // Parse ExcepctedOutout to list
+            while ((sCurrentLine = brExpectedOutput.readLine()) != null) {
                 lExpectedOutput.add(sCurrentLine);
             }
             
             // Parse output to list
-            while ((sCurrentLine = rOutput.readLine()) != null) {
+            while ((sCurrentLine = brOutput.readLine()) != null) {
                 lOutput.add(sCurrentLine);
             }
 
