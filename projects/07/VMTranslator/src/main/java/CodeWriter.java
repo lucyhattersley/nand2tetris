@@ -40,8 +40,8 @@ public class CodeWriter {
      * 
      *  @7 / A -> 7
         D=A / D -> 7
-        @SP / A -> SP value ()
-        A=M
+        @SP / A -> SP value (256)
+        A=M / ? 
         M=D
         @SP
         M=M+1
