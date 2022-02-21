@@ -38,18 +38,21 @@ public class CodeWriter {
      * 
      * to this
      * 
-     *  @7 / A -> 7
+     *  @7 / A -> 7 / constant 7
         D=A / D -> A(7)
-        @SP / A -> SP (default value 256)
+        @SP / A -> SP (default value 256) / push to stack
         A=M / 256 -> M (M refers to the memory location addressed by A) 
         M=D / M(256) -> 7
-        @SP / A -> 256
+        @SP / A -> 256 // increase stack pointer
         M=M+1 / 256 +1
      * 
      */
     public void writeArithmetic(String command) {
         //TODO write assembly of command to String
         System.out.println("Running writeArithmetic");
+
+        // Split command into command, arg1, arg2
+        
     }
 
     /**
