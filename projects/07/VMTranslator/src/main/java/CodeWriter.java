@@ -38,9 +38,9 @@ public class CodeWriter {
      * 
      * to this
      * 
-     *  @7
-        D=A
-        @SP
+     *  @7 / A -> 7
+        D=A / D -> 7
+        @SP / A -> SP value ()
         A=M
         M=D
         @SP
