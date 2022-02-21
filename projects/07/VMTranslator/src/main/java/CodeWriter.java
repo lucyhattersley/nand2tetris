@@ -48,11 +48,19 @@ public class CodeWriter {
      * 
      */
     public void writeArithmetic(String command) {
-        //TODO write assembly of command to String
-        System.out.println("Running writeArithmetic");
 
-        // Split command into command, arg1, arg2
+        // Split command into cmd, arg1, arg2
+        String[] result = command.split(" ");
+        String cmd = result[0];
+        String arg1 = result[0];
+        String arg2 = result[0];
         
+
+        // If command C_PUSH
+
+        // if arg1 constant
+
+        // constant value
     }
 
     /**
