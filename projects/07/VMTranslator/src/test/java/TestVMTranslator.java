@@ -12,6 +12,8 @@ public class TestVMTranslator extends TestCase {
      */
     @Test
     public void testMain() {
+        //TODO String SimpleAddExpected.asm
+        //TODO String SimpleAdd.asm
 
     }
 }
