@@ -52,8 +52,8 @@ public class CodeWriter {
         // Split command into cmd, arg1, arg2
         String[] result = command.split(" ");
         String cmd = result[0];
-        String arg1 = result[0];
-        String arg2 = result[0];
+        String arg1 = result[1];
+        String arg2 = result[2];
         
 
         // If command C_PUSH
