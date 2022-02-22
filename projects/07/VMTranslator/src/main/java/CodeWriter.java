@@ -30,32 +30,33 @@ public class CodeWriter {
     /**
      * Writes the assembly code that is the translation of the given arithmetic command
      * @param command
-     * @return
-     * 
-     * Todo: From This: 
-     * 
-     * push constant 7 
-     * 
-     * to this
-     * 
-     *  @7 / A -> 7 / constant 7
-        D=A / D -> A(7)
-        @SP / A -> SP (default value 256) / push to stack
-        A=M / 256 -> M (M refers to the memory location addressed by A) 
-        M=D / M(256) -> 7
-        @SP / A -> 256 // increase stack pointer
-        M=M+1 / 256 +1
-     * 
+     * @return none
      */
     public void writeArithmetic(String command) {
 
+        /* 
+        * Todo: From This: 
+        * 
+        * push constant 7 
+        * 
+        * to this
+        * 
+        *  @7 / A -> 7 / constant 7
+           D=A / D -> A(7)
+           @SP / A -> SP (default value 256) / push to stack
+           A=M / 256 -> M (M refers to the memory location addressed by A) 
+           M=D / M(256) -> 7
+           @SP / A -> 256 // increase stack pointer
+           M=M+1 / 256 +1
+           */
+
+        // TODO This function is handled in Parser
         // Split command into cmd, arg1, arg2
         String[] result = command.split(" ");
         String cmd = result[0];
         String arg1 = result[1];
         String arg2 = result[2];
         
-
         // If command C_PUSH
 
         // if arg1 constant

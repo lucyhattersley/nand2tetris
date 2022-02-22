@@ -1,0 +1,17 @@
+import org.junit.Test;
+
+import junit.framework.TestCase;
+
+public class TestVMTranslator extends TestCase {
+
+    /**
+     * Tests main program.
+     * Input -> SimpleAdd.vm
+     * Output -> SimpleAdd.asm
+     * AssertEquals(SimpleAddExpected.asm, SimpleAdd.asm)
+     */
+    @Test
+    public void testMain() {
+
+    }
+}
