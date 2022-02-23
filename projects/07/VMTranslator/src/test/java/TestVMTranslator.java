@@ -40,6 +40,9 @@ public class TestVMTranslator extends TestCase {
     
             assertEquals(lExpectedOutput, lOutput);
             
+            brSimpleAdd.close();
+            brSimpleAddExpected.close();
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
