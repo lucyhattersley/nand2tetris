@@ -13,11 +13,19 @@ public class TestVMTranslator extends TestCase {
      */
     @Test
     public void testMain() {
+        // File locations
         String simpleAddExpected = new String("/home/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/SimpleAddExpected.asm");
         String simpleAdd = new String("/home/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/SimpleAdd.asm");
 
-        //Todo initialise Parser, CodeWriter and parse SimpleAdd 
+        // Set up VMTranslator
+        VMTranslator myVMTranslator = new VMTranslator();
+        
+        // Pass file location to main
+        String[] args = new String[1];
+        args[0] = simpleAdd;
+        myVMTranslator.main(args);
 
+        // Check file output
         try {
             BufferedReader brSimpleAddExpected = new BufferedReader(new FileReader(simpleAddExpected));
             BufferedReader brSimpleAdd = new BufferedReader(new FileReader(simpleAdd));
