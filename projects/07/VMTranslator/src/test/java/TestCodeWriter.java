@@ -47,7 +47,7 @@ public class TestCodeWriter extends TestCase {
         CodeWriter myCodeWriter = new CodeWriter();
         myCodeWriter.Constructor(output); // creates output file
    
-        // TODO Move inside try statement and loop over input file
+        // Move inside try statement and loop over input file
         String command = "push constant 7";
         myCodeWriter.writeArithmetic(command);
                 
@@ -87,7 +87,7 @@ public class TestCodeWriter extends TestCase {
     // @Test
     // public void testClose() {
     //     myCodeWriter.close();
-    //     // assertTrue(); // TODO create test for closing of FW (FileWriter)
+    //     // assertTrue(); // create test for closing of FW (FileWriter)
     // }
 
 }
