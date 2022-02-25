@@ -32,10 +32,11 @@ public class CodeWriter {
      * @param command
      * @return none
      */
+    //TODO implement writeArithmetic
     public void writeArithmetic(String command) {
 
         /* 
-        * Todo: From This: 
+        * From This: 
         * 
         * push constant 7 
         * 
@@ -50,7 +51,7 @@ public class CodeWriter {
            M=M+1 / 256 +1
            */
 
-        // TODO This function is handled in Parser
+        // This function is handled in Parser
         // Split command into cmd, arg1, arg2
         String[] result = command.split(" ");
         String cmd = result[0];
@@ -81,6 +82,6 @@ public class CodeWriter {
      * Closes the output file
      */
     public void close() {
-        // Todo. Implement close
+        // TODO Implement close
     }
 }
