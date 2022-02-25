@@ -14,21 +14,22 @@ public class TestVMTranslator extends TestCase {
     @Test
     public void testMain() {
         // File locations
-        String simpleAddExpected = new String("/home/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/SimpleAddExpected.asm");
-        String simpleAdd = new String("/home/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/SimpleAdd.asm");
+        String pushConstant7Expected = new String("/home/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/PushConstant7Expected.asm");
+        String pushConstant7vm = new String("/home/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/PushConstant7.vm");
+        String pushConstant7asm = new String("/home/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/PushConstant7.asm");
 
         // Set up VMTranslator
         VMTranslator myVMTranslator = new VMTranslator();
         
         // Pass file location to main
         String[] args = new String[1];
-        args[0] = simpleAdd;
+        args[0] = pushConstant7vm;
         myVMTranslator.main(args);
 
         // Check file output
         try {
-            BufferedReader brSimpleAddExpected = new BufferedReader(new FileReader(simpleAddExpected));
-            BufferedReader brSimpleAdd = new BufferedReader(new FileReader(simpleAdd));
+            BufferedReader brSimpleAddExpected = new BufferedReader(new FileReader(pushConstant7Expected));
+            BufferedReader brSimpleAdd = new BufferedReader(new FileReader(pushConstant7asm));
     
             // Check contents of both files
             List<String> lExpectedOutput = new ArrayList<String>();
