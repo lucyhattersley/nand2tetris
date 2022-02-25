@@ -9,5 +9,7 @@ public class VMTranslator {
 
         // Init parser with arg
         myParser.initialize(args[0]);
+
+        // TODO March through commands in parser and write code to asm file
     }
 }
