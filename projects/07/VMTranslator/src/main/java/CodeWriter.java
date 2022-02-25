@@ -64,10 +64,23 @@ public class CodeWriter {
         // constant value
     }
 
+    *
     /**
+     * WritePushPop
+     * Writes the assembly code that is the translation of the given command, where command is either C_PUSH or C_POP
+     * @param command (C_PUSH or C_POP, a string)
+     * @param segment (string)
+     * @param index (int)
+     */
+    public void writePushPop(String command, String segment, int index) {
+        // TODO test and implement writePushPop
+    }
+
+    /**
+     * Closes 
      * Closes the output file
      */
     public void close() {
-        // fw.close(); Todo. Close FW
+        // Todo. Implement close
     }
 }
