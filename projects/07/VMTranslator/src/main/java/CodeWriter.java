@@ -65,7 +65,6 @@ public class CodeWriter {
         // constant value
     }
 
-    *
     /**
      * WritePushPop
      * Writes the assembly code that is the translation of the given command, where command is either C_PUSH or C_POP
