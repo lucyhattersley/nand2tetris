@@ -28,29 +28,31 @@ public class TestVMTranslator extends TestCase {
 
         // Check file output
         try {
-            BufferedReader brSimpleAddExpected = new BufferedReader(new FileReader(pushConstant7Expected));
-            BufferedReader brSimpleAdd = new BufferedReader(new FileReader(pushConstant7asm));
+            BufferedReader brExpected = new BufferedReader(new FileReader(pushConstant7Expected));
+            BufferedReader brASM = new BufferedReader(new FileReader(pushConstant7asm));
     
             // Check contents of both files
             List<String> lExpectedOutput = new ArrayList<String>();
-            List<String> lOutput = new ArrayList<String>();
+            List<String> lASM = new ArrayList<String>();
             
             String sCurrentLine;
     
-            // Parse SimpleAddExpected to list
-            while ((sCurrentLine = brSimpleAddExpected.readLine()) != null) {
+            // Parse Expected to list
+            while ((sCurrentLine = brExpected.readLine()) != null) {
                 lExpectedOutput.add(sCurrentLine);
             }
     
-            // Parse SimpleAdd to list
-            while ((sCurrentLine = brSimpleAdd.readLine()) != null) {
-                lOutput.add(sCurrentLine);
+            // Parse ASM to list
+            while ((sCurrentLine = brASM.readLine()) != null) {
+                lASM.add(sCurrentLine);
             }
+
+            // Check equality
+            assertEquals(lExpectedOutput, lASM);
     
-            assertEquals(lExpectedOutput, lOutput);
             
-            brSimpleAdd.close();
-            brSimpleAddExpected.close();
+            brASM.close();
+            brExpected.close();
             
         } catch (Exception e) {
             e.printStackTrace();
