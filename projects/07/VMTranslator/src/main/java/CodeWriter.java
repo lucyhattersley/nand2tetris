@@ -50,13 +50,6 @@ public class CodeWriter {
            @SP / A -> 256 // increase stack pointer
            M=M+1 / 256 +1
            */
-
-        // This function is handled in Parser
-        // Split command into cmd, arg1, arg2
-        String[] result = command.split(" ");
-        String cmd = result[0];
-        String arg1 = result[1];
-        String arg2 = result[2];
         
         // If command C_PUSH
 
