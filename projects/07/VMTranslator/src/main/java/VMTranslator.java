@@ -11,5 +11,10 @@ public class VMTranslator {
         myParser.initialize(args[0]);
 
         // TODO March through commands in parser and write code to asm file
+        while(myParser.hasMoreCommands()) {
+            myParser.advance();
+            String command = myParser.getCurrentCommand();
+            System.out.println(command);
+        }
     }
 }

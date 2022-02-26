@@ -3,10 +3,9 @@ import java.util.*;
 
 public class Parser {
 
-    // NOTE. Code repurposed from Parser.java (Project 06)
     ArrayList<String> input = new ArrayList<String>(); // where we hold our commands
 	public String currentCommand;
-	// public Code myCode = new Code(); 
+	
 
 	/**
 	 * Opens the input filestream and gets ready to parse it
@@ -68,7 +67,9 @@ public class Parser {
 		}
 		
 	}
-	/**@return the command type, string */
+	/**Returns the command type 
+	 * @return string 
+	 * */
 	public String commandType() {
 	String[] commands = currentCommand.split(" ");
 	String command = commands[0];
@@ -79,7 +80,7 @@ public class Parser {
 		case "add":
 		case "sub":
 		case "neg":
-				   return "C_ARITHMETIC";
+				     return "C_ARITHMETIC";
 		default: return "";
 		}
 	}
