@@ -7,10 +7,16 @@ public class VMTranslator {
         Parser myParser = new Parser();
         CodeWriter myCodeWriter = new CodeWriter();
 
-        // Init parser with arg
-        myParser.initialize(args[0]);
+        String fileNameVM = args[0];
+        String fileNameASM = fileNameVM.replaceAll(".vm", ".asm");
 
-        // TODO March through commands in parser and write code to asm file
+        // Init parser with arg
+        myParser.initialize(fileNameVM);
+
+        // Init output file
+        myCodeWriter.Constructor(fileNameASM);
+
+        // March through commands in parser and write code to ASM file
         while(myParser.hasMoreCommands()) {
             myParser.advance();
             String command = myParser.getCurrentCommand();
