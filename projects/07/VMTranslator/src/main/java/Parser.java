@@ -91,7 +91,7 @@ public class Parser {
 	Returns first constant for C_ARITHMATIC commandType, ie 'add'
 	Should not be called if commandType C_RETURN
 
-	@return arg1 the first argument of currentCommand
+	@return arg1 a String, the first argument of currentCommand
 	**************************************************************************/
 	public String arg1() {
 		String command;
