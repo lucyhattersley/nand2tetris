@@ -25,8 +25,10 @@ public class VMTranslator {
         while(myParser.hasMoreCommands()) {
             myParser.advance();
             String command = myParser.getCurrentCommand();
-            // TODO writeAritmetic or writePushPop
-            myCodeWriter.writeArithmetic(command);
+            if (myParser.commandType() == "C_PUSH") {
+                // TODO writePushPop (find command)
+                myCodeWriter.writePushPop(command, segment, index);
+            }
             
         }
     }
