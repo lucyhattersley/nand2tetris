@@ -42,12 +42,12 @@ public class CodeWriter {
         * 
         * to this
         * 
-        *  @7 / A -> 7 / constant 7
+        *  @7 / A -> 7 : 
            D=A / D -> A(7)
-           @SP / A -> SP (default value 256) / push to stack
-           A=M / 256 -> M (M refers to the memory location addressed by A) 
+           @SP / A -> SP (0)
+           A=M / A -> 256  
            M=D / M(256) -> 7
-           @SP / A -> 256 // increase stack pointer
+           @SP / A -> 256 
            M=M+1 / 256 +1
            */
         
