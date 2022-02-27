@@ -32,10 +32,25 @@ public class CodeWriter {
      * @param command
      * @return none
      */
-    //TODO implement writeArithmetic
     public void writeArithmetic(String command) {
+        //TODO implement writeArithmetic
 
-        /* 
+        // if arg1 constant
+    
+        // constant value
+    }
+
+    /**
+     * WritePushPop
+     * Writes the assembly code that is the translation of the given command, where command is either C_PUSH or C_POP
+     * @param command (C_PUSH or C_POP, a string)
+     * @param segment (string)
+     * @param index (int)
+     */
+    public void writePushPop(String command, String segment, int index) {
+        // TODO test and implement writePushPop
+
+                /* 
         * From This: 
         * 
         * push constant 7 
@@ -50,23 +65,8 @@ public class CodeWriter {
            @SP / A -> 256 
            M=M+1 / 256 +1
            */
-        
-        // If command C_PUSH
 
-        // if arg1 constant
 
-        // constant value
-    }
-
-    /**
-     * WritePushPop
-     * Writes the assembly code that is the translation of the given command, where command is either C_PUSH or C_POP
-     * @param command (C_PUSH or C_POP, a string)
-     * @param segment (string)
-     * @param index (int)
-     */
-    public void writePushPop(String command, String segment, int index) {
-        // TODO test and implement writePushPop
     }
 
     /**
