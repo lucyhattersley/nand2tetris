@@ -26,8 +26,8 @@ public class VMTranslator {
             myParser.advance();
             if (myParser.commandType() == "C_PUSH") {
                 String command = myParser.getCurrentCommand();
-                String segment = myParser.arg1()
-                String index = myParser.arg2();
+                String segment = myParser.arg1();
+                int index = myParser.arg2();
 
                 myCodeWriter.writePushPop(command, segment, index);
             }

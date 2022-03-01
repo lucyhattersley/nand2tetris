@@ -48,16 +48,21 @@ public class CodeWriter {
      * @param index (int)
      */
     public void writePushPop(String command, String segment, int index) {
-        // TODO test and implement writePushPop
+        String[] output;
+        if(command == "C_PUSH" && segment == "constant") {
+            fw.
 
-                /* 
+        }
+        
+        // TODO test and implement writePushPop
+        /* 
         * From This: 
         * 
         * push constant 7 
         * 
         * to this
         * 
-        *  @7 / A -> 7 : 
+        *  @7 / A -> 7 - constant 7 
            D=A / D -> A(7)
            @SP / A -> SP (0)
            A=M / A -> 256  
