@@ -37,7 +37,7 @@ public class TestCodeWriter extends TestCase {
      * M=M+1
      */
     @Test
-    public void testWriteArithmeticPushConstant7() {
+    public void testWritePushConstant7() {
  
         // File locations
         String input = "/home/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/TestPushConstant7.vm";
