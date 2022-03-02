@@ -4,8 +4,6 @@ import java.nio.file.Path;
 public class VMTranslator {
 
     public static void main(String[] args) {
-        System.out.println("Running VMTranslator.main");
-        
         // Create objects
         Parser myParser = new Parser();
         CodeWriter myCodeWriter = new CodeWriter();
@@ -25,7 +23,7 @@ public class VMTranslator {
         while(myParser.hasMoreCommands()) {
             myParser.advance();
             if (myParser.commandType() == "C_PUSH") {
-                String command = myParser.getCurrentCommand();
+                String command = myParser.commandType();
                 String segment = myParser.arg1();
                 int index = myParser.arg2();
 

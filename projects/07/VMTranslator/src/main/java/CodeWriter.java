@@ -48,9 +48,16 @@ public class CodeWriter {
      * @param index (int)
      */
     public void writePushPop(String command, String segment, int index) {
+        System.out.println("Running writePushPop");
         String[] output;
+
+        System.out.println("command: " + command);
+        System.out.println("segment: " + segment);
+        System.out.println("index: " + index);
+
+
         if(command == "C_PUSH" && segment == "constant") {
-            fw.
+            System.out.println("C_PUSH and constant");
 
         }
         
