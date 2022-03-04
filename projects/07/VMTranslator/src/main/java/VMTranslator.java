@@ -5,8 +5,7 @@ public class VMTranslator {
 
     public static void main(String[] args) {
         // Create objects
-        Parser myParser = new Parser();
-        
+        Parser myParser = new Parser();        
         String filePathVM = args[0];
         String filePathASM = filePathVM.replaceAll(".vm", ".asm");
         

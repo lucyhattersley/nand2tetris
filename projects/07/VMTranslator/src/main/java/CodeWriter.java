@@ -57,9 +57,15 @@ public class CodeWriter {
         System.out.println("segment: " + segment);
         System.out.println("index: " + index);
 
-        if(command == "C_PUSH" && segment == "constant") {
-            System.out.println("C_PUSH and constant");
-            // fw.write("@");
+        if(command == "C_PUSH") {
+            System.out.println("C_PUSH");
+            try {
+                String str = "@7";
+                fw.write(str);
+            }
+            catch(Exception ex) {
+                ex.printStackTrace();
+            }
         }
         
         // TODO test and implement writePushPop
