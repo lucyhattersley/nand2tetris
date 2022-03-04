@@ -50,7 +50,6 @@ public class TestVMTranslator extends TestCase {
             // Check equality
             assertEquals(lExpectedOutput, lASM);
     
-            
             brASM.close();
             brExpected.close();
             
