@@ -3,6 +3,7 @@ import java.util.*;
 
 public class CodeWriter {
     String fileName;
+    FileWriter fw;
 
     /**
      * Opens the output filestream and gets ready to write into it
@@ -13,7 +14,7 @@ public class CodeWriter {
         try {
             File outfile = new File(output);
             outfile.createNewFile();
-            FileWriter fw = new FileWriter(outfile);    
+            fw = new FileWriter(outfile);    
         }
         catch (Exception ex) {
             ex.printStackTrace();
@@ -24,8 +25,8 @@ public class CodeWriter {
      * Informs the code writer that the translation of a new VM file is started
      * @param fileName
      */
-    public void setFileName(String fileName) {
-        fileName = fileName;
+    public void setFileName(String fileNameInput) {
+        fileName = fileNameInput;
     }
 
     /**
@@ -59,7 +60,6 @@ public class CodeWriter {
         if(command == "C_PUSH" && segment == "constant") {
             System.out.println("C_PUSH and constant");
             // fw.write("@");
-
         }
         
         // TODO test and implement writePushPop
@@ -78,16 +78,17 @@ public class CodeWriter {
            @SP / A -> 256 
            M=M+1 / 256 +1
            */
-
-
     }
 
     /**
-     * Closes 
      * Closes the output file
      */
     public void close() {
-        // TODO Implement close (cannot be resolved error)
-        // fw.close();
+        try{
+            fw.close();
+        }
+        catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 }

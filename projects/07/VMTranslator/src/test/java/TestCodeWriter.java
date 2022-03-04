@@ -7,12 +7,10 @@ import java.nio.file.*;
 public class TestCodeWriter extends TestCase {
     
     String testFile = "/home/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/TestSimpleAdd.asm"; // WSL
-    //String testFile = "/Users/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/TestSimpleAdd.asm"; // Mac
     CodeWriter myCodeWriter = new CodeWriter(testFile);
 
     @Test
 	public void testConstructor() {        
-		// myCodeWriter.Constructor(testFile); // creates output file
         Path path = Paths.get(testFile);
         assertTrue(Files.exists(path)); // Check asm file exists
     }
@@ -21,7 +19,7 @@ public class TestCodeWriter extends TestCase {
     public void testSetFileName() {
         String testFile = "SimpleAdd.vm";
         myCodeWriter.setFileName(testFile);
-        assertEquals(testFile, myCodeWriter.fileName.toString());
+        assertEquals(testFile, myCodeWriter.fileName);
     }
 
     /***
@@ -84,10 +82,10 @@ public class TestCodeWriter extends TestCase {
     }
 
     //Teardown
-    // @Test
-    // public void testClose() {
-    //     myCodeWriter.close();
-    //     // assertTrue(); // create test for closing of FW (FileWriter)
-    // }
+    @Test
+    public void testClose() {
+        myCodeWriter.close();
+        // assertTrue(); // create test for closing of FW (FileWriter)
+    }
 
 }
