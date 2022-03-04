@@ -8,17 +8,17 @@ public class TestCodeWriter extends TestCase {
     
     String testFile = "/home/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/TestSimpleAdd.asm"; // WSL
     //String testFile = "/Users/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/TestSimpleAdd.asm"; // Mac
-    CodeWriter myCodeWriter = new CodeWriter();
+    CodeWriter myCodeWriter = new CodeWriter(testFile);
 
     @Test
 	public void testConstructor() {        
-		myCodeWriter.Constructor(testFile); // creates output file
+		// myCodeWriter.Constructor(testFile); // creates output file
         Path path = Paths.get(testFile);
         assertTrue(Files.exists(path)); // Check asm file exists
     }
 
     @Test
-    public void setFileName() {
+    public void testSetFileName() {
         String testFile = "SimpleAdd.vm";
         myCodeWriter.setFileName(testFile);
         assertEquals(testFile, myCodeWriter.fileName.toString());
@@ -44,8 +44,8 @@ public class TestCodeWriter extends TestCase {
         String output = "/home/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/TestPushConstant7.asm";
         String expectedOutput = "/home/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/TestPushConstant7Expected.asm";
 
-        CodeWriter myCodeWriter = new CodeWriter();
-        myCodeWriter.Constructor(output); // creates output file
+        CodeWriter myCodeWriter = new CodeWriter(testFile);
+        // myCodeWriter.Constructor(output); // creates output file
    
         // Move inside try statement and loop over input file
         String command = "push constant 7";

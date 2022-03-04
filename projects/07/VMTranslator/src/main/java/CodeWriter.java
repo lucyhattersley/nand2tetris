@@ -9,9 +9,10 @@ public class CodeWriter {
      * @param output filestream. The file to save the filestream to
      * @return none
      */
-    public void Constructor(String output) {
+    CodeWriter(String output) {
         try {
             File outfile = new File(output);
+            outfile.createNewFile();
             FileWriter fw = new FileWriter(outfile);    
         }
         catch (Exception ex) {
@@ -55,9 +56,9 @@ public class CodeWriter {
         System.out.println("segment: " + segment);
         System.out.println("index: " + index);
 
-
         if(command == "C_PUSH" && segment == "constant") {
             System.out.println("C_PUSH and constant");
+            // fw.write("@");
 
         }
         
@@ -86,6 +87,7 @@ public class CodeWriter {
      * Closes the output file
      */
     public void close() {
-        // TODO Implement close
+        // TODO Implement close (cannot be resolved error)
+        // fw.close();
     }
 }
