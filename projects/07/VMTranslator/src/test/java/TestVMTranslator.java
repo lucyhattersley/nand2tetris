@@ -56,6 +56,5 @@ public class TestVMTranslator extends TestCase {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 }
