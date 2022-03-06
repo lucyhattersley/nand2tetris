@@ -13,7 +13,7 @@ public class CodeWriter {
     CodeWriter(String output) {
         try {
             File outfile = new File(output);
-            outfile.createNewFile();
+            // outfile.createNewFile();
             FileWriter fw = new FileWriter(outfile);
             bw = new BufferedWriter(fw);
         }

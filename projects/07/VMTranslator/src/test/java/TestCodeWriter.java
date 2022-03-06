@@ -86,7 +86,7 @@ public class TestCodeWriter extends TestCase {
     public void testClose() {
         myCodeWriter.close();
         try {
-            myCodeWriter.fw.write("test"); // this should fail
+            myCodeWriter.bw.write("test"); // this should fail
         }
         catch(Exception ex) {
             assertTrue(true); // True if fw closed
