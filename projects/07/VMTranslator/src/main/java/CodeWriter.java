@@ -54,9 +54,9 @@ public class CodeWriter {
         System.out.println("Running writePushPop");
         String[] output;
 
-        System.out.println("command: " + command);
-        System.out.println("segment: " + segment);
-        System.out.println("index: " + index);
+        // System.out.println("command: " + command);
+        // System.out.println("segment: " + segment);
+        // System.out.println("index: " + index);
 
         if(command == "C_PUSH") {
             System.out.println("C_PUSH");
