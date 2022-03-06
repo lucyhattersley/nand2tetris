@@ -3,7 +3,7 @@ import java.util.*;
 
 public class CodeWriter {
     String fileName;
-    FileWriter fw;
+    BufferedWriter bw;
 
     /**
      * Opens the output filestream and gets ready to write into it
@@ -14,7 +14,8 @@ public class CodeWriter {
         try {
             File outfile = new File(output);
             outfile.createNewFile();
-            fw = new FileWriter(outfile);    
+            FileWriter fw = new FileWriter(outfile);
+            bw = new BufferedWriter(fw);
         }
         catch (Exception ex) {
             ex.printStackTrace();
@@ -61,7 +62,7 @@ public class CodeWriter {
             System.out.println("C_PUSH");
             try {
                 String str = "@7";
-                fw.write(str);
+                bw.append(str);
             }
             catch(Exception ex) {
                 ex.printStackTrace();
@@ -91,7 +92,7 @@ public class CodeWriter {
      */
     public void close() {
         try{
-            fw.close();
+            bw.close();
         }
         catch (Exception ex) {
             ex.printStackTrace();
