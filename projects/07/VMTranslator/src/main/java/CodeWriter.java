@@ -36,8 +36,6 @@ public class CodeWriter {
      * @return none
      */
     public void writeArithmetic(String command) {
-        //TODO implement writeArithmetic
-
         // if arg1 constant
     
         // constant value
@@ -69,7 +67,6 @@ public class CodeWriter {
             }
         }
         
-        // TODO test and implement writePushPop
         /* 
         * From This: 
         * 
