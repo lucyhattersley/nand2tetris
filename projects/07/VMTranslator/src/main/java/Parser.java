@@ -6,7 +6,6 @@ public class Parser {
     ArrayList<String> input = new ArrayList<String>(); // where we hold our commands
 	public String currentCommand;
 	
-
 	/**
 	 * Opens the input filestream and gets ready to parse it
 	 * @param filename

@@ -4,17 +4,14 @@ import java.nio.file.Path;
 public class VMTranslator {
 
     public static void main(String[] args) {
-        // Create objects
         Parser myParser = new Parser();        
         String filePathVM = args[0];
         String filePathASM = filePathVM.replaceAll(".vm", ".asm");
         
         CodeWriter myCodeWriter = new CodeWriter(filePathASM);
+
         // Init parser with arg
         myParser.initialize(filePathVM);
-
-        // Init output file
-        // myCodeWriter.Constructor(filePathASM);
 
         // TODO Use set fileName
 
