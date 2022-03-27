@@ -60,6 +60,8 @@ public class CodeWriter {
             System.out.println("C_PUSH");
             try {
                 String str = "@7";
+
+                //TODO bw not writing to file
                 bw.append(str);
             }
             catch(Exception ex) {

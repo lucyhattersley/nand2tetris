@@ -8,6 +8,7 @@ public class VMTranslator {
         String filePathVM = args[0];
         String filePathASM = filePathVM.replaceAll(".vm", ".asm");
         
+        // Creates asm file
         CodeWriter myCodeWriter = new CodeWriter(filePathASM);
 
         // Init parser with arg
