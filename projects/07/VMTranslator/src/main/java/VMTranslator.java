@@ -14,8 +14,6 @@ public class VMTranslator {
         // Init parser with arg
         myParser.initialize(filePathVM);
 
-        // TODO Use set fileName
-
         // March through commands in parser and write code to ASM file
         while(myParser.hasMoreCommands()) {
             myParser.advance();

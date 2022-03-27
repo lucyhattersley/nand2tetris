@@ -42,7 +42,7 @@ public class TestCodeWriter extends TestCase {
         String output = "/home/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/TestPushConstant7.asm";
         String expectedOutput = "/home/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/TestPushConstant7Expected.asm";
 
-        CodeWriter myCodeWriter = new CodeWriter(testFile); // TODO Check these file locations are correct
+        CodeWriter myCodeWriter = new CodeWriter(testFile);
    
         // Move inside try statement and loop over input file
         String command = "push constant 7";
