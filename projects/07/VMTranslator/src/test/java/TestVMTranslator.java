@@ -7,9 +7,9 @@ public class TestVMTranslator extends TestCase {
 
     /**
      * Tests main program.
-     * Input -> SimpleAdd.vm
-     * Output -> SimpleAdd.asm
-     * AssertEquals(SimpleAddExpected.asm, SimpleAdd.asm)
+     * Input -> PushConstant.vm
+     * Output -> PushConstant.asm
+     * AssertEquals(PushConstantExpected.asm, PushConstant.asm)
      */
     @Test
     public void testMain() {
