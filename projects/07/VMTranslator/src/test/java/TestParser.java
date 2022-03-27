@@ -4,7 +4,6 @@ import java.util.*;
 
 public class TestParser extends TestCase  {
 
-    // TODO Move to resources folder
     String testFile = "/home/lucy/nand2tetris/projects/07/StackArithmetic/SimpleAdd/SimpleAdd.vm";
     Parser myParser = new Parser();
 
