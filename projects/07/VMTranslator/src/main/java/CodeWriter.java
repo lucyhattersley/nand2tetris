@@ -52,16 +52,14 @@ public class CodeWriter {
         System.out.println("Running writePushPop");
         String[] output;
 
-        // System.out.println("command: " + command);
-        // System.out.println("segment: " + segment);
-        // System.out.println("index: " + index);
+        System.out.println("command: " + command);
+        System.out.println("segment: " + segment);
+        System.out.println("index: " + index);
 
         if(command == "C_PUSH") {
-            System.out.println("C_PUSH");
             try {
-                String str = "@7";
-
-                //TODO bw not writing to file
+                //TODO Integrate command, segment, index here
+                String str = "@7\nD=A\n@SP\nA=M\nM=D\n@SP\nM=M+1";
                 bw.append(str);
             }
             catch(Exception ex) {
