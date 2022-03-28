@@ -24,7 +24,7 @@ public class VMTranslator {
 
                 myCodeWriter.writePushPop(command, segment, index);
             }
-            
+        myCodeWriter.close(); // close to write buffer to disk
         }
     }
 }
