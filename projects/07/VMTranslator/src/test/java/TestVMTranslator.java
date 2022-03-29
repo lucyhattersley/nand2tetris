@@ -57,4 +57,6 @@ public class TestVMTranslator extends TestCase {
             e.printStackTrace();
         }
     }
+
+    //TODO testMainPushConstant7and8
 }
