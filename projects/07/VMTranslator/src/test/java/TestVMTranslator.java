@@ -12,7 +12,7 @@ public class TestVMTranslator extends TestCase {
      * AssertEquals(PushConstantExpected.asm, PushConstant.asm)
      */
     @Test
-    public void testMain() {
+    public void testMainPushConstant7() {
         // File locations
         String pushConstant7Expected = new String("/home/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/PushConstant7Expected.asm");
         String pushConstant7vm = new String("/home/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/PushConstant7.vm");
