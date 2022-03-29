@@ -52,31 +52,12 @@ public class CodeWriter {
         System.out.println("Running writePushPop");
         String[] output;
 
-        System.out.println("command: " + command);
-        System.out.println("segment: " + segment);
-        System.out.println("index: " + index);
-
-        /* 
-        * From This: 
-        * 
-        * push constant 7 
-        * 
-        * to this
-        * 
-        *  @7 / A -> 7 - constant 7 
-           D=A / D -> A(7)
-           @SP / A -> SP (0)
-           A=M / A -> 256  
-           M=D / M(256) -> 7
-           @SP / A -> 256 
-           M=M+1 / 256 +1
-           */
         if( command.equals("C_PUSH") ) {
             if( segment.equals("constant") ) {
                 
                 try {
-                    //TODO Integrate command, segment, index here
-                    String str = "@7\nD=A\n@SP\nA=M\nM=D\n@SP\nM=M+1";
+                    String indexString = "@" + String.valueOf(index);
+                    String str = indexString + "\nD=A\n@SP\nA=M\nM=D\n@SP\nM=M+1";
                     bw.append(str);
                 }
                 
