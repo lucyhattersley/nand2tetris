@@ -56,17 +56,6 @@ public class CodeWriter {
         System.out.println("segment: " + segment);
         System.out.println("index: " + index);
 
-        if(command == "C_PUSH") {
-            try {
-                //TODO Integrate command, segment, index here
-                String str = "@7\nD=A\n@SP\nA=M\nM=D\n@SP\nM=M+1";
-                bw.append(str);
-            }
-            catch(Exception ex) {
-                ex.printStackTrace();
-            }
-        }
-        
         /* 
         * From This: 
         * 
@@ -82,6 +71,20 @@ public class CodeWriter {
            @SP / A -> 256 
            M=M+1 / 256 +1
            */
+        if( command.equals("C_PUSH") ) {
+            if( segment.equals("constant") ) {
+                
+                try {
+                    //TODO Integrate command, segment, index here
+                    String str = "@7\nD=A\n@SP\nA=M\nM=D\n@SP\nM=M+1";
+                    bw.append(str);
+                }
+                
+                catch(Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }   
     }
 
     /**
