@@ -57,7 +57,7 @@ public class CodeWriter {
                 
                 try {
                     String indexString = "@" + String.valueOf(index);
-                    String str = indexString + "\nD=A\n@SP\nA=M\nM=D\n@SP\nM=M+1";
+                    String str = indexString + "\nD=A\n@SP\nA=M\nM=D\n@SP\nM=M+1\n";
                     bw.append(str);
                 }
                 

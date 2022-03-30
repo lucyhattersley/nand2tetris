@@ -17,14 +17,12 @@ public class VMTranslator {
         // March through commands in parser and write code to ASM file
         while(myParser.hasMoreCommands()) {
             myParser.advance();
-            if (myParser.commandType() == "C_PUSH") {
-                String command = myParser.commandType();
-                String segment = myParser.arg1();
-                int index = myParser.arg2();
+            String command = myParser.commandType();
+            String segment = myParser.arg1();
+            int index = myParser.arg2();
 
-                myCodeWriter.writePushPop(command, segment, index);
-            }
-        myCodeWriter.close(); // close to write buffer to disk
+            myCodeWriter.writePushPop(command, segment, index);
         }
+        myCodeWriter.close(); // close to write buffer to disk
     }
 }
