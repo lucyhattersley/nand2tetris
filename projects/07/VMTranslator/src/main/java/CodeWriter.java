@@ -49,7 +49,12 @@ public class CodeWriter {
      * @param index (int)
      */
     public void writePushPop(String command, String segment, int index) {
+        //Debug print strngs
         System.out.println("Running writePushPop");
+        System.out.println("command: " + command);
+        System.out.println("segment: " + segment);
+        System.out.println("index: " + index);
+        
         String[] output;
 
         if( command.equals("C_PUSH") ) {
@@ -66,6 +71,20 @@ public class CodeWriter {
                 }
             }
         }   
+        else if( command.equals("C_ARITHMETIC") ) {
+            if (segment.equals("add")) {
+                try {
+                    String str = "@SP\nM=M-1\nA=M\nD=M\nA=A-1\nD=D+M\nM=D\n";
+                    bw.append(str);
+                }
+                
+                catch(Exception ex) {
+                    ex.printStackTrace();
+                }
+
+            }
+
+        }
     }
 
     /**
