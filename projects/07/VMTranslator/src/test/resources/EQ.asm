@@ -1,14 +1,21 @@
-@17
-D=A
-@SP
-A=M
-M=D // Note: wrong
+// push constant 17
 @17
 D=A
 @SP
 A=M
 M=D
 @SP
-D=M
-A=M-1
-//TODO implement eq
+M=M+1
+// push constant 17
+@17
+D=A
+@SP
+A=M
+M=D
+@SP
+M=M+1
+// eq
+@SP
+D=M-1 // Stack pointer back one
+@SP
+M=D // Stack pointer should be 257

@@ -1,11 +1,11 @@
-Example
-Turns:
+//Example
+//Turns:
 
 // Pushes and adds two constants.
-push constant 7
-push constant 8
-add
-Into:
+//push constant 7
+//push constant 8
+//add
+//Into:
 
 // push constant 7
 @7
