@@ -22,7 +22,7 @@ M=D
 @SP
 M=M+1
 
-// TODO Check implementation
+// EQ Implementation
 @SP
 AM=M-1
 D=M
@@ -31,6 +31,7 @@ A=A-1
 // A = SP - 2
 D=M-D
 M=-1
+
 @EQ_labelcount
 D;JEQ
 @SP
