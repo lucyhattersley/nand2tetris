@@ -14,7 +14,7 @@ M=D
 M=M+1
 
 // push constant 17
-@17
+@18
 D=A
 @SP
 A=M
@@ -30,11 +30,11 @@ D=M
 A=A-1
 // A = SP - 2
 D=M-D
-M=-1
+M=-1 // sets to -1 first
 
 @EQ_labelcount
-D;JEQ
+D;JEQ // jumps if equal (remains -1)
 @SP
 A=M-1
-M=0
+M=0 // otherwise sets to 0
 (EQ_labelcount)
