@@ -70,7 +70,8 @@ public class CodeWriter {
                     ex.printStackTrace();
                 }
             }
-        }   
+        }
+
         else if( command.equals("C_ARITHMETIC") ) {
             if (segment.equals("add")) {
                 try {
@@ -83,7 +84,6 @@ public class CodeWriter {
                 }
 
             }
-
         }
     }
 

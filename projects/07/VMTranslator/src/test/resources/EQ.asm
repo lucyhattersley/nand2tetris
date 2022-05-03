@@ -14,7 +14,7 @@ M=D
 M=M+1
 
 // push constant 17
-@18
+@17
 D=A
 @SP
 A=M
