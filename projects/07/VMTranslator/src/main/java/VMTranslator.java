@@ -22,8 +22,12 @@ public class VMTranslator {
             int index = myParser.arg2();
 
             // TODO Switch statement here for command type
-            // Case push / pull
-            myCodeWriter.writePushPop(command, segment, index);
+            switch (command) {
+                // Case push / pull
+                case "C_PUSH":
+                    myCodeWriter.writePushPop(command, segment, index);
+                    break;
+            }
 
             // Case add
         }
