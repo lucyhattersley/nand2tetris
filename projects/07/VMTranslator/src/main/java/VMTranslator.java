@@ -21,7 +21,11 @@ public class VMTranslator {
             String segment = myParser.arg1();
             int index = myParser.arg2();
 
+            // TODO Switch statement here for command type
+            // Case push / pull
             myCodeWriter.writePushPop(command, segment, index);
+
+            // Case add
         }
 
         myCodeWriter.close(); // close to write buffer to disk
