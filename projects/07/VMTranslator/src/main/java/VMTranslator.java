@@ -26,6 +26,7 @@ public class VMTranslator {
                     myCodeWriter.writePushPop(command, segment, index);
                     break;
                 // Todo: debug 
+                // Suspect that passing C_ARITHMETIC as command will cause problem in determining add/subtract etc.
                 case "C_ARITHMETIC":
                     myCodeWriter.writeArithmetic(command);
             }
