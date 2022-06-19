@@ -5,8 +5,8 @@ import java.io.*;
 import java.nio.file.*; 
 
 public class TestCodeWriter extends TestCase {
-    
-    String testFile = "/home/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/TestSimpleAdd.asm"; // WSL
+    String testFile = "/Users/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/TestSimpleAdd.asm"; // macOS    
+    // String testFile = "/home/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/TestSimpleAdd.asm"; // WSL
     CodeWriter myCodeWriter = new CodeWriter(testFile);
 
     @Test
