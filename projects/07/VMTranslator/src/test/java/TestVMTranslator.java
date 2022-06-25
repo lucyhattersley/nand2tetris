@@ -32,6 +32,7 @@ public class TestVMTranslator extends TestCase {
          testRunner(expected, vm, asm);
     }
 
+    // Todo pass 78add test
     @Test
     public void test78Add() {
         // File locations

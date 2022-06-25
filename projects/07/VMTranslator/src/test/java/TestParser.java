@@ -3,8 +3,8 @@ import org.junit.Test;
 import java.util.*;
 
 public class TestParser extends TestCase  {
-    String testFile = "/Users/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/SimpleAdd.asm"; // macOS    
-    // String testFile = "/home/lucy/nand2tetris/projects/07/StackArithmetic/SimpleAdd/SimpleAdd.vm"; // wsl
+    // String testFile = "/Users/lucy/nand2tetris/projects/07/VMTranslator/src/test/resources/SimpleAdd.asm"; // macOS    
+    String testFile = "/home/lucy/nand2tetris/projects/07/StackArithmetic/SimpleAdd/SimpleAdd.vm"; // wsl
     Parser myParser = new Parser();
 
     @Test
