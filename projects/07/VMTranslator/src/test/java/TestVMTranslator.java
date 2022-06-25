@@ -3,7 +3,6 @@ import java.io.*;
 import java.util.*;
 import junit.framework.TestCase;
 
-// TODO update for Mac
 public class TestVMTranslator extends TestCase {
 
     /**
