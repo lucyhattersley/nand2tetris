@@ -27,15 +27,5 @@ CHIP Memory {
     OUT out[16];
 
     PARTS:
-    // A, B are RAM, C is Screen, and D is keyboard (blank - keyboard has no input)
-    DMux4Way(in=load, sel[1]=address[14], sel[0]=address[13], a=DMuxA, b=DMuxB, c=DMuxC);
-    Or(a=DMuxA, b=DMuxB, out=OrOut); // Merge two RAM load inputs
-    
-    // Chips
-    RAM16K(in=in, load=OrOut, address=address[0..13], out=RAMOut); // 16K words starting at 0x0000
-    Screen(in=in, load=DMuxC, address=address[0..12], out=ScreenOut); // 8K words starting at 0x4000
-    Keyboard(out=KeyOut); // 1 word at 0x6000
-
-    // Mux
-    Mux4Way16(a=RAMOut, b=RAMOut, c=ScreenOut, d=KeyOut, sel[1]=address[14], sel[0]=address[13], out=out);
+    // Put your code here:
 }

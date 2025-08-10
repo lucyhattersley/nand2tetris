@@ -39,42 +39,5 @@ CHIP CPU {
         pc[15];          // address of next instruction
 
     PARTS:
-    Not(in=instruction[15], out=Not15); // Reverse instruction code   
-
-    // Mux and A Register
-    Mux16(a=ALUOut, b=instruction, sel=Not15, out=MuxAOut); 
-    Or(a=Not15, b=instruction[5], out=OrOut);
-    ARegister(in=MuxAOut, load=OrOut, out=ARegOut, out[0..14]=addressM);
-
-    // Mux and ALU
-    Mux16(a=ARegOut, b=inM, sel=instruction[12], out=MuxBOut);
-    ALU(x=DRegOut, y=MuxBOut, zx=instruction[11], nx=instruction[10], 
-        zy=instruction[9], ny=instruction[8], f=instruction[7], 
-        no=instruction[6], out=outM, out=ALUOut, zr=ZR, ng=NG);
-
-    // D register
-    And(a=instruction[4], b=instruction[15], out=DRegLoad);  
-    DRegister(in=ALUOut, load=DRegLoad, out=DRegOut);
-
-    // M Register
-    And(a=instruction[15], b=instruction[3], out=writeM); // Write to M reg
-
-    // Jump logic: Implement ALUZero, ALUNegate here
-    // JLT
-    And(a=instruction[2], b=NG, out=JLT);
-
-    // JGT
-    Or(a=ZR, b=NG, out=JGTOr);
-    Not(in=JGTOr, out=NotJGT);
-    And(a=instruction[0], b=NotJGT, out=JGT);
-
-    // JEQ
-    And(a=instruction[1], b=ZR, out=JEQ);
-
-    // Merge jump logic
-    Or(a=JGT, b=JLT, out=JOR);
-    Or(a=JEQ, b=JOR, out=JMP);
-    And(a=instruction[15], b=JMP, out=PCLoad); // Check if instruction
-    PC(in=ARegOut, load=PCLoad, inc=true, reset=reset, out[0..14]=pc); // false, true flags need replacing with instruction refs (probably instruction[0..2])
-
+    // Put your code here:
 }
