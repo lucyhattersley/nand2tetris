@@ -15,9 +15,17 @@ CHIP Or {
 
     PARTS:
     // Put your code here:
+    # This is innefficient. Rework with three NAND gates
     Not(in=a, out=notA);
     Not(in=b, out=notB);
     And(a=notA, b=notB, out=andOut);
     Not(in=andOut, out=out);
     
 }
+// The code implements Or using three Not gates and one And gate, which is a standard approach using only Not and And gates.
+// However, if a Nand gate is available, Or can be implemented more efficiently using only three Nand gates:
+// Nand(a=a, b=a, out=nota);
+// Nand(a=b, b=b, out=notb);
+// Nand(a=nota, b=notb, out=out);
+// This reduces the number of gates and may be more efficient in hardware.
+ // The current code is correct and standard for the given constraints.
