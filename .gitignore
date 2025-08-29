@@ -3,4 +3,4 @@
 **/venv:
 **/.DS_Store
 projects_v1/
-../../tools/bin/Hardware Simulator.dat
+tools/bin/Hardware Simulator.dat
