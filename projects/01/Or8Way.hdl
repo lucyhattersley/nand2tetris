@@ -20,6 +20,6 @@ CHIP Or8Way {
     Or(a=o3, b=in[4], out=o4);
     Or(a=o4, b=in[5], out=o5);
     Or(a=o5, b=in[6], out=o6);
-    Or(a=o6, b=in[7], out=o7);
+    Or(a=o6, b=in[7], out=out);
     
 }
