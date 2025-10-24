@@ -43,8 +43,9 @@ CHIP ALU {
 
     PARTS:
    // Put your code here:
-   Mux16(a=x, b=false, sel=zx, out=zxOut, zr=out); // zx Implementation
-   Not16(in=x, out=notX)
-   Mux16(a=x, b=notX, sel=nx, out=nxOut, ng=sel); // nx Implementation 
+   Mux16(a=x, b=false, sel=zx, out=zxOut); // zx Implementation
+   Mux(a=false, b=true, sel=zx, out=zr);
+   Not16(in=x, out=notX);
+   Mux16(a=x, b=notX, sel=nx, out=nxOut); // nx Implementation 
 
 }
