@@ -44,8 +44,8 @@ CHIP ALU {
     PARTS:
    // Put your code here:
    Mux16(a=x, b=false, sel=zx, out=zxOut); // zx Implementation
-   Mux(a=false, b=true, sel=zx, out=zr);
-   Not16(in=x, out=notX);
+   Mux(a=false, b=true, sel=zx, out=zr); // this is a hack
+   Not16(in=x, out=notX); // negate input. Needs first bit set to true
    Mux16(a=x, b=notX, sel=nx, out=nxOut); // nx Implementation 
 
 }
