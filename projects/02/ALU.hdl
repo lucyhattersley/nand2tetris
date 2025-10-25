@@ -48,8 +48,8 @@ CHIP ALU {
     Mux16(a=x, b=notX, sel=nx, out=nxOut); // nx Implementation 
 
     // zr and ng implementation 
-    Or8Way(in=zxOut[0..7], out=or8Way1Out);
-    Or8Way(in=zxOut[8..15], out=or8Way2Out);
-    Or(a=or8Way1Out, b=or8Way2out, out=orOut);
+    Or8Way(in=out[0..7], out=outLeft;
+    Or8Way(in=Out[8..15], out=outRight);
+    Or(a=outLeft, b=outRight, out=orOut);
     Not(in=orOut, out=zr);
 }
