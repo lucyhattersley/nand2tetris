@@ -48,5 +48,8 @@ CHIP ALU {
     Mux16(a=x, b=notX, sel=nx, out=nxOut); // nx Implementation 
 
     // zr and ng implementation 
-    And16(a=nxOut, b=false, out=zr); // This fails. And16 has 16-bit output. How to check if two 16-bit vals are identical with 0/1 output?
+    Or8Way(in=zxOut[0..7], out=or8Way1Out);
+    Or8Way(in=zxOut[8..15], out=or8Way2Out);
+    Or(a=or8Way1Out, b=or8Way2out, out=orOut);
+    Not(in=orOut, out=zr);
 }
