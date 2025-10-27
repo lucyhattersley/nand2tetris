@@ -44,16 +44,16 @@ CHIP ALU {
     PARTS:
     // Put your code here:
     // zx implementation
-    Mux16(a=x, b=false, sel=zx, out=result); // zx Implementation
+    Mux16(a=x, b=false, sel=zx, out=result, out[0..7]= resultL, out[8..15]=resultR); // zx Implementation
     
     // nx implentation
     // Not16(in=x, out=notX); // negate input. Needs first bit set to true
-    // Mux16(a=x, b=notX, sel=nx, out=result, out=out); // nx Implementation 
+    // Mux16(a=x, b=notX, sel=nx, out=result, out[0..7]= resultL, out[8..15]=resultR); // nx Implementation 
 
     // zr and ng implementation 
-    Or8Way(in=result[0..7], out=or8R); // can't divide sub bus. Figure out way to 
-    Or8Way(in=result[8..15], out=or8L); 
-    Or(a=outLeft, b=outRight, out=orOut);
+    Or8Way(in=resultL, out=or8R);
+    Or8Way(in=resultR, out=or8L); 
+    Or(a=or8R, b=or8L, out=orOut);
     Not(in=orOut, out=zr);
     
     // Final output
