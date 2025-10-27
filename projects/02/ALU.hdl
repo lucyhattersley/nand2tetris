@@ -51,8 +51,8 @@ CHIP ALU {
     // Mux16(a=x, b=notX, sel=nx, out=result, out=out); // nx Implementation 
 
     // zr and ng implementation 
-    Or8Way(in=result[0..7], out=outLeft);
-    Or8Way(in=result[8..15], out=outRight);
+    Or8Way(in=result[0..7], out=or8R); // can't divide sub bus. Figure out way to 
+    Or8Way(in=result[8..15], out=or8L); 
     Or(a=outLeft, b=outRight, out=orOut);
     Not(in=orOut, out=zr);
     
