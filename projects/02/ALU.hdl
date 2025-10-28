@@ -44,15 +44,15 @@ CHIP ALU {
     PARTS:
     // Put your code here:
     // zx implementation
-    Mux16(a=x, b=false, sel=zx, out=result, out[0..7]=resultL, out[8..15]=resultR); // zx Implementation
+    Mux16(a=x, b=false, sel=zx, out=zxResult, out[0..7]=zxResultL, out[8..15]=zxResultR); // zx Implementation
     
     // nx implentation
-    Not16(in=x, out=notX); // negate input. Needs MSB bit set to true
-    Mux16(a=x, b=notX, sel=nx, out=nxResult, out[15]=nxResultMSB); // nx Implementation 
+    Not16(in=zxResult, out=notX); // negate input. Needs MSB bit set to true
+    Mux16(a=x, b=notX, sel=nx, out=nxResult, out[15]=nxResultMSB); 
 
     // zr and ng implementation 
-    Or8Way(in=resultL, out=or8R);
-    Or8Way(in=resultR, out=or8L); 
+    Or8Way(in=zxResultL, out=or8R);
+    Or8Way(in=zxResultR, out=or8L); 
     Or(a=or8R, b=or8L, out=orOut);
     Not(in=orOut, out=zr);
 
