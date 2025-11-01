@@ -60,17 +60,18 @@ CHIP ALU {
     // f implementation
     And16(a=nxResult, b=nyResult, out=and16Out);
     Add16(a=nxResult, b=nyResult, out=add16Out);
-    Mux16(a=and16Out, b=add16Out, out=mux16Out);
+    Mux16(a=and16Out, b=add16Out, out=result);
+    
+    // final output
+    Or16(a=result, b=false, out=out);
 
-    // zr and ng implementation 
+    // zr implementation 
     Or8Way(in=zxResultL, out=or8R);
     Or8Way(in=zxResultR, out=or8L); 
     Or(a=or8R, b=or8L, out=orOut);
-    Not(in=orout, out=zr);
+    Not(in=orOut, out=zr);
 
     // ng implementation
     And(a=nxResultMSB, b=true, out=ng);
-    
-    // final output
-    Or16(a=mux16Out, b=false, out=out);
+
 }
