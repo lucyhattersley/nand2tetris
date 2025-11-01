@@ -51,10 +51,12 @@ CHIP ALU {
 
     // nx implementation
     Not16(in=zxResult, out[15]=nxOutMSB, out[0..14]=nxOutLSB);
-    Mux16(a=x, b[15]=nxOutMSB, b[0..14]=nxOutLSB, sel=nx, out=nxResult, out[15]=nxResultMSB); 
+    Mux16(a=x, b[15]=true, b[0..14]=nxOutLSB, sel=nx, out=nxResult, out[15]=nxResultMSB); 
+   
     // ny implementation
     Not16(in=zyResult, out[15]=nyOutMSB, out[0..14]=nyOutLSB); 
-    Mux16(a=x, b[15]=nyOutMSB, b[0..14]=nyOutLSB, sel=ny, out=nyResult, out[15]=nyResultMSB); 
+    Mux16(a=x, b[15]=true,  b[0..14]=nyOutLSB, sel=ny, out=nyResult, out[15]=nyResultMSB); 
+
     // f implementation
     And16(a=nxResult, b=nyResult, out=and16Out);
     Add16(a=nxResult, b=nyResult, out=add16Out);
