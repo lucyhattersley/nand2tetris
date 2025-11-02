@@ -67,14 +67,13 @@ CHIP ALU {
     Mux16(a=fOut, b=noOut, sel=no, out=result);
 
     // final output
-    Or16(a=result, b=false, out=out, out[0..7]=resultL, out[8..15]=resultR, out[15]=resultMSB);
+    // Splits result into L/R for zr analysis. MSB output to ng to indication negative number
+    Or16(a=result, b=false, out=out, out[0..7]=resultR, out[8..15]=resultL, out[15]=ng);
 
     // zr implementation 
-    Or8Way(in=resultL, out=or8R);
-    Or8Way(in=resultR, out=or8L); 
+    Or8Way(in=resultL, out=or8L);
+    Or8Way(in=resultR, out=or8R); 
     Or(a=or8R, b=or8L, out=orOut);
     Not(in=orOut, out=zr);
 
-    // ng implementation
-    And(a=resultMSB, b=true, out=ng);
 }
