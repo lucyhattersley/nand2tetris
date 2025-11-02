@@ -20,7 +20,7 @@
 // if (nx == 1) set x = !x       // bitwise not
 // if (zy == 1) set y = 0        // 16-bit constant
 // if (ny == 1) set y = !y       // bitwise not
-// if (f == 1)  set out = x + y  // integer 2's complement addition
+// if (f == 1)  set out = x + y  // integer 2 's complement addition
 // if (f == 0)  set out = x & y  // bitwise and
 // if (no == 1) set out = !out   // bitwise not
 // if (out == 0) set zr = 1
@@ -47,15 +47,15 @@ CHIP ALU {
     Mux16(a=x, b=false, sel=zx, out=zxResult, out[0..7]=zxResultL, out[8..15]=zxResultR);
     
     // nx implementation
-    Not16(in=zxResult, out[15]=nxOutMSB, out[0..14]=nxOutLSB);
-    Mux16(a=zxResult, b[15]=true, b[0..14]=nxOutLSB, sel=nx, out=nxResult, out[15]=nxResultMSB); 
+    Not16(in=zxResult, out=nxOut);
+    Mux16(a=zxResult, b=nxOut, sel=nx, out=nxResult, out[15]=nxResultMSB); 
 
     // zy implementation
     Mux16(a=y, b=false, sel=zy, out=zyResult, out[0..7]=zyResultL, out[8..15]=zyResultR); 
    
     // ny implementation
-    Not16(in=zyResult, out[15]=nyOutMSB, out[0..14]=nyOutLSB); 
-    Mux16(a=zyResult, b[15]=true,  b[0..14]=nyOutLSB, sel=ny, out=nyResult, out[15]=nyResultMSB); 
+    Not16(in=zyResult, out=nyOut); 
+    Mux16(a=zyResult, b=nyOut, sel=ny, out=nyResult, out[15]=nyResultMSB); 
 
     // f implementation
     And16(a=nxResult, b=nyResult, out=and16Out);
