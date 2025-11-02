@@ -44,18 +44,18 @@ CHIP ALU {
     PARTS:
     // Put your code here:
     // zx implementation
-    Mux16(a=x, b=false, sel=zx, out=zxResult, out[0..7]=zxResultL, out[8..15]=zxResultR);
+    Mux16(a=x, b=false, sel=zx, out=zxResult);
     
     // nx implementation
     Not16(in=zxResult, out=nxOut);
-    Mux16(a=zxResult, b=nxOut, sel=nx, out=nxResult, out[15]=nxResultMSB); 
+    Mux16(a=zxResult, b=nxOut, sel=nx, out=nxResult); 
 
     // zy implementation
-    Mux16(a=y, b=false, sel=zy, out=zyResult, out[0..7]=zyResultL, out[8..15]=zyResultR); 
+    Mux16(a=y, b=false, sel=zy, out=zyResult); 
    
     // ny implementation
     Not16(in=zyResult, out=nyOut); 
-    Mux16(a=zyResult, b=nyOut, sel=ny, out=nyResult, out[15]=nyResultMSB); 
+    Mux16(a=zyResult, b=nyOut, sel=ny, out=nyResult); 
 
     // f implementation
     And16(a=nxResult, b=nyResult, out=and16Out);
@@ -67,14 +67,14 @@ CHIP ALU {
     Mux16(a=fOut, b=noOut, sel=no, out=result);
 
     // final output
-    Or16(a=result, b=false, out=out);
+    Or16(a=result, b=false, out=out, out[0..7]=resultL, out[8..15]=resultR, out[15]=resultMSB);
 
     // zr implementation 
-    Or8Way(in=zxResultL, out=or8R);
-    Or8Way(in=zxResultR, out=or8L); 
+    Or8Way(in=resultL, out=or8R);
+    Or8Way(in=resultR, out=or8L); 
     Or(a=or8R, b=or8L, out=orOut);
     Not(in=orOut, out=zr);
 
     // ng implementation
-    And(a=nxResultMSB, b=true, out=ng);    
+    And(a=resultMSB, b=true, out=ng);
 }
