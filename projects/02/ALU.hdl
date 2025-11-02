@@ -44,36 +44,36 @@ CHIP ALU {
     PARTS:
     // Put your code here:
     // zx implementation
-    Mux16(a=x, b=false, sel=zx, out=zxResult);
+    Mux16(a=x, b=false, sel=zx, out=x1);
     
     // nx implementation
-    Not16(in=zxResult, out=nxOut);
-    Mux16(a=zxResult, b=nxOut, sel=nx, out=nxResult); 
+    Not16(in=x1, out=notX1);
+    Mux16(a=x1, b=notX1, sel=nx, out=x2); 
 
     // zy implementation
-    Mux16(a=y, b=false, sel=zy, out=zyResult); 
+    Mux16(a=y, b=false, sel=zy, out=y1); 
    
     // ny implementation
-    Not16(in=zyResult, out=nyOut); 
-    Mux16(a=zyResult, b=nyOut, sel=ny, out=nyResult); 
+    Not16(in=y1, out=notY1); 
+    Mux16(a=y1, b=notY1, sel=ny, out=y2); 
 
     // f implementation
-    And16(a=nxResult, b=nyResult, out=and16Out);
-    Add16(a=nxResult, b=nyResult, out=add16Out);
-    Mux16(a=and16Out, b=add16Out, sel=f, out=fOut);
+    And16(a=x2, b=y2, out=andResult);
+    Add16(a=x2, b=y2, out=addResult);
+    Mux16(a=andResult, b=addResult, sel=f, out=fOutput);
 
     // no out
-    Not16(in=fOut, out=noOut);
-    Mux16(a=fOut, b=noOut, sel=no, out=result);
+    Not16(in=fOutput, out=notOutput);
+    Mux16(a=fOutput, b=notOutput, sel=no, out=aluOut);
 
     // final output
-    // Splits result into L/R for zr analysis. MSB output to ng to indication negative number
-    Or16(a=result, b=false, out=out, out[0..7]=resultR, out[8..15]=resultL, out[15]=ng);
+    // Splits aluOut into L/R for zr analysis. MSB output to ng to indication negative number
+    Or16(a=aluOut, b=false, out=out, out[0..7]=outLow, out[8..15]=outHigh, out[15]=ng);
 
     // zr implementation 
-    Or8Way(in=resultL, out=or8L);
-    Or8Way(in=resultR, out=or8R); 
-    Or(a=or8R, b=or8L, out=orOut);
+    Or8Way(in=outHigh, out=orHigh);
+    Or8Way(in=outLow, out=orLow); 
+    Or(a=orLow, b=orHigh, out=orOut);
     Not(in=orOut, out=zr);
 
 }
