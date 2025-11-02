@@ -20,7 +20,7 @@
 // if (nx == 1) set x = !x       // bitwise not
 // if (zy == 1) set y = 0        // 16-bit constant
 // if (ny == 1) set y = !y       // bitwise not
-// if (f == 1)  set out = x + y  // integer 2 's complement addition
+// if (f == 1)  set out = x + y  // integer 2's complement addition
 // if (f == 0)  set out = x & y  // bitwise and
 // if (no == 1) set out = !out   // bitwise not
 // if (out == 0) set zr = 1
@@ -66,14 +66,13 @@ CHIP ALU {
     Not16(in=fOutput, out=notOutput);
     Mux16(a=fOutput, b=notOutput, sel=no, out=aluOut);
 
-    // final output
-    // Splits aluOut into L/R for zr analysis. MSB output to ng to indication negative number
-    Or16(a=aluOut, b=false, out=out, out[0..7]=outLow, out[8..15]=outHigh, out[15]=ng);
-
     // zr implementation 
     Or8Way(in=outHigh, out=orHigh);
     Or8Way(in=outLow, out=orLow); 
     Or(a=orLow, b=orHigh, out=orOut);
     Not(in=orOut, out=zr);
 
+    // final output
+    // Splits aluOut into L/R for zr analysis. MSB output to ng to indication negative number
+    Or16(a=aluOut, b=false, out=out, out[0..7]=outLow, out[8..15]=outHigh, out[15]=ng);
 }
