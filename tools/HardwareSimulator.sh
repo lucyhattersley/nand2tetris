@@ -20,7 +20,7 @@ then
 elif [ $# -eq 0 ]
 then
 	# Run hardware simulator in interactive mode
-	java -classpath "${CLASSPATH}:bin/classes:BuiltIn:bin/lib/Hack.jar:bin/lib/HackGUI.jar:bin/lib/Simulators.jar:bin/lib/SimulatorsGUI.jar:bin/lib/Compilers.jar" HardwareSimulatorMain &
+	GDK_SCALE=2 java -classpath "${CLASSPATH}:bin/classes:BuiltIn:bin/lib/Hack.jar:bin/lib/HackGUI.jar:bin/lib/Simulators.jar:bin/lib/SimulatorsGUI.jar:bin/lib/Compilers.jar" HardwareSimulatorMain &
 else
 	# Convert arg1 to an absolute path and run hardware simulator with arg1
 	if [ `echo "$1" | sed -e "s/\(.\).*/\1/"` = / ]
