@@ -17,10 +17,15 @@ CHIP PC {
 
     
     PARTS:
-    Inc16(in=in, out=i1); // implement inc
-    Mux16(a=in, b=i1, sel=inc, out=m1); // choose inc?
+    // Order Reset > Load > Inc > Hold
+    Mux16(a=next, b=in, sel=load, out=m1); // in or next
+ 
+    Register(in=m1, load=load, out=r1, out=out); // load    
     
-    Mux16(a=m1, b=false, sel=reset, out=m2); // implement reset
-    
-    Register(in=m2, load=load, out=out); // load    
+    Mux16(a=r1, b=false, sel=reset, out=m2); // choose in/inc or reset?
+
+    Register(in=in, load=load, out=r1) ; // load
+
+    Mux16(a=m2, b=i1, sel=inc, out=next); // select inc 
+
 }
