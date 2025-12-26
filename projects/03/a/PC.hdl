@@ -18,14 +18,21 @@ CHIP PC {
     
     PARTS:
     // Order Reset > Load > Inc > Hold
-    Mux16(a=next, b=in, sel=load, out=m1); // in or next
- 
-    Register(in=m1, load=load, out=r1, out=out); // load    
+    // hold or inc
+    Inc16(in=in, out=i1);
+    Mux16(a=in, b=i1, sel=inc, out=m1);
     
-    Mux16(a=r1, b=false, sel=reset, out=m2); // choose in/inc or reset?
+    // maybe load
+    Register(in=m1, load=load, out=r1); // load
 
-    Register(in=in, load=load, out=r1) ; // load
+    // compute next or reset
+    Mux16(a=r1, b=false, sel=reset, out=m2);
+    
+    // register loads when inc or load or reset
+    Or16(a=m1, b=r1, out=o1);
+    Or16(a=o1, b=m2, out=out);
 
-    Mux16(a=m2, b=i1, sel=inc, out=next); // select inc 
+
+
 
 }
