@@ -18,6 +18,7 @@ CHIP PC {
     
     PARTS:
     // Order Reset > Load > Inc > Hold
+<<<<<<< HEAD
     // hold or inc
     Inc16(in=in, out=i1);
     Mux16(a=in, b=i1, sel=inc, out=m1);
@@ -34,5 +35,11 @@ CHIP PC {
 
 
 
+=======
+>>>>>>> 162b9f8 (bring up to date)
 
+    Register(in=in, load=load, out=r1); // load select
+    Inc16(in=r1, out=i1); // incremeter
+    Mux16(a=r1, b=r1, sel=inc, out=m2); // inc select
+    Mux16(a=m2, b=false, sel=reset, out=out); // reset select
 }
