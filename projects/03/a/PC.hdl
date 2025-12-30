@@ -17,8 +17,12 @@ CHIP PC {
 
     PARTS:
     // Order Reset > Load > Inc > Hold
+
     Inc16(in=next, out=i1);
+    Or(a=reset, b=inc, out=o1);
+    Or(a=o1, b=load, out=o2);
+
     Mux4Way16(a=next, b=false, c=i1, d=false, sel[0]=reset, sel[1]=inc, out=m1);
-    Register(in=m1, load=load, out=next, out=out);
+    Register(in=m1, load=o2, out=next, out=out);
 
 }
