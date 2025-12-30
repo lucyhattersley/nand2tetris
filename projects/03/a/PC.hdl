@@ -18,25 +18,6 @@ CHIP PC {
     
     PARTS:
     // Order Reset > Load > Inc > Hold
-<<<<<<< HEAD
-    // hold or inc
-    Inc16(in=in, out=i1);
-    Mux16(a=in, b=i1, sel=inc, out=m1);
-    
-    // maybe load
-    Register(in=m1, load=load, out=r1); // load
-
-    // compute next or reset
-    Mux16(a=r1, b=false, sel=reset, out=m2);
-    
-    // register loads when inc or load or reset
-    Or16(a=m1, b=r1, out=o1);
-    Or16(a=o1, b=m2, out=out);
-
-
-
-=======
->>>>>>> 162b9f8 (bring up to date)
 
     Register(in=in, load=load, out=r1); // load select
     Inc16(in=r1, out=i1); // incremeter
