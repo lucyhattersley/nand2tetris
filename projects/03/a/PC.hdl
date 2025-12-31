@@ -21,7 +21,9 @@ CHIP PC {
     Or(a=o1, b=load, out=o2);
 
     Inc16(in=next, out=i1);
-    Mux4Way16(a=in, b=false, c=i1, d=in, sel[0]=reset, sel[1]=inc, out=m1);
-    Register(in=m1, load=o2, out=next, out=out);
+    Mux16(a=in, b=next, sel=load, out=m1);
+    Mux4Way16(a=m1, b=false, c=m1, d=in, sel[0]=reset, sel[1]=inc, out=m2);
+
+    Register(in=m2, load=o2, out=next, out=out);
 
 }
