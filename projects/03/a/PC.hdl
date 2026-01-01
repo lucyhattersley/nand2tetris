@@ -22,7 +22,7 @@ CHIP PC {
 
     Inc16(in=next, out=i1);
 
-    // TODO:Replace with Mux8Way16 with sel[0]=reset, sel[1]=inc, sel[2]=load
+    // TODO: Sketch out the Mux8Way16 and implement it correctly.
     Mux8Way16(a=in, b=next, c=next, d=next, e=next, f=next, g=next, h=next, sel[0]=reset, sel[1]=inc, sel[2]=load, out=m1);
     Register(in=m1, load=o2, out=next, out=out);
 
