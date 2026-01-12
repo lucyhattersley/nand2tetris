@@ -23,7 +23,7 @@ CHIP PC {
     Inc16(in=next, out=i1);
 
     // TODO: Sketch out the Mux8Way16 and implement it correctly.
-    Mux8Way16(a=in, b=i1, c=next, d=next, e=next, f=next, g=next, h=next, sel[0]=inc, sel[1]=load, sel[2]=reset, out=m1);
+    Mux8Way16(a=in, b=i1, c=next, d=i1, e=next, f=next, g=next, h=next, sel[0]=inc, sel[1]=load, sel[2]=reset, out=m1);
     Register(in=m1, load=o2, out=next, out=out);
 
 }
